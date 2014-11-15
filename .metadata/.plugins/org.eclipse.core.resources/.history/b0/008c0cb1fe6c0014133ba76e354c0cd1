@@ -1,0 +1,11 @@
+package imageResource;
+
+public class StaticImageResource
+{
+  //here we save different images into public static BufferedImage
+  BufferedImage[] 
+  public static void initializeImages()
+  {
+    
+  }
+}

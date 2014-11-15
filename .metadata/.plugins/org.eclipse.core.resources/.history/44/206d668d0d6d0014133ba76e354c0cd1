@@ -1,0 +1,30 @@
+package subjects;
+
+import java.awt.Graphics;
+import java.awt.image.BufferedImage;
+
+import javax.swing.JPanel;
+
+public class BackGround
+{
+  final int backGroundSpeed  = 1;
+  BufferedImage backGroundImage;
+  JPanel parentPanel;
+  
+  public BackGround(BufferedImage _backGroundImage, JPanel _parentPanel)
+  {
+    parentPanel = _parentPanel;
+    backGroundImage = _backGroundImage;
+  }
+  
+  public void paint(Graphics g)
+  {
+    g.drawImage(backGroundImage, 0, 0, null);
+  }
+  
+  public void backGroundMove()
+  {
+    if
+  }
+  
+}

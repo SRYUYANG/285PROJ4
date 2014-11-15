@@ -1,0 +1,18 @@
+package subjects;
+
+import util.Location;
+import interfaces.Movable;
+
+public class Plane implements Movable
+{
+  private Location planeLocation;
+  
+  public Plane(Location startLocation)
+  {
+    planeLocation = startLocation;
+  }
+  public void move()
+  {
+    
+  }
+}

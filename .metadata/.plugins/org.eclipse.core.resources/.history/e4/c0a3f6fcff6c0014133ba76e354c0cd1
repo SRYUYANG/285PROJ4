@@ -1,0 +1,14 @@
+package imageResource;
+
+import java.awt.image.BufferedImage;
+
+public class StaticImageResource
+{
+  //here we save different images into public static BufferedImage
+  public static BufferedImage[]  backgroudImages = new BufferedImage[2];
+  
+  public static void initializeImages()
+  {
+    
+  }
+}

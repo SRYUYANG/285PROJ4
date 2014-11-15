@@ -1,0 +1,35 @@
+package ui;
+
+import imageResource.StaticImageResource;
+
+import javax.swing.JFrame;
+import javax.swing.JPanel;
+
+public class GameFrame extends JFrame
+{
+  final private static int WINDOWS_WIDTH = 550;
+  final private static int WINDOWS_HEIGHT = 700;
+  GamePanel gamePanel;
+  
+  private static GamePanel currentGamePanel;
+  public GameFrame(String title)
+  {
+    super(title);
+    gamePanel = new GamePanel(StaticImageResource.backgroudImages[0]);
+    this.setSize(WINDOWS_WIDTH, WINDOWS_HEIGHT);
+    this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+    this.setVisible(true);
+    this.add(gameJPanel);
+    
+  }
+  
+  public static GamePanel getCurrentPanel()
+  {
+    return currentGamePanel;
+  }
+  
+  public static void setPanel(GamePanel gamePanel)
+  {
+    currentGamePanel = gamePanel;
+  }
+}

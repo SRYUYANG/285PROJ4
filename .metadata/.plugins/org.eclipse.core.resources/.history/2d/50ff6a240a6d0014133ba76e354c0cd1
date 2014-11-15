@@ -1,0 +1,69 @@
+package subjects;
+
+import util.Location;
+import interfaces.Movable;
+
+public class Plane implements Movable, Runnable
+{
+  private Location planeLocation;
+  private int speed;
+  private boolean isAlive;
+  
+  public Plane(Location startLocation, int _speed)
+  {
+    speed = _speed;
+    planeLocation = startLocation;
+    isAlive = true;
+  }
+  
+  @Override
+  public void move()
+  {
+  }
+
+  @Override
+  public void moveLeft()
+  {
+    // TODO Auto-generated method stub
+    planeLocation.setX(planeLocation.getX() - speed);
+  }
+
+  @Override
+  public void moveRight()
+  {
+    // TODO Auto-generated method stub
+    planeLocation.setX(planeLocation.getX() + speed);
+  }
+
+  @Override
+  public void moveUp()
+  {
+    // TODO Auto-generated method stub
+    planeLocation.setX(planeLocation.getY() - speed);
+  }
+
+  @Override
+  public void moveDown()
+  {
+    // TODO Auto-generated method stub
+    planeLocation.setX(planeLocation.getY() + speed);
+  }
+
+  @Override
+  public void run()
+  {
+    // TODO Auto-generated method stub
+    
+  }
+  
+  public void setSpeed(int _speed)
+  {
+    speed = _speed;
+  }
+  
+  public int getSpeed()
+  {
+    return speed;
+  }
+  
+}

@@ -1,0 +1,81 @@
+package ui;
+
+import imageResource.StaticImageResource;
+
+import java.awt.Graphics;
+import java.awt.event.KeyEvent;
+import java.awt.event.KeyListener;
+import java.awt.image.BufferedImage;
+
+import javax.swing.JPanel;
+
+import subjects.PlayerPlane;
+import util.Location;
+
+public class GamePanel extends JPanel implements KeyListener
+{ 
+  private static PlayerPlane p1;
+  
+  BufferedImage currentBackGroundBufferedImage;
+  public GamePanel(BufferedImage bg)
+  {
+    p1 = new PlayerPlane(new Location(100, 100), 2, StaticImageResource.playerPlanes[0]);
+    currentBackGroundBufferedImage = bg;
+    // TODO Auto-generated constructor stub
+  }
+  
+  public void update()
+  {
+    //TODO this function is to update every single elements in the game. 
+    //Everything will be on this game Panel 
+  }
+  
+  @Override
+  public void paint(Graphics g)
+  {
+    super.paint(g);
+    
+    g.drawImage(currentBackGroundBufferedImage, 0, 0, null);
+    p1.paintPlane(g);
+  }
+  
+  @Override
+  public void keyTyped(KeyEvent e)
+  {
+    // TODO Auto-generated method stub
+    
+  }
+
+  @Override
+  public void keyPressed(KeyEvent e)
+  {
+    // TODO Auto-generated method stub
+    
+    switch(e.getKeyCode())
+    {
+      case KeyEvent.VK_UP:
+        p1.moveUp();
+        break;
+      case KeyEvent.VK_DOWN:
+        p1.moveDown();
+        break;
+      case KeyEvent.VK_LEFT:
+        p1.moveLeft();
+        break;
+      case KeyEvent.VK_RIGHT:
+        p1.moveRight();
+        break;
+    }
+    
+  }
+
+  @Override
+  public void keyReleased(KeyEvent e)
+  {
+    // TODO Auto-generated method stub
+    
+  }
+
+  
+  
+}
