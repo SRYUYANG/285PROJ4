@@ -4,19 +4,21 @@ import java.awt.Graphics;
 import java.awt.image.BufferedImage;
 
 import util.Location;
-import util.Speed;
 import interfaces.Movable;
 
 public class Plane implements Movable
 {
   private Location planeLocation;
-  private Speed planeSpeed;
+  private double velX = 0;
+  private double velY = 0;
+  
+  private int speed;
   private boolean isAlive;
   BufferedImage planeImage;
   
-  public Plane(Location startLocation, Speed _speed, BufferedImage _planeImage)
+  public Plane(Location startLocation, int _speed, BufferedImage _planeImage)
   {
-    planeSpeed = _speed;
+    speed = _speed;
     planeLocation = startLocation;
     isAlive = true;
     planeImage = _planeImage;
@@ -33,52 +35,50 @@ public class Plane implements Movable
   @Override
   public void move()
   {
-    planeLocation.setX(planeLocation.getX() + planeSpeed.getXSpeed());
-    planeLocation.setY(planeLocation.getY() + planeSpeed.getYSpeed());
   }
 
   @Override
   public void moveLeft()
   {
     // TODO Auto-generated method stub
-    //planeLocation.setX(planeLocation.getX() - speed);
+    planeLocation.setX(planeLocation.getX() - speed);
   }
 
   @Override
   public void moveRight()
   {
     // TODO Auto-generated method stub
-    //planeLocation.setX(planeLocation.getX() + speed);
+    planeLocation.setX(planeLocation.getX() + speed);
   }
 
   @Override
   public void moveUp()
   {
     // TODO Auto-generated method stub
-    //planeLocation.setY(planeLocation.getY() - speed);
+    planeLocation.setY(planeLocation.getY() - speed);
   }
 
   @Override
   public void moveDown()
   {
     // TODO Auto-generated method stub
-    //planeLocation.setY(planeLocation.getY() + speed);
+    planeLocation.setY(planeLocation.getY() + speed);
   }
 
   
-  public void setSpeed(Speed _speed)
+  public void setSpeed(int _speed)
   {
-    planeSpeed = _speed;
+    speed = _speed;
   }
   
-  public Speed getSpeed()
+  public int getSpeed()
   {
-    return planeSpeed;
+    return speed;
   }
   
-  public Speed isAlive()
+  public boolean isAlive()
   {
-    return planeSpeed;
+    return isAlive;
   }
   
   

@@ -21,7 +21,7 @@ public class GamePanel extends JPanel implements KeyListener
   BufferedImage currentBackGroundBufferedImage;
   public GamePanel(BufferedImage bg)
   {
-    p1 = new PlayerPlane(new Location(100.0, 100.0), p1Speed , StaticImageResource.playerPlanes[0]);
+    p1 = new PlayerPlane(new Location(100, 100), 8 , StaticImageResource.playerPlanes[0]);
     currentBackGroundBufferedImage = bg;
     // TODO Auto-generated constructor stub
   }
@@ -30,7 +30,6 @@ public class GamePanel extends JPanel implements KeyListener
   {
     //TODO this function is to update every single elements in the game. 
     //Everything will be on this game Panel 
-    p1.move();
   }
   
   @Override
@@ -57,16 +56,16 @@ public class GamePanel extends JPanel implements KeyListener
     switch(e.getKeyCode())
     {
       case KeyEvent.VK_UP:
-        p1.setSpeed(new Speed(0.0, -10.0));
+        p1.moveUp();
         break;
       case KeyEvent.VK_DOWN:
-        p1.setSpeed(new Speed(0.0, 10.0));
+        p1.moveDown();
         break;
       case KeyEvent.VK_LEFT:
-        p1.setSpeed(new Speed(-10.0, 0.0));
+        p1.moveLeft();
         break;
       case KeyEvent.VK_RIGHT:
-        p1.setSpeed(new Speed(10.0, 0.0));
+        p1.moveRight();
         break;
     }
     
@@ -76,7 +75,7 @@ public class GamePanel extends JPanel implements KeyListener
   public void keyReleased(KeyEvent e)
   {
     // TODO Auto-generated method stub
-    p1.setSpeed(new Speed(0.0, 0.0));
+    
   }
 
   

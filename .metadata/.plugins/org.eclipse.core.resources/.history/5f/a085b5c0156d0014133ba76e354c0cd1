@@ -19,12 +19,12 @@ public class Location
     return corY;
   }
   
-  public void setX(double inX)
+  public void setX(int inX)
   {
     corX = inX;
   }
   
-  public void setY(double inY)
+  public void setY(int inY)
   {
     corY = inY;
   }

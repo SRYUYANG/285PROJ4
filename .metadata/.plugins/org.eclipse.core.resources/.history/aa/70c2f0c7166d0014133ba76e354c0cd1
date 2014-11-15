@@ -1,12 +1,12 @@
 package util;
 
-public class Location
+public class Speed
 {
-  private double corX, corY;
-  public Location(double inX, double inY)
+  private double xSpeed, ySpeed;
+  public Speed(double _xSpeed, double _ySpeed)
   {
-    corX = inX;
-    corY = inY;
+    xSpeed = _xSpeed;
+    ySpeed = _ySpeed;
   }
   
   public double getX()

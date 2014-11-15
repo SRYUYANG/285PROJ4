@@ -33,8 +33,7 @@ public class Plane implements Movable
   @Override
   public void move()
   {
-    planeLocation.setX(planeLocation.getX() + planeSpeed.getXSpeed());
-    planeLocation.setY(planeLocation.getY() + planeSpeed.getYSpeed());
+    
   }
 
   @Override
@@ -78,7 +77,7 @@ public class Plane implements Movable
   
   public Speed isAlive()
   {
-    return planeSpeed;
+    return isAlive;
   }
   
   
