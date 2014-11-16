@@ -17,11 +17,15 @@ public class GameFrame extends JFrame
     StaticImageResource.initializeImages();
     currentGamePanel = new GamePanel(StaticImageResource.backgroudImages[0]);
     this.add(currentGamePanel);
-    //this.add(new JPanel());
     this.addKeyListener(currentGamePanel);
     this.setSize(WINDOWS_WIDTH, WINDOWS_HEIGHT);
     this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
     this.setVisible(true);
+  }
+  
+  public static void setCurrentPanel(GamePanel _gamePanel)
+  {
+    currentGamePanel = _gamePanel;
   }
   
   public static GamePanel getCurrentPanel()

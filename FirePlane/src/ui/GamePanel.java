@@ -13,7 +13,7 @@ import subjects.PlayerPlane;
 import util.Location;
 import util.Speed;
 
-public class GamePanel extends JPanel implements KeyListener
+public class GamePanel extends JPanel implements KeyListener, Runnable
 { 
   private static PlayerPlane p1;
   private Speed p1Speed = new Speed(0.0, 0.0);
@@ -23,6 +23,8 @@ public class GamePanel extends JPanel implements KeyListener
   {
     p1 = new PlayerPlane(new Location(100.0, 100.0), p1Speed , StaticImageResource.playerPlanes[0]);
     currentBackGroundBufferedImage = bg;
+    new Thread(this).start();
+    this.addListener();
     // TODO Auto-generated constructor stub
   }
   
@@ -37,7 +39,6 @@ public class GamePanel extends JPanel implements KeyListener
   public void paint(Graphics g)
   {
     super.paint(g);
-    
     g.drawImage(currentBackGroundBufferedImage, 0, 0, null);
     p1.paintPlane(g);
   }
@@ -69,25 +70,38 @@ public class GamePanel extends JPanel implements KeyListener
         p1.setSpeed(new Speed(10.0, 0.0));
         break;
     }
-    
   }
 
   @Override
   public void keyReleased(KeyEvent e)
   {
     // TODO Auto-generated method stub
-    switch(e.getKeyCode())
-    {
-      case KeyEvent.VK_UP:
-      case KeyEvent.VK_DOWN:
-      case KeyEvent.VK_LEFT: 
-      case KeyEvent.VK_RIGHT:
+    
         p1.setSpeed(new Speed(0.0, 0.0));
-        break;
-    }
     
   }
+  
+  @Override
+  public void run()
+  {
+    while(true)
+    {
+      this.update();
+      this.repaint();
+      try {
+        Thread.sleep(10);
+      } catch (InterruptedException e) {
+        // TODO Auto-generated catch block
+        e.printStackTrace();
+      }
+    }
 
+  }
+
+  protected void addListener()
+  {
+    this.addKeyListener(this);
+  }
   
   
 }
