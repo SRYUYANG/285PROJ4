@@ -7,10 +7,11 @@ import util.Speed;
 
 public class PlayerPlane extends Plane
 {
-
-  public PlayerPlane(Location startLocation, Speed _speed, BufferedImage _planeImage)
+  String username;
+  public PlayerPlane(Location startLocation, Speed _speed, BufferedImage _planeImage, String _username)
   {
     super(startLocation, _speed,  _planeImage);
+    this.username = _username;
     // TODO Auto-generated constructor stub
   }
 

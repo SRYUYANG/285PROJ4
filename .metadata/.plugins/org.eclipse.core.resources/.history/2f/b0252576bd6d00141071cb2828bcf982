@@ -1,0 +1,23 @@
+package subjects;
+
+import java.awt.image.BufferedImage;
+import java.net.InetAddress;
+
+import util.Location;
+import util.Speed;
+
+public class PlayerPlaneMP extends PlayerPlane
+{
+  public InetAddress ipAddress;
+  public int port;
+  
+  public PlayerPlaneMP(Location startLocation, Speed _speed,
+      BufferedImage _planeImage, String _username, InetAddress ipAddress, int port)
+  {
+    super(startLocation, _speed, _planeImage, _username);
+    this.ipAddress = ipAddress;
+    this.port = port;
+    // TODO Auto-generated constructor stub
+  }
+
+}

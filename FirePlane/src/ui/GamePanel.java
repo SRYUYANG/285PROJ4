@@ -21,7 +21,8 @@ public class GamePanel extends JPanel implements KeyListener, Runnable
   BufferedImage currentBackGroundBufferedImage;
   public GamePanel(BufferedImage bg)
   {
-    p1 = new PlayerPlane(new Location(100.0, 100.0), p1Speed , StaticImageResource.playerPlanes[0]);
+    p1 = new PlayerPlane(
+        new Location(100.0, 100.0), p1Speed , StaticImageResource.playerPlanes[0], "p1");
     currentBackGroundBufferedImage = bg;
     new Thread(this).start();
     this.addListener();

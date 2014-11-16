@@ -1,0 +1,19 @@
+package net;
+
+public abstract class Packet
+{
+  public static enum PacketTypes
+  {
+    INVALID(-1), LOGIN(00), DISCONNECT(01);
+    private int packetID;
+    private PacketTypes(int _packetID)
+    {
+      this.packetID = _packetID;
+    }
+    
+    public int getId()
+    {
+      return packetID;
+    }
+  }
+}

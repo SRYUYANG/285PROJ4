@@ -10,6 +10,8 @@ import java.net.Socket;
 
 import javax.swing.JFrame;
 
+import net.Client;
+import net.Server;
 import ui.GameFrame;
 
 public class Main 
@@ -39,9 +41,5 @@ public class Main
       e.printStackTrace();
       System.exit(7);
     }
-		
-		
-		
-		
 	}
 }
