@@ -1,7 +1,5 @@
 package main;
 
-import javax.swing.JFrame;
-
 import ui.GameFrame;
 
 public class Main 
