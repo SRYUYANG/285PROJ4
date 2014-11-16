@@ -1,0 +1,43 @@
+package client;
+
+import java.io.IOException;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
+import java.net.Socket;
+
+import org.omg.CORBA.PRIVATE_MEMBER;
+
+public class Client
+{
+  private static Socket clientSocket;
+  private ObjectOutputStream outputStream;
+  private ObjectInputStream inputStream;
+  
+  private Client() throws IOException
+  {
+    System.out.println("CLient: Attempting connecting....");
+    clientSocket = new Socket(Settings.SERVER_ADDRESS, Settings.SERVER_PORT);
+    System.out.println("Client Connected!");
+    setupStreams(clientSocket);
+    Object o = inputStream.readObject();
+    System.out.print((String)o);
+  }
+  
+  public static void main(String[] args)
+  {
+    try
+    {
+      new Client();
+    }
+    catch( IOException e )
+    {
+      // TODO: handle exception
+    }
+  }
+  
+  public void setupStreams(Socket s) throws IOException
+  {
+    outputStream = new ObjectOutputStream(s.getOutputStream());
+    inputStream = new ObjectInputStream(s.getInputStream());
+  }
+}

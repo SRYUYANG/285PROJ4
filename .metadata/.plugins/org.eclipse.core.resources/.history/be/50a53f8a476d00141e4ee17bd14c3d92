@@ -1,0 +1,33 @@
+package main;
+
+import java.io.IOException;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
+import java.net.ServerSocket;
+import java.net.Socket;
+
+public class ClientServerSocket
+{
+  private static ServerSocket serverSocket;
+  private static Socket clientSocket;
+  private static boolean serverRunning = false;
+
+  private ObjectOutputStream outputStream;
+  private ObjectInputStream inputStream;
+  
+  public ClientServerSocket()
+  {
+    
+  }
+  
+  public void startServer()
+  {
+    serverSocket = new ServerSocket(Settings.SERVER_PORT);
+  }
+  
+  public void setupStreams(Socket s) throws IOException
+  {
+    outputStream = new ObjectOutputStream(s.getOutputStream());
+    inputStream = new ObjectInputStream(s.getInputStream());
+  }
+}

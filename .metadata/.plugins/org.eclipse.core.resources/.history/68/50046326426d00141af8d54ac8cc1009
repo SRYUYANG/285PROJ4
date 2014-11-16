@@ -1,0 +1,28 @@
+package client;
+
+import java.io.IOException;
+import java.net.Socket;
+
+import org.omg.CORBA.PRIVATE_MEMBER;
+
+public class Client
+{
+  private static Socket clientSocket;
+  
+  private Client() throws IOException
+  {
+    clientSocket = new Socket(Settings.SERVER_ADDRESS, Settings.SERVER_PORT);
+  }
+  
+  public static void main(String[] args)
+  {
+    try
+    {
+      new Client();
+    }
+    catch( IOException e )
+    {
+      // TODO: handle exception
+    }
+  }
+}
