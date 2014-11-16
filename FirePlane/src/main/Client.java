@@ -11,6 +11,7 @@ import java.nio.channels.SeekableByteChannel;
 
 import org.omg.CORBA.PRIVATE_MEMBER;
 
+//client type
 public class Client extends Thread 
 {
   private InetAddress ipAddress;
