@@ -106,11 +106,10 @@ public class Server extends Thread
       case INVALID:
         break;
       case LOGIN:
-        Packet00Login pLogin = new Packet00Login(data);
-        System.out.println("{" + address.getHostAddress() + ":" + port + "}" + pLogin.getUserName());
         break;
       case DISCONNECT:
         break;
+
       default:
         break;
     }

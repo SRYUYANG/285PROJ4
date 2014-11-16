@@ -7,7 +7,6 @@ import java.net.SocketException;
 import java.util.ArrayList;
 
 import net.Packet.PacketTypes;
-import net.Packet;
 import subjects.PlayerPlaneMP;
 
 public class Server extends Thread
@@ -99,21 +98,7 @@ public class Server extends Thread
   private void parsePacket(byte[] data, InetAddress address, int port)
   {
     // TODO Auto-generated method stub
-    String message = new String(data).trim();
-    PacketTypes type = Packet.getPacketType(message.substring(0, 2));
-    switch ( type )
-    {
-      case INVALID:
-        break;
-      case LOGIN:
-        Packet00Login pLogin = new Packet00Login(data);
-        System.out.println("{" + address.getHostAddress() + ":" + port + "}" + pLogin.getUserName());
-        break;
-      case DISCONNECT:
-        break;
-      default:
-        break;
-    }
+    PacketTypes type = Packet;
   }
   
   

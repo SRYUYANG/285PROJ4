@@ -100,20 +100,7 @@ public class Server extends Thread
   {
     // TODO Auto-generated method stub
     String message = new String(data).trim();
-    PacketTypes type = Packet.getPacketType(message.substring(0, 2));
-    switch ( type )
-    {
-      case INVALID:
-        break;
-      case LOGIN:
-        Packet00Login pLogin = new Packet00Login(data);
-        System.out.println("{" + address.getHostAddress() + ":" + port + "}" + pLogin.getUserName());
-        break;
-      case DISCONNECT:
-        break;
-      default:
-        break;
-    }
+    PacketTypes type = Packet.getPacketType(Integer.parseInt(message.substring(0, 2)));
   }
   
   

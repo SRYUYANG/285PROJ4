@@ -45,18 +45,4 @@ public abstract class Packet
     }
     return PacketTypes.INVALID;
   }
-  
-  public static PacketTypes getPacketType(String packetId)
-  {
-    try
-    {
-      return getPacketType(Integer.parseInt(packetId));
-    }
-    catch( NumberFormatException e )
-    {
-      // TODO: handle exception
-      return PacketTypes.INVALID;
-    }
-   
-  }
 }
