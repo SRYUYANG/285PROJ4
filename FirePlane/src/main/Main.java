@@ -20,7 +20,7 @@ public class Main
   
 	public static void main(String[] args)
 	{
-		System.out.println("Game Start!");
+		
 		System.out.println("Game Start!");
 		//here we only place a short initialization functions
 		GameFrame gf = new GameFrame("FireFlight");
