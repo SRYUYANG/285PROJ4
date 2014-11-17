@@ -1,5 +1,6 @@
 package subjects;
 
+import java.awt.Graphics;
 import java.awt.image.BufferedImage;
 
 import util.Location;
@@ -19,5 +20,12 @@ public class PlayerPlane extends Plane
   {
     return this.username;
   }
-
+  
+  @Override
+  public void paint(Graphics g)
+  {
+    // TODO Auto-generated method stub
+    super.paint(g);
+    g.drawString(username, (int)getLocation().getX(), (int)getLocation().getY());
+  }
 }

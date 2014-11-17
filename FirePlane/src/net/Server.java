@@ -73,8 +73,7 @@ public class Server extends Thread
         break;
       case LOGIN:
         Packet00Login pLogin = new Packet00Login(data);
-        System.out.println("{" + address.getHostAddress() + ":" 
-        + port + "}" + pLogin.getUserName() + "Connected");
+        System.out.println("[Server]: " + pLogin.getUserName() + "Connected");
         PlayerPlaneMP newPlayer 
         = new PlayerPlaneMP(new Location(100, 100), new Speed(0, 0),
             StaticImageResource.playerPlanes[0], pLogin.getUserName(), address, port);

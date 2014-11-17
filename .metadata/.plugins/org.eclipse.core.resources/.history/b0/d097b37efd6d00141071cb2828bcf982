@@ -1,0 +1,14 @@
+package subjects;
+
+import java.util.ArrayList;
+
+public class Entities
+{
+  private ArrayList<Entities> allEntities = new ArrayList<Entities>();
+  public Entities()
+  {
+    
+  }
+  
+  public void addStuff
+}

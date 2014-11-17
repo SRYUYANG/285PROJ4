@@ -105,9 +105,6 @@ public class Client extends Thread
         PlayerPlaneMP newPlayer 
         = new PlayerPlaneMP(new Location(100, 100), new Speed(0, 0),
             StaticImageResource.playerPlanes[0], pLogin.getUserName(), address, port);
-        /*addConnection(newPlayer, pLogin);
-          GamePanel.addPlane(newPlayer);
-          this.connectedPlayers.add(newPlayer);*/
         
         break;
       case DISCONNECT:

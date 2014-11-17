@@ -1,0 +1,58 @@
+package subjects;
+
+import java.awt.Graphics;
+import java.awt.image.BufferedImage;
+import java.util.ArrayList;
+
+import util.Location;
+import util.Speed;
+
+public class Stuff
+{
+  private Location location;
+  private Speed speed;
+  BufferedImage stuffImage;
+  private ArrayList<Stuff> allStuffs = new ArrayList<Stuff>();
+  public Stuff()
+  {
+    
+  }
+  public Stuff(Location l, Speed s, BufferedImage img)
+  {
+    location = l;
+    speed = s;
+    stuffImage = img;
+  }
+  
+  public void addStuff(Stuff s)
+  {
+    allStuffs.add(s);
+  }
+  
+  public void paint(Graphics g)
+  {
+    
+  }
+  
+  public Location getLocation()
+  {
+    return location;
+  }
+  
+  public void setLocation(Location l)
+  {
+    location = l;
+  }
+  
+  public Speed getSpeed()
+  {
+    return speed;
+  }
+  
+  public void setSpeed(Speed s)
+  {
+    speed = s;
+  }
+  
+}
+

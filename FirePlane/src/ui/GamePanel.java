@@ -17,12 +17,12 @@ import net.Packet00Login;
 import net.Server;
 import subjects.PlayerPlane;
 import subjects.PlayerPlaneMP;
+import subjects.Stuff;
 import util.Location;
 import util.Speed;
 
 public class GamePanel extends JPanel implements KeyListener, Runnable
 { 
-  private static ArrayList<PlayerPlane> players = new ArrayList<PlayerPlane>();
   private static PlayerPlane myPlayer;
   //myPlayer is whom on the 
   private Speed initialSpeed = new Speed(0.0, 0.0);
@@ -36,7 +36,8 @@ public class GamePanel extends JPanel implements KeyListener, Runnable
     myPlayer = new PlayerPlane(new Location(100, 100), new Speed(0, 0),
             StaticImageResource.playerPlanes[0], 
             JOptionPane.showInputDialog(this, "Enter your username: "));
-    players.add(myPlayer);
+    
+    Stuff.getAllStuffs().add(myPlayer);
     currentBackGroundBufferedImage = bg;
     new Thread(this).start();
     //add listener to panel
@@ -68,7 +69,7 @@ public class GamePanel extends JPanel implements KeyListener, Runnable
     {
       p.move();;
     }*/
-    for(PlayerPlane p : players)
+    for(Stuff p : Stuff.getAllStuffs())
     {
       //System.out.println(p.getUserName());
       if(p != null)
@@ -77,7 +78,7 @@ public class GamePanel extends JPanel implements KeyListener, Runnable
       }
       
     }
-    //System.out.println("##########");
+    //`System.out.println("##########");
   }
   
   @Override
@@ -89,12 +90,14 @@ public class GamePanel extends JPanel implements KeyListener, Runnable
     {
       p.paintPlane(g);
     }*/
-    for(PlayerPlane p : players)
+    for(Stuff p : Stuff.getAllStuffs())
     {
+      //System.out.println(p.getUserName());
       if(p != null)
       {
-        p.paintPlane(g);
+        p.paint(g);
       }
+      
     }
     
   }
@@ -162,10 +165,10 @@ public class GamePanel extends JPanel implements KeyListener, Runnable
     this.addKeyListener(this);
   }
   
-  public static void addPlane(PlayerPlane addedPlane)
+  /*public static void addPlane(PlayerPlane addedPlane)
   {
-    
-  }
+    players.add(addedPlane);
+  }*/
   
   
 }
