@@ -8,3 +8,6 @@
 1416178603734	Rename type 'Packet02Move'
 1416189624784	Rename compilation unit 'Entities.java'
 1416190678702	Encapsulate field 'allStuffs'
+1416193368367	Move file
+1416193381946	Rename resource 'bg0.jpg'
+1416193395865	Rename resource 'roll0.png'

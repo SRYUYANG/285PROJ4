@@ -15,6 +15,7 @@ import javax.swing.JPanel;
 import net.Client;
 import net.Packet00Login;
 import net.Server;
+import net.Settings;
 import subjects.PlayerPlane;
 import subjects.PlayerPlaneMP;
 import subjects.Stuff;
@@ -26,30 +27,33 @@ public class GamePanel extends JPanel implements KeyListener, Runnable
   private static PlayerPlane myPlayer;
   //myPlayer is whom on the 
   private Speed initialSpeed = new Speed(0.0, 0.0);
-  
+  Server gameServer;
+  Client gameClient;
   
   
   BufferedImage currentBackGroundBufferedImage;
   public GamePanel(BufferedImage bg)
   {
     //players = new ArrayList<PlayerPlane>();
-    myPlayer = new PlayerPlane(new Location(100, 100), new Speed(0, 0),
-            StaticImageResource.playerPlanes[0], 
-            JOptionPane.showInputDialog(this, "Enter your username: "));
-    
-    Stuff.getAllStuffs().add(myPlayer);
-    currentBackGroundBufferedImage = bg;
-    new Thread(this).start();
-    //add listener to panel
-    this.addListener();
     try
     {
-      Server server = new Server();
-      Client clientSocket = new Client("localhost");
-      server.start();
+      if (JOptionPane.showConfirmDialog(this, "Do you want to run the server") == 0) {
+        gameServer = new Server();
+        gameServer.start();
+      }
+      gameClient = new Client("localhost");
+      gameClient.start();
+      myPlayer 
+      = new PlayerPlaneMP(new Location(100, 100), new Speed(0, 0),
+          StaticImageResource.playerPlanes[0],
+          JOptionPane.showInputDialog(this, "Please enter"), null, -1);
+      Stuff.getAllStuffs().add(myPlayer);
       Packet00Login loginPacket = new Packet00Login(myPlayer.getUserName());
-      loginPacket.writeData(clientSocket);
-      clientSocket.start();
+      if(gameServer != null)
+      {
+        gameServer.addConnection((PlayerPlaneMP)myPlayer, loginPacket);
+      }
+      loginPacket.writeData(gameClient);
     }
     catch( IOException e )
     {
@@ -57,6 +61,11 @@ public class GamePanel extends JPanel implements KeyListener, Runnable
       e.printStackTrace();
       System.exit(7);
     }
+    currentBackGroundBufferedImage = bg;
+    new Thread(this).start();
+    //add listener to panel
+    this.addListener();
+    
     
     // TODO Auto-generated constructor stub
   }
@@ -146,6 +155,7 @@ public class GamePanel extends JPanel implements KeyListener, Runnable
   @Override
   public void run()
   {
+    
     while(true)
     {
       this.update();
@@ -169,6 +179,12 @@ public class GamePanel extends JPanel implements KeyListener, Runnable
   {
     players.add(addedPlane);
   }*/
+  
+  public static void setMyPlayer(PlayerPlaneMP _myPlayer)
+  {
+    myPlayer = _myPlayer;
+  }
+  
   
   
 }

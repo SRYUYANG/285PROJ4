@@ -8,6 +8,8 @@ import java.net.InetAddress;
 import java.net.SocketException;
 import java.util.ArrayList;
 
+import javax.xml.crypto.Data;
+
 import net.Packet.PacketTypes;
 import net.Packet;
 import subjects.PlayerPlaneMP;
@@ -67,21 +69,19 @@ public class Server extends Thread
     // TODO Auto-generated method stub
     String message = new String(data).trim();
     PacketTypes type = Packet.getPacketType(message.substring(0, 2));
+    Packet packet = null;
     switch ( type )
     {
       case INVALID:
         break;
       case LOGIN:
-        Packet00Login pLogin = new Packet00Login(data);
-        System.out.println("[Server]: " + pLogin.getUserName() + "Connected");
+        packet = new Packet00Login(data);
+        System.out.println("[ " +address.getHostAddress() + ":" + port + "]" +
+            ((Packet00Login)packet).getUserName() + " Connected");
         PlayerPlaneMP newPlayer 
         = new PlayerPlaneMP(new Location(100, 100), new Speed(0, 0),
-            StaticImageResource.playerPlanes[0], pLogin.getUserName(), address, port);
-        this.addConnection(newPlayer, pLogin);
-        /*addConnection(newPlayer, pLogin);
-          GamePanel.addPlane(newPlayer);
-          this.connectedPlayers.add(newPlayer);*/
-        
+            StaticImageResource.playerPlanes[0], ((Packet00Login)packet).getUserName(), address, port);
+        this.addConnection(newPlayer, (Packet00Login)packet);
         break;
       case DISCONNECT:
         break;
@@ -114,7 +114,7 @@ public class Server extends Thread
     }
   }
   
-  private void addConnection(PlayerPlaneMP player, Packet00Login packet)
+  public void addConnection(PlayerPlaneMP player, Packet00Login packet)
   {
     boolean alreadyConnected = false;
     for(PlayerPlaneMP p : this.connectedPlayers)
@@ -131,13 +131,14 @@ public class Server extends Thread
       }
       else
       {
-        sendData(packet.getData(), p.ipAddress, p.port);
+        sendData(packet.getData(), p.ipAddress, p.port);//00username
+        packet = new Packet00Login(p.getUserName());
+        sendData(packet.getData(), player.ipAddress, player.port);
       }
     }
     if(!alreadyConnected)
     {
       this.connectedPlayers.add(player);
-      packet.writeData(this);
     }
   }
 }

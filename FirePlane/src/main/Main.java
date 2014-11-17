@@ -14,6 +14,7 @@ import net.Client;
 import net.Packet;
 import net.Packet00Login;
 import net.Server;
+import subjects.Stuff;
 import ui.GameFrame;
 
 public class Main 
@@ -28,5 +29,10 @@ public class Main
 		System.out.println("Game Start!");
 		//here we only place a short initialization functions
 		GameFrame gf = new GameFrame("FireFlight");
+		
+		for(Stuff s : Stuff.getAllStuffs())
+		{
+		  System.out.println("###");
+		}
 	}
 }
