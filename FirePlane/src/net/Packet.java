@@ -4,7 +4,7 @@ public abstract class Packet
 {
   public static enum PacketTypes
   {
-    INVALID(-1), LOGIN(00), DISCONNECT(01);
+    INVALID(-1), LOGIN(00), DISCONNECT(01), MOVE(02);
     private int packetID;
     private PacketTypes(int _packetID)
     {
@@ -19,9 +19,9 @@ public abstract class Packet
   
   public byte packetID;
   
-  public Packet(int packetD)
+  public Packet(int packetID)
   {
-    this.packetID = packetID;
+    this.packetID = (byte)packetID;
   }
   
   public abstract void writeData(Client client);

@@ -14,5 +14,10 @@ public class PlayerPlane extends Plane
     this.username = _username;
     // TODO Auto-generated constructor stub
   }
+  
+  public String getUserName()
+  {
+    return this.username;
+  }
 
 }

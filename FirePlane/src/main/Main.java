@@ -11,6 +11,8 @@ import java.net.Socket;
 import javax.swing.JFrame;
 
 import net.Client;
+import net.Packet;
+import net.Packet00Login;
 import net.Server;
 import ui.GameFrame;
 
@@ -26,20 +28,5 @@ public class Main
 		System.out.println("Game Start!");
 		//here we only place a short initialization functions
 		GameFrame gf = new GameFrame("FireFlight");
-		
-	  try
-    {
-	    Server server = new Server();
-      Client client = new Client("localhost");
-      server.start();
-      client.sendData("ping".getBytes());
-      client.start();
-    }
-    catch( IOException e )
-    {
-      // TODO Auto-generated catch block
-      e.printStackTrace();
-      System.exit(7);
-    }
 	}
 }
