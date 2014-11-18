@@ -18,29 +18,107 @@ public abstract class Stuff
   private static Integer nextID;
   private static ArrayList<Stuff> allStuffs = new ArrayList<Stuff>();
   
-  public Stuff()
+  public Stuff(double x, double y)
   {
     ID = nextID;
     ++nextID;   
+    setLocation(x,y);
   }
+  
   
   public void receiveInstruction(String instr)
   { 
-    String temp = instr.substring(0,0);
-    
-    
+    String temp = instr.substring(0,1);
+    instr = instr.substring(2);
+    switch(temp)
+    {
+      case "+":
+      /*instruction type
+       * "+#PLANE#B#Xcord#Ycord"
+       */
+        addStuff(createStuff(instr));
+        break;
+      case "-":
+      /*instruction type
+       * "-#ID"
+       */
+        deleteStuff(instr);
+        break;
+      case "?":
+      /*instruction type
+       *"?#ID#Xspeed#Yspeed"  
+       */
+        
+        break;
+      default:
+        break;
+    }
   }
   
-  public Stuff creatStuff(String s)
+  
+  public Stuff createStuff(String s)
   {
-    typeName = s.split("#");
+    int i = 0;
+    String str[];
+    str = new String[4];
+    double xCord;
+    double yCord;
+    
+    for (String temp: s.split("#"))
+    {
+      str[i] = temp;
+      ++i;
+    }
+    String type = str[0]+str[1];
+    try
+    {
+      xCord = Double.valueOf(str[2]).doubleValue();
+      yCord = Double.valueOf(str[3]).doubleValue();
+    }
+    catch( NumberFormatException excep )
+    {
+      System.out.println("Wrong create instr");
+    }
+        
     switch (type)
     {
       case "PLANE":
-         return new Plane(s);
+         return new Plane(xCord,yCord);
       case "BULLET":
-         return new Bullet(s);
+        // return new Bullet();
+      default:
+         return null;
     }  
+  }
+  
+  
+  int keyID;
+  boolean isFind;
+  public void deleteStuff(String s)
+  {
+    try
+    {
+      keyID = Integer.valueOf(s).intValue();
+    }
+    catch( NumberFormatException excep )
+    {
+      System.out.println("Wrong create instr");
+    }
+    
+    isFind = false;
+    for (Stuff stuff: allStuffs)
+    {
+      if (stuff.getID() == keyID)
+      {
+        allStuffs.remove(stuff);
+        isFind = true;
+        break;
+      }
+    }
+    if (!isFind)
+    {
+      System.out.println("Wrong ID!");
+    }   
   }
   
 
@@ -57,15 +135,45 @@ public abstract class Stuff
     getAllStuffs().add(s);
   }
   
-  public abstract void paint(Graphics g);
   
+<<<<<<< HEAD
+=======
+  public void setLocation(double x, double y)
+  {
+    getLocation().setX(x);
+    getLocation().setY(y);
+  }
+  
+  
+>>>>>>> master
   public Location getLocation()
   {
     return location;
   }
+<<<<<<< HEAD
  
   public abstract Speed getSpeed();
+=======
+  
+>>>>>>> master
  
+  public Integer getID()
+  {
+    return ID;
+  }
+  
+  
+  public Speed getSpeed()
+  {
+    return speed;
+  }
+  
+  
+  public void setSpeed(double x, double y)
+  {
+    getSpeed().setXSpeed(x);
+    getSpeed().setYSpeed(y);
+  }
   
   
   public static ArrayList<Stuff> getAllStuffs()
@@ -79,8 +187,8 @@ public abstract class Stuff
   }
 
   
+  public abstract void paint(Graphics g);
   public abstract BufferedImage getImage();
-
   
 }
 

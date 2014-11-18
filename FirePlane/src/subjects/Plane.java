@@ -9,6 +9,18 @@ import util.Speed;
 public abstract class Plane extends Stuff
 {
   
+<<<<<<< HEAD
+=======
+  private boolean isAlive;
+  
+  public Plane(double x, double y)
+  {
+    super(x, y);
+    isAlive = true;
+  }
+  
+  
+>>>>>>> master
   //this is very important, we have to have a function to paint them
   @Override
   public void paint(Graphics g)
