@@ -1,7 +1,5 @@
 package subjects;
 
-import interfaces.Movable;
-
 import java.awt.Container;
 import java.awt.Graphics;
 import java.awt.image.BufferedImage;
@@ -10,21 +8,21 @@ import java.util.ArrayList;
 import util.Location;
 import util.Speed;
 
-public abstract class Stuff implements Movable
+public abstract class Stuff
 {
+  private String typeName;
+  private String subTypeName;
+  private Integer ID;
   private Location location;
   private Speed speed;
   BufferedImage stuffImage;
+  
+  
   private static ArrayList<Stuff> allStuffs = new ArrayList<Stuff>();
-  public Stuff()
+  
+  public Stuff(String inStr)
   {
     
-  }
-  public Stuff(Location l, Speed s, BufferedImage img)
-  {
-    location = l;
-    speed = s;
-    stuffImage = img;
   }
   
   public void addStuff(Stuff s)
@@ -58,46 +56,14 @@ public abstract class Stuff implements Movable
   {
     return allStuffs;
   }
-  public static void setAllStuffs(ArrayList<Stuff> allStuffs)
-  {
-    Stuff.allStuffs = allStuffs;
-  }
-  @Override
-  public void move()
-  {
-    // TODO Auto-generated method stub
-    
-  }
-  @Override
-  public void moveLeft()
-  {
-    // TODO Auto-generated method stub
-    
-  }
-  @Override
-  public void moveRight()
-  {
-    // TODO Auto-generated method stub
-    
-  }
-  @Override
-  public void moveUp()
-  {
-    // TODO Auto-generated method stub
-    
-  }
-  @Override
-  public void moveDown()
-  {
-    // TODO Auto-generated method stub
-    
-  }
   
   public BufferedImage getImage()
   {
-    return stuffImage;
   }
 
-  
+  public String toString()
+  {
+    
+  }
 }
 
