@@ -12,15 +12,12 @@ public class Plane extends Stuff
   
   private boolean isAlive;
   
-  public Plane(String s)
+  public Plane(double x, double y)
   {
-    super();
+    super(x, y);
     isAlive = true;
-    set
-    
   }
   
-  public 
   
   //this is very important, we have to have a function to paint them
   
