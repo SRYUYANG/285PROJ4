@@ -1,7 +1,5 @@
 package net;
 
-import imageResource.StaticImageResource;
-
 import java.awt.Panel;
 import java.io.IOException;
 import java.io.ObjectInputStream;
@@ -16,6 +14,7 @@ import net.Packet.PacketTypes;
 
 import org.omg.CORBA.PRIVATE_MEMBER;
 
+import resource.StaticImageResource;
 import subjects.PlayerPlaneMP;
 import subjects.Stuff;
 import ui.GamePanel;

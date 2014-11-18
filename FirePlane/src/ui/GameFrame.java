@@ -1,9 +1,9 @@
 package ui;
 
-import imageResource.StaticImageResource;
-
 import javax.swing.JFrame;
 import javax.swing.JPanel;
+
+import resource.StaticImageResource;
 
 public class GameFrame extends JFrame
 {
