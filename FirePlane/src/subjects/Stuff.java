@@ -14,11 +14,8 @@ public abstract class Stuff
 {
   private Location location;
   private Speed speed;
-  private String typeName;
-  private String subTypeName;
   private Integer ID;
   private static Integer nextID;
-  BufferedImage stuffImage;
   private static ArrayList<Stuff> allStuffs = new ArrayList<Stuff>();
   
   public Stuff()
@@ -27,20 +24,27 @@ public abstract class Stuff
     ++nextID;   
   }
   
+  public void receiveInstruction(String instr)
+  { 
+    String temp = instr.substring(0,0);
+    
+    
+  }
+  
   public Stuff creatStuff(String s)
   {
-    String type =
-    String str = 
+    typeName = s.split("#");
     switch (type)
     {
       case "PLANE":
          return new Plane(s);
       case "BULLET":
-         return new Bullet(str);
-    }
-    
+         return new Bullet(s);
+    }  
   }
   
+
+ 
   public void move()
   {
     getLocation().setX(getLocation().getX() + getSpeed().getXSpeed());
@@ -55,25 +59,11 @@ public abstract class Stuff
   
   public abstract void paint(Graphics g);
   
-  public Location getLocation()
-  {
-    return location;
-  }
+  public abstract Location getLocation();
+ 
+  public abstract Speed getSpeed();
+ 
   
-  public void setLocation(Location l)
-  {
-    location = l;
-  }
-  
-  public Speed getSpeed()
-  {
-    return speed;
-  }
-  
-  public void setSpeed(Speed s)
-  {
-    speed = s;
-  }
   
   public static ArrayList<Stuff> getAllStuffs()
   {
@@ -86,10 +76,7 @@ public abstract class Stuff
   }
 
   
-  public BufferedImage getImage()
-  {
-    return stuffImage;
-  }
+  public abstract BufferedImage getImage();
 
   
 }
