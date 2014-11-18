@@ -10,23 +10,44 @@ import java.util.ArrayList;
 import util.Location;
 import util.Speed;
 
-public abstract class Stuff implements Movable
+public abstract class Stuff
 {
   private Location location;
   private Speed speed;
+  private String typeName;
+  private String subTypeName;
+  private Integer ID;
+  private static Integer nextID;
   BufferedImage stuffImage;
   private static ArrayList<Stuff> allStuffs = new ArrayList<Stuff>();
+  
   public Stuff()
   {
-    
-  }
-  public Stuff(Location l, Speed s, BufferedImage img)
-  {
-    location = l;
-    speed = s;
-    stuffImage = img;
+    ID = nextID;
+    ++nextID;   
   }
   
+  public Stuff creatStuff(String s)
+  {
+    String type =
+    String str = 
+    switch (type)
+    {
+      case "PLANE":
+         return new Plane(s);
+      case "BULLET":
+         return new Bullet(str);
+    }
+    
+  }
+  
+  public void move()
+  {
+    getLocation().setX(getLocation().getX() + getSpeed().getXSpeed());
+    getLocation().setY(getLocation().getY() + getSpeed().getYSpeed());
+  }
+
+ 
   public void addStuff(Stuff s)
   {
     getAllStuffs().add(s);
@@ -58,40 +79,12 @@ public abstract class Stuff implements Movable
   {
     return allStuffs;
   }
+  
   public static void setAllStuffs(ArrayList<Stuff> allStuffs)
   {
     Stuff.allStuffs = allStuffs;
   }
-  @Override
-  public void move()
-  {
-    // TODO Auto-generated method stub
-    
-  }
-  @Override
-  public void moveLeft()
-  {
-    // TODO Auto-generated method stub
-    
-  }
-  @Override
-  public void moveRight()
-  {
-    // TODO Auto-generated method stub
-    
-  }
-  @Override
-  public void moveUp()
-  {
-    // TODO Auto-generated method stub
-    
-  }
-  @Override
-  public void moveDown()
-  {
-    // TODO Auto-generated method stub
-    
-  }
+
   
   public BufferedImage getImage()
   {
