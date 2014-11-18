@@ -8,12 +8,17 @@ import util.Speed;
 
 public class PlayerPlane extends Plane
 {
-  String username;
-  public PlayerPlane(Location startLocation, Speed _speed, BufferedImage _planeImage, String _username)
+  private String username;
+  private final double playerPlaneXSpeed = 0.2;
+  private final double playerPlaneYSpeed = 0.2;
+  private Speed playerPlaneSpeed = Speed.createSpeed
+      (
+          playerPlaneXSpeed, playerPlaneYSpeed
+      );
+  
+  public PlayerPlane()
   {
-    super(startLocation, _speed,  _planeImage);
-    this.username = _username;
-    // TODO Auto-generated constructor stub
+    super();
   }
   
   public String getUserName()
@@ -21,11 +26,14 @@ public class PlayerPlane extends Plane
     return this.username;
   }
   
-  @Override
-  public void paint(Graphics g)
+  public Speed getSpeed()
+  {
+    return playerPlaneSpeed;
+  }
+  
+  public BufferedImage getImage()
   {
     // TODO Auto-generated method stub
-    super.paint(g);
-    g.drawString(username, (int)getLocation().getX(), (int)getLocation().getY());
+    return null;
   }
 }

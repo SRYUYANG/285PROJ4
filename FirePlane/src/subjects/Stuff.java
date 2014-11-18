@@ -59,7 +59,10 @@ public abstract class Stuff
   
   public abstract void paint(Graphics g);
   
-  public abstract Location getLocation();
+  public Location getLocation()
+  {
+    return location;
+  }
  
   public abstract Speed getSpeed();
  

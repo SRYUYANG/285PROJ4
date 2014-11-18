@@ -28,4 +28,9 @@ public class Speed
   {
     ySpeed = inY;
   }
+  
+  public static Speed createSpeed(double _xSpeed, double _ySpeed)
+  {
+    return new Speed(_xSpeed, _ySpeed);
+  }
 }

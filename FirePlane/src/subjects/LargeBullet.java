@@ -2,12 +2,11 @@ package subjects;
 
 import java.awt.image.BufferedImage;
 
-import util.Location;
 import util.Speed;
 
-public class SmallBullet extends Bullet
+public class LargeBullet extends Bullet
 {
-  
+
   @Override
   public Speed getSpeed()
   {

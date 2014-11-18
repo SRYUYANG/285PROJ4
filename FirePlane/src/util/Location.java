@@ -28,4 +28,9 @@ public class Location
   {
     corY = inY;
   }
+  
+  public static Location createLocation(double _xCor, double _yCor)
+  {
+    return new Location(_xCor, _yCor);
+  }
 }
