@@ -1,7 +1,7 @@
 package ui;
 
 
-import imageResource.StaticImageResource;
+import resource.StaticImageResource;
 
 import subjects.*;
 
@@ -53,7 +53,7 @@ public class GamePanel extends JPanel implements KeyListener, Runnable
       = new PlayerPlaneMP(100.0, 100.0, new Speed(0, 0),
           StaticImageResource.playerPlanes[0],
           JOptionPane.showInputDialog(this, "Please enter"), null, -1);
-      Simulate.getAllStuffs().add(myPlayer);
+      Stuff.getAllStuffs().add(myPlayer);
       Packet00Login loginPacket = new Packet00Login(myPlayer.getUserName());
       if(gameServer != null)
       {
@@ -84,7 +84,7 @@ public class GamePanel extends JPanel implements KeyListener, Runnable
     {
       p.move();;
     }*/
-    for(Stuff p : Simulate.getAllStuffs())
+    for(Stuff p : Stuff.getAllStuffs())
     {
       //System.out.println(p.getUserName());
       if(p != null)
@@ -105,7 +105,7 @@ public class GamePanel extends JPanel implements KeyListener, Runnable
     {
       p.paintPlane(g);
     }*/
-    for(Stuff p : Simulate.getAllStuffs())
+    for(Stuff p : Stuff.getAllStuffs())
     {
       //System.out.println(p.getUserName());
       if(p != null)

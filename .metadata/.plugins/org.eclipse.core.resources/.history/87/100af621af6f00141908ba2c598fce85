@@ -141,11 +141,11 @@ public class Simulate
       System.out.println("Wrong create instr");
     }
 
-    for( Stuff stuff : Stuff.getAllStuffs() )
+    for( Stuff stuff : allStuffs )
     {
       if( stuff.getID() == keyID )
       {
-        stuff.setSpeed(xSpeed, ySpeed);
+        stuff.setSpeed(new Speed(xSpeed, ySpeed));
         isFind = true;
         break;
       }
@@ -159,17 +159,17 @@ public class Simulate
   
   
   
-  /*
+  
   public static void setAllStuffs(ArrayList<Stuff> newStuffs)
   {
     allStuffs = newStuffs;
-  }*/
+  }
 
   
-  /*At least you cannot reset all the planes
+  
   public static void resetStuffs()
   {
     allStuffs = new ArrayList<Stuff>();
-  }*/
+  }
 
 }

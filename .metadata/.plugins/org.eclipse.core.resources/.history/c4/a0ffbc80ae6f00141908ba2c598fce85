@@ -30,7 +30,7 @@ public abstract class Stuff
     setLocation(x,y);
   }
   
-  public static ArrayList<Stuff> getAllStuffs()
+  public ArrayList<Stuff> getAllStuffs()
   {
     return allStuffs;
   }
@@ -67,10 +67,9 @@ public abstract class Stuff
   }
   
   
-  public void setSpeed(double speedX, double speedY)
+  public void setSpeed(Speed speed_in)
   {
-    speed.setXSpeed(speedX);
-    speed.setYSpeed(speedY);
+    speed = speed_in;
   }
   
  

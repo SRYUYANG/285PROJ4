@@ -145,7 +145,7 @@ public class Simulate
     {
       if( stuff.getID() == keyID )
       {
-        stuff.setSpeed(xSpeed, ySpeed);
+        stuff.setSpeed(new Speed(xSpeed, ySpeed));
         isFind = true;
         break;
       }

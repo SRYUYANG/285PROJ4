@@ -69,8 +69,7 @@ public abstract class Stuff
   
   public void setSpeed(double speedX, double speedY)
   {
-    speed.setXSpeed(speedX);
-    speed.setYSpeed(speedY);
+    speed = new Speed(_xSpeed, _ySpeed);
   }
   
  

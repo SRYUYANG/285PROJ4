@@ -4,9 +4,7 @@ package subjects;
 import java.awt.Graphics;
 import java.awt.Image;
 import java.awt.image.BufferedImage;
-import java.lang.reflect.Array;
 import java.util.ArrayList;
-
 
 //import java.util.ArrayList;
 import util.Location;
@@ -30,10 +28,6 @@ public abstract class Stuff
     setLocation(x,y);
   }
   
-  public static ArrayList<Stuff> getAllStuffs()
-  {
-    return allStuffs;
-  }
   
   public void move()
   {
@@ -67,10 +61,9 @@ public abstract class Stuff
   }
   
   
-  public void setSpeed(double speedX, double speedY)
+  public void setSpeed(Speed speed_in)
   {
-    speed.setXSpeed(speedX);
-    speed.setYSpeed(speedY);
+    speed = speed_in;
   }
   
  
