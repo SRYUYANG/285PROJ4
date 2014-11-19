@@ -9,6 +9,12 @@ public class Location
     corY = inY;
   }
   
+  public Location(Location _loc)
+  {
+    corX = _loc.getX();
+    corY = _loc.getY();
+  }
+  
   public double getX()
   {
     return corX;

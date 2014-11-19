@@ -48,7 +48,7 @@ public class Packet99Move extends Packet
   public byte[] getData()
   {
     // TODO Auto-generated method stub
-    return ("99" + this.username + "#" + this.x + "#" + this.y + "#" 
+    return ("99"+ this.username + "#" + this.x + "#" + this.y + "#" 
     + this.speedX + "#" + this.speedY).getBytes();
   }
 

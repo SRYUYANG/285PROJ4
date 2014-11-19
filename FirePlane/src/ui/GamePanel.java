@@ -50,8 +50,7 @@ public class GamePanel extends JPanel implements KeyListener, Runnable
       gameClient = new Client("localhost");
       gameClient.start();
       myPlayer 
-      = new PlayerPlaneMP(100.0, 100.0, new Speed(0, 0),
-          StaticImageResource.playerPlanes[0],
+      = new PlayerPlaneMP(new Location(100.0, 100.0), new Speed(0, 0),
           JOptionPane.showInputDialog(this, "Please enter"), null, -1);
       Stuff.getAllStuffs().add(myPlayer);
       Packet00Login loginPacket = new Packet00Login(myPlayer.getUserName());
@@ -84,14 +83,10 @@ public class GamePanel extends JPanel implements KeyListener, Runnable
     {
       p.move();;
     }*/
-    for(Stuff p : Stuff.getAllStuffs())
+    
+    for (int i = 0; i < Stuff.getAllStuffs().size(); i++)
     {
-      //System.out.println(p.getUserName());
-      if(p != null)
-      {
-        p.move();
-      }
-      
+      Stuff.getAllStuffs().get(i).move();;
     }
     //`System.out.println("##########");
   }
@@ -105,14 +100,9 @@ public class GamePanel extends JPanel implements KeyListener, Runnable
     {
       p.paintPlane(g);
     }*/
-    for(Stuff p : Stuff.getAllStuffs())
+    for (int i = 0; i < Stuff.getAllStuffs().size(); i++)
     {
-      //System.out.println(p.getUserName());
-      if(p != null)
-      {
-        p.paint(g);
-      }
-      
+      Stuff.getAllStuffs().get(i).paint(g);
     }
     
   }
@@ -145,6 +135,13 @@ public class GamePanel extends JPanel implements KeyListener, Runnable
         case KeyEvent.VK_RIGHT:
           myPlayer.setSpeed(10.0, 0.0);
           break;
+        case KeyEvent.VK_SPACE:
+          myPlayer.shoot();
+          break;
+        case KeyEvent.VK_E:
+          myPlayer.explode();
+          break;
+          
       }
       
       Packet99Move packet = new Packet99Move(

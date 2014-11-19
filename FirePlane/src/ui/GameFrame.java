@@ -1,5 +1,7 @@
 package ui;
 
+import java.awt.Dimension;
+
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 
@@ -18,7 +20,8 @@ public class GameFrame extends JFrame
     currentGamePanel = new GamePanel(StaticImageResource.backgroudImages[0]);
     this.add(currentGamePanel);
     this.addKeyListener(currentGamePanel);
-    this.setSize(WINDOWS_WIDTH, WINDOWS_HEIGHT);
+    this.setMinimumSize(new Dimension(WINDOWS_WIDTH, WINDOWS_HEIGHT));
+    this.setMaximumSize(new Dimension(WINDOWS_WIDTH, WINDOWS_HEIGHT));
     this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
     this.setVisible(true);
   }

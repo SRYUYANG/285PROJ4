@@ -3,6 +3,7 @@ package subjects;
 import java.awt.image.BufferedImage;
 import java.net.InetAddress;
 
+import resource.StaticImageResource;
 import net.Client;
 import net.Packet;
 import net.Packet99Move;
@@ -12,21 +13,52 @@ import util.Speed;
 
 public class PlayerPlaneMP extends PlayerPlane
 {
+  boolean isAlive = true;
   public InetAddress ipAddress;
   public int port;
+  private BufferedImage image;
+  private int counter = 0;
   
-  public PlayerPlaneMP(double x, double y,  Speed _speed,
-      BufferedImage _planeImage, String _username, InetAddress _ipAddress, int _port)
+  public PlayerPlaneMP(Location _loc,  Speed _speed, String _username, InetAddress _ipAddress, int _port)
   {
-    super(x, y, _speed, _planeImage, _username);
+    super(_loc, _speed, _username);
     this.ipAddress = _ipAddress;
     this.port = _port;
+    this.image = StaticImageResource.playerPlanes[0];
     // TODO Auto-generated constructor stub
   }
   
   public void move()
   {
-    super.move();
+    if (isAlive)
+    {
+      super.move();
+    }
+    else
+    {
+      if (counter < 16)
+      {
+        image = StaticImageResource.explosionImages[counter];
+        counter++;
+      }
+      else
+      {
+        image = null;
+        Stuff.deleteStuff(this);
+      }
+    }
   }
-
+  
+  @Override
+  public BufferedImage getImage()
+  {
+    // TODO Auto-generated method stub
+    return image;
+  }
+  
+  public void explode()
+  {
+    isAlive = false;
+  }
+ 
 }
