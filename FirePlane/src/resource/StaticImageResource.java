@@ -10,9 +10,17 @@ import javax.imageio.ImageIO;
 public class StaticImageResource
 {
   //here we save different images into public static BufferedImage
-  final static int myPlaneTypeNum = 2, backGroundTypeNum = 1;
+  final static int myPlaneTypeNum = 2;
+  final static int backGroundTypeNum = 1;
+  final static int enemyPlaneTypeNum = 2;
+  final static int bulletTypeNum = 1;
+  final static int explosionTypeNum = 16;
+  
   public static BufferedImage[] backgroudImages = new BufferedImage[backGroundTypeNum];
   public static BufferedImage[] playerPlanes = new BufferedImage[myPlaneTypeNum];
+  public static BufferedImage[] enemyPlanes = new BufferedImage[enemyPlaneTypeNum];
+  public static BufferedImage[] bulletImages = new BufferedImage[bulletTypeNum];
+  public static BufferedImage[] explosionImages = new BufferedImage[explosionTypeNum];
   
   public static void initializeImages()
   {
@@ -38,6 +46,30 @@ public class StaticImageResource
       catch( IOException e )
       {
         // TODO Auto-generated catch block
+        e.printStackTrace();
+      }
+    }
+    
+    for (int i = 0; i < bulletImages.length; i++)
+    {
+      try
+      {
+        bulletImages[i] = ImageIO.read(new FileInputStream("imgs/bullet/bullet" + i + ".png"));
+      }
+      catch ( IOException e)
+      {
+        e.printStackTrace();
+      }
+    }
+    
+    for (int i = 0; i < explosionImages.length; i++)
+    {
+      try
+      {
+        explosionImages[i] = ImageIO.read(new FileInputStream("imgs/explosion/e" + i + ".gif"));
+      }
+      catch (IOException e)
+      {
         e.printStackTrace();
       }
     }

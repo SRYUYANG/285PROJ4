@@ -111,8 +111,7 @@ public class Client extends Thread
         System.out.println("[" + address.getHostAddress() + "." + port + "]"
             + ((Packet00Login)packet).getUserName() + " has joined the game...");
         PlayerPlaneMP newPlayer 
-        = new PlayerPlaneMP(100.0, 100.0, new Speed(0, 0),
-            StaticImageResource.playerPlanes[0],
+        = new PlayerPlaneMP(new Location(100.0, 100.0), new Speed(0, 0),
             ((Packet00Login)packet).getUserName(), address, port);
         Stuff.getAllStuffs().add(newPlayer);
         break;

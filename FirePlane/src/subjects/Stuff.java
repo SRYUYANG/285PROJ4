@@ -15,19 +15,17 @@ import util.Speed;
 public abstract class Stuff
 {
   private Location location = new Location(0, 0);
-  private BufferedImage myImage;
   private Speed speed;
   private Integer ID;
   private static Integer nextID = 0;
 
   private static ArrayList<Stuff> allStuffs = new ArrayList<Stuff>();
-  public Stuff(double x, double y, Speed _speed, BufferedImage _image)
+  public Stuff(Location _location, Speed _speed)
   {
-    this.myImage = _image;
     this.speed = _speed;
     ID = nextID;
     ++nextID;   
-    setLocation(x,y);
+    this.location = _location;
   }
   
   public static ArrayList<Stuff> getAllStuffs()
@@ -76,9 +74,23 @@ public abstract class Stuff
  
   public abstract void paint(Graphics g);
 
-  public BufferedImage getImage()
+  public abstract BufferedImage getImage();
+  
+  public static void addStuff(Stuff inStuff)
   {
-    return myImage;
+    allStuffs.add(inStuff);
+  }
+  
+  public static void deleteStuff(Stuff inStuff)
+  {
+    for(int i = 0; i < allStuffs.size(); i++)
+    {
+      if (allStuffs.get(i).equals(inStuff))
+      {
+        allStuffs.remove(i);
+        break;
+      }
+    }
   }
   
 

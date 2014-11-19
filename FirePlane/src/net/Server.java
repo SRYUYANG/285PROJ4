@@ -83,12 +83,16 @@ public class Server extends Thread
         System.out.println("[ " +address.getHostAddress() + ":" + port + "]" +
             ((Packet00Login)packet).getUserName() + " Connected");
         PlayerPlaneMP newPlayer 
-        = new PlayerPlaneMP(100.0, 100.0, new Speed(0, 0),
-            StaticImageResource.playerPlanes[0], ((Packet00Login)packet).getUserName(), address, port);
+        = new PlayerPlaneMP(new Location(100.0, 100.0), new Speed(0, 0), ((Packet00Login)packet).getUserName(), address, port);
         this.addConnection(newPlayer, (Packet00Login)packet);
         break;
       case DISCONNECT:
         break;
+      case SHOOT:
+        /*
+        packet = new Packet10Shoot(data);
+        System.out.println()
+        */
       default:
         break;
     }
