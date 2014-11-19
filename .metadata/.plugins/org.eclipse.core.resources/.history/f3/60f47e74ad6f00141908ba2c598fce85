@@ -1,10 +1,11 @@
 package ui;
 
-
+<<<<<<< HEAD
+=======
 import imageResource.StaticImageResource;
 
 import subjects.*;
-
+>>>>>>> FETCH_HEAD
 import java.awt.Graphics;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
