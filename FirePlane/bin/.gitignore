@@ -4,5 +4,11 @@
 /net/
 /subjects/
 /ui/
+<<<<<<< HEAD
 /util/
 /resource/
+=======
+/main/
+/net/
+/util/
+>>>>>>> FETCH_HEAD

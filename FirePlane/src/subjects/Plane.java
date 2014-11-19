@@ -7,7 +7,7 @@ import util.Location;
 import util.Speed;
 import interfaces.Movable;
 
-public class Plane extends Stuff
+public abstract class Plane extends Stuff
 {
   
   private boolean isAlive;
@@ -17,6 +17,7 @@ public class Plane extends Stuff
     super(x, y, new Speed(0, 0), _image);
     isAlive = true;
   }
+<<<<<<< HEAD
   
   
   //this is very important, we have to have a function to paint them
@@ -27,4 +28,8 @@ public class Plane extends Stuff
     g.drawImage(getImage(), (int)getLocation().getX(), (int)getLocation().getY(), null);
   }
   
+=======
+
+   
+>>>>>>> FETCH_HEAD
 }

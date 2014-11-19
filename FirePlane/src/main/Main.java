@@ -12,8 +12,12 @@ import net.Client;
 import net.Packet;
 import net.Packet00Login;
 import net.Server;
+<<<<<<< HEAD
 import resource.StaticImageResource;
 import subjects.Stuff;
+=======
+import subjects.*;
+>>>>>>> FETCH_HEAD
 import ui.GameFrame;
 
 public class Main 
@@ -29,7 +33,7 @@ public class Main
 		//here we only place a short initialization functions
 		GameFrame gf = new GameFrame("FireFlight");
 		
-		for(Stuff s : Stuff.getAllStuffs())
+		for(Stuff s : Simulate.getAllStuffs())
 		{
 		  System.out.println("###");
 		}

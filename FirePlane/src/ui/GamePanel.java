@@ -1,5 +1,11 @@
 package ui;
 
+<<<<<<< HEAD
+=======
+import imageResource.StaticImageResource;
+
+import subjects.*;
+>>>>>>> FETCH_HEAD
 import java.awt.Graphics;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
@@ -48,7 +54,7 @@ public class GamePanel extends JPanel implements KeyListener, Runnable
       = new PlayerPlaneMP(100.0, 100.0, new Speed(0, 0),
           StaticImageResource.playerPlanes[0],
           JOptionPane.showInputDialog(this, "Please enter"), null, -1);
-      Stuff.getAllStuffs().add(myPlayer);
+      Simulate.getAllStuffs().add(myPlayer);
       Packet00Login loginPacket = new Packet00Login(myPlayer.getUserName());
       if(gameServer != null)
       {
@@ -79,7 +85,7 @@ public class GamePanel extends JPanel implements KeyListener, Runnable
     {
       p.move();;
     }*/
-    for(Stuff p : Stuff.getAllStuffs())
+    for(Stuff p : Simulate.getAllStuffs())
     {
       //System.out.println(p.getUserName());
       if(p != null)
@@ -100,7 +106,7 @@ public class GamePanel extends JPanel implements KeyListener, Runnable
     {
       p.paintPlane(g);
     }*/
-    for(Stuff p : Stuff.getAllStuffs())
+    for(Stuff p : Simulate.getAllStuffs())
     {
       //System.out.println(p.getUserName());
       if(p != null)
