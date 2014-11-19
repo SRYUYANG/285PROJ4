@@ -1,7 +1,5 @@
 package net;
 
-import imageResource.StaticImageResource;
-
 import java.net.DatagramPacket;
 import java.net.DatagramSocket;
 import java.net.InetAddress;
@@ -12,6 +10,7 @@ import javax.xml.crypto.Data;
 
 import net.Packet.PacketTypes;
 import net.Packet;
+import resource.StaticImageResource;
 import subjects.PlayerPlaneMP;
 import ui.GamePanel;
 import util.Location;

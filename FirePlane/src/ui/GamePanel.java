@@ -1,7 +1,5 @@
 package ui;
 
-import imageResource.StaticImageResource;
-
 import java.awt.Graphics;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
@@ -16,6 +14,8 @@ import net.Client;
 import net.Packet00Login;
 import net.Server;
 import net.Settings;
+import resource.Sound;
+import resource.StaticImageResource;
 import subjects.PlayerPlane;
 import subjects.PlayerPlaneMP;
 import subjects.Stuff;
@@ -127,6 +127,7 @@ public class GamePanel extends JPanel implements KeyListener, Runnable
       switch(e.getKeyCode())
       {
         case KeyEvent.VK_UP:
+          Sound sound = new Sound("Startup1.wav");
           myPlayer.setSpeed(new Speed(0.0, -10.0));
           break;
         case KeyEvent.VK_DOWN:

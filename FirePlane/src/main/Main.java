@@ -1,7 +1,5 @@
 package main;
 
-import imageResource.StaticImageResource;
-
 import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
@@ -14,6 +12,7 @@ import net.Client;
 import net.Packet;
 import net.Packet00Login;
 import net.Server;
+import resource.StaticImageResource;
 import subjects.Stuff;
 import ui.GameFrame;
 
