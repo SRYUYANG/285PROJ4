@@ -12,9 +12,9 @@ public class Plane extends Stuff
   
   private boolean isAlive;
   
-  public Plane(double x, double y)
+  public Plane(double x, double y, BufferedImage _image)
   {
-    super(x, y);
+    super(x, y, new Speed(0, 0), _image);
     isAlive = true;
   }
   
@@ -26,9 +26,5 @@ public class Plane extends Stuff
     // TODO draw the plane
     g.drawImage(getImage(), (int)getLocation().getX(), (int)getLocation().getY(), null);
   }
-  
-
-
-
   
 }

@@ -4,6 +4,7 @@ import interfaces.Movable;
 
 import java.awt.Container;
 import java.awt.Graphics;
+import java.awt.Image;
 import java.awt.image.BufferedImage;
 import java.util.ArrayList;
 
@@ -12,14 +13,17 @@ import util.Speed;
 
 public abstract class Stuff
 {
-  private Location location;
+  private Location location = new Location(0, 0);
+  private BufferedImage myImage;
   private Speed speed;
   private Integer ID;
-  private static Integer nextID;
+  private static Integer nextID = 0;
   private static ArrayList<Stuff> allStuffs = new ArrayList<Stuff>();
   
-  public Stuff(double x, double y)
+  public Stuff(double x, double y, Speed _speed, BufferedImage _image)
   {
+    this.myImage = _image;
+    this.speed = _speed;
     ID = nextID;
     ++nextID;   
     setLocation(x,y);
@@ -48,7 +52,6 @@ public abstract class Stuff
       /*instruction type
        *"?#ID#Xspeed#Yspeed"  
        */
-        
         break;
       default:
         break;
@@ -83,7 +86,7 @@ public abstract class Stuff
     switch (type)
     {
       case "PLANE":
-         return new Plane(xCord,yCord);
+         //return new Plane(xCord,yCord);
       case "BULLET":
         // return new Bullet();
       default:
@@ -180,7 +183,10 @@ public abstract class Stuff
 
   
   public abstract void paint(Graphics g);
-  public abstract BufferedImage getImage();
+  public BufferedImage getImage()
+  {
+    return myImage;
+  }
   
 }
 

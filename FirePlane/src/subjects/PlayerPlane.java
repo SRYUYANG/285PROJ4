@@ -9,9 +9,9 @@ import util.Speed;
 public class PlayerPlane extends Plane
 {
   String username;
-  public PlayerPlane(Location startLocation, Speed _speed, BufferedImage _planeImage, String _username)
+  public PlayerPlane(double x, double y, Speed _speed, BufferedImage _planeImage, String _username)
   {
-    super(startLocation, _speed,  _planeImage);
+    super(x, y, _planeImage);
     this.username = _username;
     // TODO Auto-generated constructor stub
   }

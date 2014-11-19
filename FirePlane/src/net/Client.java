@@ -97,6 +97,9 @@ public class Client extends Thread
     Packet packet = null;
     switch ( type )
     {
+      case MOVE:
+        packet = new Packet99Move(data);
+        handleMove((Packet99Move)packet);
       case INVALID:
         break;
       case LOGIN:
@@ -108,7 +111,7 @@ public class Client extends Thread
         System.out.println("[" + address.getHostAddress() + "." + port + "]"
             + ((Packet00Login)packet).getUserName() + " has joined the game...");
         PlayerPlaneMP newPlayer 
-        = new PlayerPlaneMP(new Location(100, 100), new Speed(0, 0),
+        = new PlayerPlaneMP(100.0, 100.0, new Speed(0, 0),
             StaticImageResource.playerPlanes[0],
             ((Packet00Login)packet).getUserName(), address, port);
         Stuff.getAllStuffs().add(newPlayer);
@@ -120,6 +123,33 @@ public class Client extends Thread
     }
   }
   
+  private int getPlayerPlaneIndex(String _username)
+  {
+    // TODO Auto-generated method stub
+    int index = 0;
+    for(Stuff s : Stuff.getAllStuffs())
+    {
+      if(s instanceof PlayerPlaneMP && ((PlayerPlaneMP) s).getUserName().equals(_username))
+      {
+        break;
+      }
+      index++;
+    }
+    return index;
+  }
+  
+  private void movePlayer(String _username, int x, int y, int speedX, int speedY)
+  {
+    Stuff.getAllStuffs().get(getPlayerPlaneIndex(_username)).setLocation(x, y);
+    Stuff.getAllStuffs().get(getPlayerPlaneIndex(_username)).setSpeed(speedX, speedY);
+  }
+  
+  private void handleMove(Packet99Move packet)
+  {
+    System.out.println(packet.getUserName());
+    movePlayer(packet.getUserName(), packet.getX(), packet.getY(), packet.getSpeedX(), packet.getSpeedY());
+  }
+
   public void setClientName(String name)
   {
     username = name;

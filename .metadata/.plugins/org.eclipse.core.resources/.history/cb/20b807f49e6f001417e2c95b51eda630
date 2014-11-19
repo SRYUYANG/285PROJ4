@@ -1,0 +1,176 @@
+package net;
+
+import java.net.DatagramPacket;
+import java.net.DatagramSocket;
+import java.net.InetAddress;
+import java.net.SocketException;
+import java.util.ArrayList;
+
+import javax.xml.crypto.Data;
+
+import net.Packet.PacketTypes;
+import net.Packet;
+import resource.StaticImageResource;
+import subjects.PlayerPlaneMP;
+import ui.GamePanel;
+import util.Location;
+import util.Speed;
+
+public class Server extends Thread
+{
+  /*
+  private static ServerSocket serverSocket;
+  private static Socket clientSocket;
+  private static boolean serverRunning = false;
+
+  private ObjectOutputStream outputStream;
+  private ObjectInputStream inputStream;
+  */
+  DatagramSocket socket;
+  
+  private ArrayList<PlayerPlaneMP> connectedPlayers = new ArrayList<PlayerPlaneMP>();
+  
+  public Server()
+  {
+    try
+    {
+      this.socket = new DatagramSocket(Settings.SERVER_PORT);
+    }
+    catch( SocketException e )
+    {
+      // TODO Auto-generated catch block
+      e.printStackTrace();
+    }
+  }
+  
+  
+  public void run()
+  {
+    while(true)
+    {
+      byte[] data = new byte[1024];
+      DatagramPacket packet = new DatagramPacket(data, data.length);
+      try
+      {
+        socket.receive(packet);
+      }
+      catch( Exception e )
+      {
+        // TODO: handle exception
+        e.printStackTrace();
+      }
+      parsePacket(packet.getData(), packet.getAddress(), packet.getPort());
+    }
+  }
+  
+  private void parsePacket(byte[] data, InetAddress address, int port)
+  {
+    // TODO Auto-generated method stub
+    String message = new String(data).trim();
+    PacketTypes type = Packet.getPacketType(message.substring(0, 2));
+    Packet packet = null;
+    switch ( type )
+    {
+      case MOVE:
+        packet = new Packet99Move(data);
+        System.out.println(((Packet99Move)packet).getX());
+        break;
+      case INVALID:
+        break;
+      case LOGIN:
+        packet = new Packet00Login(data);
+        System.out.println("[ " +address.getHostAddress() + ":" + port + "]" +
+            ((Packet00Login)packet).getUserName() + " Connected");
+        PlayerPlaneMP newPlayer 
+        = new PlayerPlaneMP(100.0, 100.0, new Speed(0, 0),
+            StaticImageResource.playerPlanes[0], ((Packet00Login)packet).getUserName(), address, port);
+        this.addConnection(newPlayer, (Packet00Login)packet);
+        break;
+      case DISCONNECT:
+        break;
+      default:
+        break;
+    }
+  }
+  
+  
+  public void sendData(byte[] data, InetAddress ipAddress, int port)
+  {
+    DatagramPacket packet = new DatagramPacket(data, data.length, ipAddress, port);
+    try
+    {
+      socket.send(packet);
+    }
+    catch( Exception e )
+    {
+      // TODO: handle exception
+      e.printStackTrace();
+    }
+  }
+
+  public void sendDataToAllClients(byte[] data)
+  {
+    // TODO Auto-generated method stub
+    for(PlayerPlaneMP p : connectedPlayers)
+    {
+      sendData(data, p.ipAddress, p.port);
+    }
+  }
+  
+  public void addConnection(PlayerPlaneMP player, Packet00Login packet)
+  {
+    boolean alreadyConnected = false;
+    for(PlayerPlaneMP p : this.connectedPlayers)
+    {
+      if(player.getUserName().equalsIgnoreCase(p.getUserName()))
+      {
+        if(p.ipAddress == null)
+        {
+          p.ipAddress = player.ipAddress;
+        }
+        if(p.port == -1)
+          p.port = player.port;
+        alreadyConnected = true;
+      }
+      else
+      {
+        sendData(packet.getData(), p.ipAddress, p.port);//00username
+        packet = new Packet00Login(p.getUserName());
+        sendData(packet.getData(), player.ipAddress, player.port);
+      }
+    }
+    if(!alreadyConnected)
+    {
+      this.connectedPlayers.add(player);
+    }
+  }
+  public PlayerPlaneMP getPlayerPlaneMP(String username) {
+    for (PlayerPlaneMP player : this.connectedPlayers) {
+      if (player.getUserName().equals(username)) {
+        return player;
+      }
+    }
+    return null;
+  }
+  
+  public int getPlayerMPIndex(String username) {
+    int index = 0;
+    for (PlayerPlaneMP player : this.connectedPlayers) {
+      if (player.getUserName().equals(username)) {
+        break;
+      }
+      index++;
+    }
+    return index;
+  }
+  
+  private void handleMove(Packet99Move packet)
+  {
+    if(getPlayerPlaneMP(packet.getUserName()) != null)
+    {
+      int index = getPlayerMPIndex(packet.getUserName());
+      this.connectedPlayers.get(index).setLocation(packet.getX(), packet.getY());
+      packet.writeData(this);
+    }
+  }
+}

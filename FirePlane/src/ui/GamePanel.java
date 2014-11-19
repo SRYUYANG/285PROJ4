@@ -7,14 +7,15 @@ import java.awt.image.BufferedImage;
 import java.io.IOException;
 import java.util.ArrayList;
 
+import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
 import net.Client;
 import net.Packet00Login;
+import net.Packet99Move;
 import net.Server;
 import net.Settings;
-import resource.Sound;
 import resource.StaticImageResource;
 import subjects.PlayerPlane;
 import subjects.PlayerPlaneMP;
@@ -27,8 +28,8 @@ public class GamePanel extends JPanel implements KeyListener, Runnable
   private static PlayerPlane myPlayer;
   //myPlayer is whom on the 
   private Speed initialSpeed = new Speed(0.0, 0.0);
-  Server gameServer;
-  Client gameClient;
+  private static Server gameServer;
+  private static Client gameClient;
   
   
   BufferedImage currentBackGroundBufferedImage;
@@ -44,7 +45,7 @@ public class GamePanel extends JPanel implements KeyListener, Runnable
       gameClient = new Client("localhost");
       gameClient.start();
       myPlayer 
-      = new PlayerPlaneMP(new Location(100, 100), new Speed(0, 0),
+      = new PlayerPlaneMP(100.0, 100.0, new Speed(0, 0),
           StaticImageResource.playerPlanes[0],
           JOptionPane.showInputDialog(this, "Please enter"), null, -1);
       Stuff.getAllStuffs().add(myPlayer);
@@ -127,19 +128,30 @@ public class GamePanel extends JPanel implements KeyListener, Runnable
       switch(e.getKeyCode())
       {
         case KeyEvent.VK_UP:
-          Sound sound = new Sound("Startup1.wav");
-          myPlayer.setSpeed(new Speed(0.0, -10.0));
+          //Sound sound = new Sound("Startup1.wav");
+          myPlayer.setSpeed(0.0, -10.0);
           break;
         case KeyEvent.VK_DOWN:
-          myPlayer.setSpeed(new Speed(0.0, 10.0));
+          myPlayer.setSpeed(0.0, 10.0);
           break;
         case KeyEvent.VK_LEFT:
-          myPlayer.setSpeed(new Speed(-10.0, 0.0));
+          myPlayer.setSpeed(-10.0, 0.0);
           break;
         case KeyEvent.VK_RIGHT:
-          myPlayer.setSpeed(new Speed(10.0, 0.0));
+          myPlayer.setSpeed(10.0, 0.0);
           break;
       }
+      
+      Packet99Move packet = new Packet99Move(
+          myPlayer.getUserName(),
+          (int)myPlayer.getLocation().getX(),
+          (int)myPlayer.getLocation().getY(), 
+          (int)myPlayer.getSpeed().getXSpeed(), 
+          (int)myPlayer.getSpeed().getYSpeed());
+      
+      System.out.println((int)myPlayer.getLocation().getX() 
+          + "," + (int)myPlayer.getLocation().getY());
+      packet.writeData(gameClient);
     }
     
   }
@@ -149,7 +161,18 @@ public class GamePanel extends JPanel implements KeyListener, Runnable
   {
     // TODO Auto-generated method stub
       if(myPlayer != null)
-        myPlayer.setSpeed(new Speed(0.0, 0.0));
+      {
+        myPlayer.setSpeed(0.0, 0.0);
+        Packet99Move packet = new Packet99Move(
+            myPlayer.getUserName(),
+            (int)myPlayer.getLocation().getX(),
+            (int)myPlayer.getLocation().getY(), 
+            (int)myPlayer.getSpeed().getXSpeed(), 
+            (int)myPlayer.getSpeed().getYSpeed());
+        packet.writeData(gameClient);
+        
+      }
+        
     
   }
   

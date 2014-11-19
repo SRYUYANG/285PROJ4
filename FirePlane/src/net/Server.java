@@ -71,6 +71,11 @@ public class Server extends Thread
     Packet packet = null;
     switch ( type )
     {
+      case MOVE:
+        packet = new Packet99Move(data);
+        System.out.println(((Packet99Move)packet).getUserName());
+        handleMove((Packet99Move)packet);
+        break;
       case INVALID:
         break;
       case LOGIN:
@@ -78,7 +83,7 @@ public class Server extends Thread
         System.out.println("[ " +address.getHostAddress() + ":" + port + "]" +
             ((Packet00Login)packet).getUserName() + " Connected");
         PlayerPlaneMP newPlayer 
-        = new PlayerPlaneMP(new Location(100, 100), new Speed(0, 0),
+        = new PlayerPlaneMP(100.0, 100.0, new Speed(0, 0),
             StaticImageResource.playerPlanes[0], ((Packet00Login)packet).getUserName(), address, port);
         this.addConnection(newPlayer, (Packet00Login)packet);
         break;
@@ -138,6 +143,35 @@ public class Server extends Thread
     if(!alreadyConnected)
     {
       this.connectedPlayers.add(player);
+    }
+  }
+  public PlayerPlaneMP getPlayerPlaneMP(String username) {
+    for (PlayerPlaneMP player : this.connectedPlayers) {
+      if (player.getUserName().equals(username)) {
+        return player;
+      }
+    }
+    return null;
+  }
+  
+  public int getPlayerMPIndex(String username) {
+    int index = 0;
+    for (PlayerPlaneMP player : this.connectedPlayers) {
+      if (player.getUserName().equals(username)) {
+        break;
+      }
+      index++;
+    }
+    return index;
+  }
+  
+  private void handleMove(Packet99Move packet)
+  {
+    if(getPlayerPlaneMP(packet.getUserName()) != null)
+    {
+      int index = getPlayerMPIndex(packet.getUserName());
+      this.connectedPlayers.get(index).setLocation(packet.getX(), packet.getY());
+      packet.writeData(this);
     }
   }
 }
