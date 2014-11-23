@@ -8,7 +8,6 @@ public class Packet10Shoot extends Packet
     super(10);
     String[] dataArray = readData(data).split("#");
     Integer ID = Integer.parseInt(dataArray[0]);
-    
   }
 
   @Override

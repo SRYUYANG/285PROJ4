@@ -140,8 +140,7 @@ public class GamePanel extends JPanel implements KeyListener, Runnable
           break;
         case KeyEvent.VK_E:
           myPlayer.explode();
-          break;
-          
+          break;    
       }
       
       Packet99Move packet = new Packet99Move(
