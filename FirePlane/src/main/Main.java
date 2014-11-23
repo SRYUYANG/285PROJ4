@@ -8,14 +8,15 @@ import java.net.Socket;
 
 import javax.swing.JFrame;
 
+import controller.GameController;
 import net.Client;
 import net.Packet;
 import net.Packet00Login;
 import net.Server;
-
 import resource.StaticImageResource;
 import subjects.*;
 import ui.GameFrame;
+import ui.GamePanel;
 
 public class Main 
 {
@@ -28,11 +29,13 @@ public class Main
 		
 		System.out.println("Game Start!");
 		//here we only place a short initialization functions
-		GameFrame gf = new GameFrame("FireFlight");
 		
+		GameController gc = new GameController();
+		
+		/*
 		for(Stuff s : Stuff.getAllStuffs())
 		{
 		  System.out.println("###");
-		}
+		}*/
 	}
 }

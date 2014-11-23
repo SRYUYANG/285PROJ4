@@ -83,7 +83,8 @@ public class Server extends Thread
         System.out.println("[ " +address.getHostAddress() + ":" + port + "]" +
             ((Packet00Login)packet).getUserName() + " Connected");
         PlayerPlaneMP newPlayer 
-        = new PlayerPlaneMP(new Location(100.0, 100.0), new Speed(0, 0), ((Packet00Login)packet).getUserName(), address, port);
+        = new PlayerPlaneMP(new Location(100.0, 100.0), new Speed(0, 0), 
+            ((Packet00Login)packet).getUserName(), address, port);
         this.addConnection(newPlayer, (Packet00Login)packet);
         break;
       case DISCONNECT:
@@ -91,10 +92,7 @@ public class Server extends Thread
       case SHOOT:
         packet = new Packet10Shoot(data);
         handleShoot((Packet10Shoot)packet);
-        /*
-        packet = new Packet10Shoot(data);
-        System.out.println()
-        */
+        break;
       default:
         break;
     }

@@ -31,19 +31,16 @@ import util.Speed;
 public class GamePanel extends JPanel implements KeyListener, Runnable
 { 
   private static PlayerPlane myPlayer;
-  //myPlayer is whom on the 
   private Speed initialSpeed = new Speed(0.0, 0.0);
   private static Server gameServer;
   private static Client gameClient;
-  
-  
   BufferedImage currentBackGroundBufferedImage;
   public GamePanel(BufferedImage bg)
   {
-    //players = new ArrayList<PlayerPlane>();
     try
     {
-      if (JOptionPane.showConfirmDialog(this, "Do you want to run the server") == 0) {
+      if (JOptionPane.showConfirmDialog(this, "Do you want to run the server") == 0) 
+      {
         gameServer = new Server();
         gameServer.start();
         gameServer.setPriority(4);
@@ -72,8 +69,6 @@ public class GamePanel extends JPanel implements KeyListener, Runnable
     new Thread(this).start();
     //add listener to panel
     this.addListener();
-    
-    
     // TODO Auto-generated constructor stub
   }
   
@@ -162,7 +157,6 @@ public class GamePanel extends JPanel implements KeyListener, Runnable
           + "," + (int)myPlayer.getLocation().getY());
       packet.writeData(gameClient);
     }
-    
   }
 
   @Override
@@ -181,14 +175,11 @@ public class GamePanel extends JPanel implements KeyListener, Runnable
         packet.writeData(gameClient);
         
       }
-        
-    
   }
   
   @Override
   public void run()
   {
-    
     while(true)
     {
       this.update();
@@ -200,7 +191,6 @@ public class GamePanel extends JPanel implements KeyListener, Runnable
         e.printStackTrace();
       }
     }
-
   }
 
   protected void addListener()
@@ -217,7 +207,5 @@ public class GamePanel extends JPanel implements KeyListener, Runnable
   {
     myPlayer = _myPlayer;
   }
-  
-  
   
 }
