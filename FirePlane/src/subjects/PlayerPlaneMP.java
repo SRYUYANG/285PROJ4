@@ -13,7 +13,6 @@ import util.Speed;
 
 public class PlayerPlaneMP extends PlayerPlane
 {
-  boolean isAlive = true;
   public InetAddress ipAddress;
   public int port;
   private BufferedImage image;
@@ -30,7 +29,7 @@ public class PlayerPlaneMP extends PlayerPlane
   
   public void move()
   {
-    if (isAlive)
+    if (isAlive())
     {
       super.move();
     }
@@ -58,7 +57,7 @@ public class PlayerPlaneMP extends PlayerPlane
   
   public void explode()
   {
-    isAlive = false;
+    setAlive(false);
   }
  
 }

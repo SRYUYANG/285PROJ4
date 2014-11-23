@@ -14,7 +14,7 @@ public class BlueSmallBullet extends Bullet
   public BlueSmallBullet(Plane plane)
   {
     super(new Location(plane.getLocation()), new Speed(0.0, -10.0));
-    image = StaticImageResource.bulletImages[0];
+    image = StaticImageResource.bulletImages[1];
     // TODO Auto-generated constructor stub
   }
 

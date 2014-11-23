@@ -100,6 +100,11 @@ public class Client extends Thread
       case MOVE:
         packet = new Packet99Move(data);
         handleMove((Packet99Move)packet);
+        break;
+      case SHOOT:
+        packet = new Packet10Shoot(data);
+        handleShoot((Packet10Shoot)packet);
+        break;
       case INVALID:
         break;
       case LOGIN:
@@ -122,6 +127,13 @@ public class Client extends Thread
     }
   }
   
+  private void handleShoot(Packet10Shoot packet)
+  {
+    // TODO Auto-generated method stub
+    ((PlayerPlaneMP)Stuff.getAllStuffs().
+        get(getPlayerPlaneIndex(packet.getUserName()))).shoot();
+  }
+
   private int getPlayerPlaneIndex(String _username)
   {
     // TODO Auto-generated method stub

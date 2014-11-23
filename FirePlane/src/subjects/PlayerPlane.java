@@ -9,7 +9,7 @@ import util.Speed;
 
 public class PlayerPlane extends Plane
 {
-  boolean isAlive = true;
+  private boolean isAlive = true;
   String username;
   private BufferedImage image;
   private int counter = 0;
@@ -41,11 +41,17 @@ public class PlayerPlane extends Plane
     return null;
   }
   
-  public void shoot()
+  public Bullet shoot()
   {
-    BlueSmallBullet bullet = new BlueSmallBullet(this);
-    Stuff.addStuff(bullet);
-    bullet.move();
+    if(isAlive)
+    {
+      BlueSmallBullet bullet = new BlueSmallBullet(this);
+      Stuff.addStuff(bullet);
+      bullet.move();
+      return bullet;
+    }
+    else
+      return null;
   }
   
   public void move()
@@ -78,5 +84,15 @@ public class PlayerPlane extends Plane
   public void explode()
   {
     isAlive = false;
+  }
+  
+  public boolean isAlive()
+  {
+    return isAlive;
+  }
+  
+  public void setAlive(boolean liveStatus)
+  {
+    this.isAlive = liveStatus;
   }
 }

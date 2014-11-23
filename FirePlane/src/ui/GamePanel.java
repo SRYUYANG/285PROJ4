@@ -2,7 +2,6 @@ package ui;
 
 
 import resource.StaticImageResource;
-
 import subjects.*;
 
 import java.awt.Graphics;
@@ -18,6 +17,7 @@ import javax.swing.JPanel;
 
 import net.Client;
 import net.Packet00Login;
+import net.Packet10Shoot;
 import net.Packet99Move;
 import net.Server;
 import net.Settings;
@@ -46,9 +46,11 @@ public class GamePanel extends JPanel implements KeyListener, Runnable
       if (JOptionPane.showConfirmDialog(this, "Do you want to run the server") == 0) {
         gameServer = new Server();
         gameServer.start();
+        gameServer.setPriority(4);
       }
       gameClient = new Client("localhost");
       gameClient.start();
+      gameClient.setPriority(4);
       myPlayer 
       = new PlayerPlaneMP(new Location(100.0, 100.0), new Speed(0, 0),
           JOptionPane.showInputDialog(this, "Please enter"), null, -1);
@@ -112,6 +114,7 @@ public class GamePanel extends JPanel implements KeyListener, Runnable
   {
     // TODO Auto-generated method stub
     
+    
   }
 
   @Override
@@ -136,14 +139,18 @@ public class GamePanel extends JPanel implements KeyListener, Runnable
           myPlayer.setSpeed(10.0, 0.0);
           break;
         case KeyEvent.VK_SPACE:
-          myPlayer.shoot();
+          Bullet bullet = myPlayer.shoot();
+          if(bullet != null)
+          {
+            Packet10Shoot packet = new Packet10Shoot(myPlayer.getUserName());
+            packet.writeData(gameClient);
+          } 
           break;
         case KeyEvent.VK_E:
           myPlayer.explode();
           break;
           
       }
-      
       Packet99Move packet = new Packet99Move(
           myPlayer.getUserName(),
           (int)myPlayer.getLocation().getX(),

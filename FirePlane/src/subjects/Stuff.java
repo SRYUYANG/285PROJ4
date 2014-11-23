@@ -26,6 +26,7 @@ public abstract class Stuff
     ID = nextID;
     ++nextID;   
     this.location = _location;
+
   }
   
   public static ArrayList<Stuff> getAllStuffs()

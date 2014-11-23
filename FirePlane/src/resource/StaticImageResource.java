@@ -13,7 +13,7 @@ public class StaticImageResource
   final static int myPlaneTypeNum = 2;
   final static int backGroundTypeNum = 1;
   final static int enemyPlaneTypeNum = 2;
-  final static int bulletTypeNum = 1;
+  final static int bulletTypeNum = 2;
   final static int explosionTypeNum = 16;
   
   public static BufferedImage[] backgroudImages = new BufferedImage[backGroundTypeNum];

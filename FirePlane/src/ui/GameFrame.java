@@ -18,6 +18,8 @@ public class GameFrame extends JFrame
     super(title);
     StaticImageResource.initializeImages();
     currentGamePanel = new GamePanel(StaticImageResource.backgroudImages[0]);
+    //Thread thread = new Thread(currentGamePanel);
+    //thread.start();
     this.add(currentGamePanel);
     this.addKeyListener(currentGamePanel);
     this.setMinimumSize(new Dimension(WINDOWS_WIDTH, WINDOWS_HEIGHT));
