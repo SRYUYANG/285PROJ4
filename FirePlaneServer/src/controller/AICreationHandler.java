@@ -20,7 +20,7 @@ public class AICreationHandler extends TimerTask
   @Override
   public void run()
   {
-      int num = AINumberGen.nextInt(10); 
+      int num = AINumberGen.nextInt(6); 
       for (int i = 0; i < num; i++)
       { 
         switch (AITypeGen.nextInt(3))

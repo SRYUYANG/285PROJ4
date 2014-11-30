@@ -11,6 +11,6 @@ public class Signal
   
   synchronized public static boolean isStart()
   {
-    return counter>=3;
+    return counter>=2;
   }
 }

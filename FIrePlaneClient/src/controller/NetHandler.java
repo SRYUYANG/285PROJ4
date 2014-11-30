@@ -17,23 +17,23 @@ import net.ClientSocket;
 public class NetHandler implements Runnable
 {
   private ClientSocket server;
-  
+
   public NetHandler(ClientSocket inServer)
   {
     server = inServer;
   }
-  
+
   public void run()
   {
     String receivedMessage = null;
     String encoding = null;
-    while(true)
+    while( true )
     {
       receivedMessage = server.receivePakcet();
       String pattern = "(.*)(#0@)(.*)(#1@)(.*)";
       Pattern pt = Pattern.compile(pattern);
       Matcher match = pt.matcher(receivedMessage);
-      if (match.find())
+      if( match.find() )
       {
         encoding = match.group(3);
       }
@@ -41,8 +41,8 @@ public class NetHandler implements Runnable
       {
         System.out.println("Matching Not Found");
       }
-      
-      switch(encoding)
+
+      switch ( encoding )
       {
         case "00":
           handleLogin(receivedMessage);
@@ -62,13 +62,34 @@ public class NetHandler implements Runnable
         case "22":
           handleDestroy(receivedMessage);
           break;
+        case "30":
+          handleUpdateHP(receivedMessage);
+          break;
         default:
           System.out.println("Unable to decode the message");
       }
-      
+
     }
   }
-  
+
+  public void handleUpdateHP(String message)
+  {
+    String pattern = "(.*)(#1@)(.*)(#2@)(.*)(#3@)(.*)";
+    Pattern pt = Pattern.compile(pattern);
+    Matcher mt = pt.matcher(message);
+    if( mt.find() )
+    {
+      String userName = mt.group(3);
+      Integer HP = Integer.parseInt(mt.group(5));
+      PlayerPlane buffPlane = Simulator.getPlayerPlane(userName);
+      if(buffPlane != null)
+      {
+        buffPlane.setHP(HP);
+      }
+    }
+
+  }
+
   public void handleDestroy(String message)
   {
     /*
@@ -77,28 +98,28 @@ public class NetHandler implements Runnable
     String pattern = "(.*)(#1@)(.*)(#2@)(.*)";
     Pattern pt = Pattern.compile(pattern);
     Matcher mt = pt.matcher(message);
-    if (mt.find())
+    if( mt.find() )
     {
       Integer ID = Integer.parseInt(mt.group(3));
       Stuff buff = Simulator.getStuff(ID);
-      if (buff != null)
+      if( buff != null )
       {
         buff.destroy();
       }
     }
   }
-  
+
   public void handleAddEnemy(String message)
   {
     /*
-     *  String sendingPacket = "#0@21#1@" + this.getType() + "#2@" + this.getID() + "#3@" + getLocation().getX()
-        + "#4@" + getLocation().getY() + "#5@" + getSpeed().getXSpeed() + "#6@"
-        + getSpeed().getYSpeed() + "#7@";
+     * String sendingPacket = "#0@21#1@" + this.getType() + "#2@" + this.getID()
+     * + "#3@" + getLocation().getX() + "#4@" + getLocation().getY() + "#5@" +
+     * getSpeed().getXSpeed() + "#6@" + getSpeed().getYSpeed() + "#7@";
      */
     String pattern = "(.*)(#1@)(.*)(#2@)(.*)(#3@)(.*)(#4@)(.*)(#5@)(.*)(#6@)(.*)(#7@)(.*)";
     Pattern pt = Pattern.compile(pattern);
     Matcher mt = pt.matcher(message);
-    if (mt.find())
+    if( mt.find() )
     {
       String type = mt.group(3);
       Integer ID = Integer.parseInt(mt.group(5));
@@ -106,65 +127,56 @@ public class NetHandler implements Runnable
       Integer yCord = Integer.parseInt(mt.group(9));
       Integer xSpeed = Integer.parseInt(mt.group(11));
       Integer ySpeed = Integer.parseInt(mt.group(13));
-      
-      switch (type)
+
+      switch ( type )
       {
         case "small":
-          Simulator.addEnemyPlane(
-              new EnemySmallPlane(
-                  new Location(xCord, yCord),
-                   new Speed(xSpeed, ySpeed),
-                   ID));
+          Simulator.addEnemyPlane(new EnemySmallPlane(
+              new Location(xCord, yCord), new Speed(xSpeed, ySpeed), ID));
           break;
         case "medium":
-          Simulator.addEnemyPlane(
-              new EnemyMediumPlane(
-                  new Location(xCord, yCord),
-                  new Speed(xSpeed, ySpeed),
-                  ID));
+          Simulator.addEnemyPlane(new EnemyMediumPlane(new Location(xCord,
+              yCord), new Speed(xSpeed, ySpeed), ID));
           break;
         case "large":
-          Simulator.addEnemyPlane(
-              new EnemyLargePlane(
-                  new Location(xCord, yCord),
-                  new Speed(xSpeed, ySpeed),
-                  ID));
+          Simulator.addEnemyPlane(new EnemyLargePlane(
+              new Location(xCord, yCord), new Speed(xSpeed, ySpeed), ID));
           break;
       }
     }
   }
-  
+
   public void handleLogin(String message)
   {
-    
+
     /*
      * return "#0@00#1@" + this.userName + "#2@" + this.userID + "#3@";
      */
-    //*****#1@USERNAME#2@IP#3@PORT#4@************
+    // *****#1@USERNAME#2@IP#3@PORT#4@************
     String pattern = "(.*)(#1@)(.*)(#2@)(.*)(#3@)(.*)";
     Pattern pt = Pattern.compile(pattern);
     Matcher mt = pt.matcher(message);
-    if (mt.find())
+    if( mt.find() )
     {
       String userName = mt.group(3);
       Integer userID = Integer.parseInt(mt.group(5));
-      if (Simulator.getPlayerPlane(userName) == null)
+      if( Simulator.getPlayerPlane(userName) == null )
       {
         PlayerPlane newPlane = new PlayerPlane(userID, userName);
         Simulator.addPlayerPlane(newPlane);
-        if (userName.equals(UserInfo.UserName))
+        if( userName.equals(UserInfo.UserName) )
           UserInfo.setUserPlane(newPlane);
       }
     }
   }
-  
+
   public void handleShoot(String message)
   {
-    //*********#1@ID#2@**********
+    // *********#1@ID#2@**********
     String pattern = "(.*)(#1@)(.*)(#2@)(.*)(#3@)(.*)(#4@)(.*)(#5@)(.*)(#6@)(.*)(#7@)(.*)";
     Pattern pt = Pattern.compile(pattern);
     Matcher mt = pt.matcher(message);
-    if (mt.find())
+    if( mt.find() )
     {
       String type = mt.group(3);
       Integer ID = Integer.parseInt(mt.group(5));
@@ -172,69 +184,55 @@ public class NetHandler implements Runnable
       Integer yCord = Integer.parseInt(mt.group(9));
       Integer xSpeed = Integer.parseInt(mt.group(11));
       Integer ySpeed = Integer.parseInt(mt.group(13));
-      
+
       System.out.println(type);
-      switch (type)
+      switch ( type )
       {
         case "small":
-          Simulator.addWeapon(
-              new SmallBullet(
-                  new Location(xCord, yCord),
-                   new Speed(xSpeed, ySpeed),
-                   ID));
+          Simulator.addWeapon(new SmallBullet(new Location(xCord, yCord),
+              new Speed(xSpeed, ySpeed), ID));
           break;
         default:
           break;
-        /*
-        case "medium":
-          Simulator.addEnemyPlane(
-              new EnemyMediumPlane(
-                  new Location(xCord, yCord),
-                  new Speed(xSpeed, ySpeed),
-                  ID));
-          break;
-        case "large":
-          Simulator.addEnemyPlane(
-              new EnemyLargePlane(
-                  new Location(xCord, yCord),
-                  new Speed(xSpeed, ySpeed),
-                  ID));
-          break;
-      }
-      */
+      /*
+       * case "medium": Simulator.addEnemyPlane( new EnemyMediumPlane( new
+       * Location(xCord, yCord), new Speed(xSpeed, ySpeed), ID)); break; case
+       * "large": Simulator.addEnemyPlane( new EnemyLargePlane( new
+       * Location(xCord, yCord), new Speed(xSpeed, ySpeed), ID)); break; }
+       */
       }
     }
   }
-  
+
   public void handleMove(String message)
   {
     String pattern = "(.*)(#1@)(.*)(#2@)(.*)(#3@)(.*)(#4@)(.*)(#5@)(.*)(#6@)(.*)";
     Pattern pt = Pattern.compile(pattern);
     Matcher mt = pt.matcher(message);
-    if (mt.find())
+    if( mt.find() )
     {
       Integer stuffID = Integer.parseInt(mt.group(3));
       Integer xCord = Integer.parseInt(mt.group(5));
       Integer yCord = Integer.parseInt(mt.group(7));
       Integer xSpeed = Integer.parseInt(mt.group(9));
       Integer ySpeed = Integer.parseInt(mt.group(11));
-      
+
       Stuff tempStuff = Simulator.getStuff(stuffID);
-      if (tempStuff == null)
+      if( tempStuff == null )
       {
         System.out.println("Unrecognized Stuff");
       }
       else
       {
-      tempStuff.setLocation(new Location(xCord, yCord));
-      tempStuff.setSpeed(new Speed(xSpeed, ySpeed));
+        tempStuff.setLocation(new Location(xCord, yCord));
+        tempStuff.setSpeed(new Speed(xSpeed, ySpeed));
       }
     }
   }
-  
+
   public void handleDisconnect(String message)
   {
-    
+
   }
-  
+
 }

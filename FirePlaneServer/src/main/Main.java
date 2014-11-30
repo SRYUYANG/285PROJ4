@@ -49,10 +49,10 @@ public class Main
       
     }
     
-    aiCreationTimer.schedule(aiCreation, 0, 1000);
-    aiShootTimer.schedule(aiShoot, 0, 1000);
+    aiCreationTimer.schedule(aiCreation, 0, 4000);
+    aiShootTimer.schedule(aiShoot, 0, 500);
     moveTimer.schedule(moveHandler, 0, 20);
-    //collisionTimer.schedule(collisionHandler, 0, 1000);
+    collisionTimer.schedule(collisionHandler, 0, 200);
     statusTimer.schedule(statusHandler, 0, 10);
     battleTimer.schedule(battleHandler, 0, 20);
   }

@@ -17,7 +17,7 @@ public abstract class Plane extends Stuff
   
   synchronized public void getCollision()
   {
-    HP = HP / 5;
+    HP = HP - 5;
   }
   synchronized public int getHP()
   {

@@ -3,6 +3,7 @@ package controller;
 import java.util.Iterator;
 import java.util.TimerTask;
 
+import model.PlayerPlane;
 import model.Stuff;
 
 public class StatusCheckingHandler extends TimerTask
@@ -18,6 +19,16 @@ public class StatusCheckingHandler extends TimerTask
       if (buff.isValid())
       {
         buff.destroy();
+      }
+    }
+    
+    Iterator<PlayerPlane> itPlayer = Simulator.getAllPlayerPlanes().iterator();
+    while (itPlayer.hasNext())
+    {
+      PlayerPlane buff = itPlayer.next();
+      if (buff.isValid())
+      {
+        buff.sendHP();
       }
     }
   }
