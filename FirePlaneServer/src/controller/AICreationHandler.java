@@ -20,7 +20,7 @@ public class AICreationHandler extends TimerTask
   @Override
   public void run()
   {
-      int num = AINumberGen.nextInt(5); 
+      int num = AINumberGen.nextInt(10); 
       for (int i = 0; i < num; i++)
       { 
         switch (AITypeGen.nextInt(3))
@@ -31,7 +31,7 @@ public class AICreationHandler extends TimerTask
                 (
                     new Location(
                         xCordGen.nextInt(Constants.MAX_WIDTH),0),
-                    new Speed(0,20)
+                    new Speed(0,5)
                 ));
             break;
           case 1:
@@ -40,7 +40,7 @@ public class AICreationHandler extends TimerTask
                 (
                     new Location(
                         xCordGen.nextInt(Constants.MAX_WIDTH),0),
-                    new Speed(0,20)
+                    new Speed(0,5)
                 ));
             break;
           case 2:
@@ -49,7 +49,7 @@ public class AICreationHandler extends TimerTask
                 (
                     new Location(
                         xCordGen.nextInt(Constants.MAX_WIDTH),0),
-                    new Speed(0,20)
+                    new Speed(0,5)
                 ));
         }
       

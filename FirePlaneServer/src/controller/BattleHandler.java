@@ -25,7 +25,7 @@ public class BattleHandler extends TimerTask
       while (itWeapon.hasNext())
       {
         Weapon buffWeapon = itWeapon.next();
-        if (buffWeapon.isValid() && buffPlane.isValid())
+        if (buffWeapon.isExist() && buffPlane.isExist())
         {
         if (Location.isContact(buffPlane.getLocation(), buffWeapon.getLocation()))
         {

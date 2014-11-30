@@ -13,18 +13,8 @@ public abstract class Plane extends Stuff
   }
   
   public abstract void shoot();
-  synchronized public void getShot(Weapon w)
-  {
-    if (isExist())
-    {
-    HP = HP + w.getPower();
-    if (HP < 0)
-    {
-      setExist(false);
-    }
-    w.setExist(false);
-    }
-  }
+  public abstract void getShot(Weapon w);
+  
   synchronized public void getCollision()
   {
     HP = HP / 5;
@@ -44,6 +34,7 @@ public abstract class Plane extends Stuff
   @Override
   synchronized public void move()
   {
+    super.move();
     /*
     if (isExist())
     {

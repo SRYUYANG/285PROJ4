@@ -3,7 +3,7 @@ package util;
 public class Location
 {
   private Integer corX, corY;
-  private final static double TOLERANCE_LIMIT = 5.0;
+  private final static double TOLERANCE_LIMIT = 2500;
   public Location(Integer inX, Integer inY)
   {
     corX = inX;
@@ -49,11 +49,11 @@ public class Location
   
   public static boolean isOutside(Location checkloc)
   {
-    if (checkloc.getX() > Constants.MAX_WIDTH || checkloc.getX() < -10)
+    if (checkloc.getX() > Constants.MAX_WIDTH || checkloc.getX() < -80)
     {
       return true;
     }
-    if (checkloc.getY() > Constants.MAX_HEIGHT || checkloc.getY() < -10)
+    if (checkloc.getY() > Constants.MAX_HEIGHT || checkloc.getY() < -80)
     {
       return true;
     }

@@ -53,7 +53,7 @@ public class Simulator
     while(itWeapon.hasNext())
     {
       Weapon buff = itWeapon.next();
-      if (buff.getID() == inStuff.getID())
+      if (buff.getID().equals(inStuff.getID()))
         itWeapon.remove();
     }
     
@@ -61,7 +61,7 @@ public class Simulator
     while(itPlane.hasNext())
     {
       Plane buff = itPlane.next();
-      if(buff.getID() == inStuff.getID())
+      if(buff.getID().equals(inStuff.getID()))
         itPlane.remove();
     }
     
@@ -69,7 +69,7 @@ public class Simulator
     while(itEnemy.hasNext())
     {
       Plane buff = itEnemy.next();
-      if(buff.getID() == inStuff.getID())
+      if(buff.getID().equals(inStuff.getID()))
         itEnemy.remove();
     }
     
@@ -77,7 +77,7 @@ public class Simulator
     while(itStuff.hasNext())
     {
       Stuff buff = itStuff.next();
-      if(buff.getID() == inStuff.getID())
+      if(buff.getID().equals(inStuff.getID()))
         itStuff.remove();
     }
     
@@ -85,7 +85,7 @@ public class Simulator
     while(itPlayer.hasNext())
     {
       Plane buff = itPlayer.next();
-      if(buff.getID() == inStuff.getID())
+      if(buff.getID().equals(inStuff.getID()))
         itPlayer.remove();
     }
   }
@@ -121,7 +121,7 @@ public class Simulator
   {
     for (Stuff s: getAllStuffs())
     {
-      if (s.getID() == inID)
+      if (s.getID().equals(inID))
       {
         return s;
       }
@@ -133,7 +133,7 @@ public class Simulator
   {
     for (PlayerPlane p: allPlayerPlanes)
     {
-      if (p.getUserName() == name)
+      if (p.getUserName().equals(name))
         return p;
     }
     return null;

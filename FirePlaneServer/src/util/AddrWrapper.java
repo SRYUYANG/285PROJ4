@@ -19,7 +19,7 @@ public class AddrWrapper
       e.printStackTrace();
     }
     
-    port = 8930;
+    port = inPort;
   }
   
   public InetAddress getIP()

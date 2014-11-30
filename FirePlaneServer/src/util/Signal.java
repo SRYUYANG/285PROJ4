@@ -2,15 +2,15 @@ package util;
 
 public class Signal
 {
-  public static boolean START_SIGNAL = false;
+  public static int counter = 0;
   
-  public static void setStartSignal(boolean b)
+  public static void setStartSignal()
   {
-    START_SIGNAL = b;
+    counter ++;
   }
   
   synchronized public static boolean isStart()
   {
-    return START_SIGNAL;
+    return counter>=3;
   }
 }

@@ -10,7 +10,7 @@ public class EnemyLargePlane extends EnemyPlane
   public EnemyLargePlane(Location _location, Speed _speed)
   {
     super(_location, _speed);
-    HP = 4;
+    HP = 1;
     // TODO Auto-generated constructor stub
   }
   
@@ -20,8 +20,9 @@ public class EnemyLargePlane extends EnemyPlane
     {
     SmallBullet bullet = new SmallBullet(
         new Location(this.getLocation()), 
-        new Speed(0, 5), 
-        this);
+        new Speed(0, 25), 
+        this,
+        false);
     
     Simulator.addWeapon(bullet);
     }

@@ -49,35 +49,11 @@ public class Main
       
     }
     
-    aiCreationTimer.schedule(aiCreation, 0, 5000);
-    //aiShootTimer.schedule(aiShoot, 0, 1000);
-    moveTimer.schedule(moveHandler, 0, 2000);
+    aiCreationTimer.schedule(aiCreation, 0, 1000);
+    aiShootTimer.schedule(aiShoot, 0, 1000);
+    moveTimer.schedule(moveHandler, 0, 20);
     //collisionTimer.schedule(collisionHandler, 0, 1000);
-    statusTimer.schedule(statusHandler, 0, 1000);
-    //battleTimer.schedule(battleHandler, 0, 1000);
-  }
-  
-  public static void pauseAll()
-  {
-    moveTimer.cancel();
-    collisionTimer.cancel();
-    statusTimer.cancel();
-    battleTimer.cancel();
-  }
-  
-  public static void resumeAll()
-  {
-    moveTimer = new Timer();
-    collisionTimer = new Timer();
-    statusTimer = new Timer();
-    battleTimer = new Timer();
-    moveHandler = new MoveHandler();
-    collisionHandler = new CollisionHandler();
-    statusHandler = new StatusCheckingHandler();
-    battleHandler = new BattleHandler();
-    moveTimer.schedule(moveHandler, 20, 50);
-    collisionTimer.schedule(collisionHandler, 30, 50);
-    statusTimer.schedule(statusHandler, 40, 50);
-    battleTimer.schedule(battleHandler, 50, 50);
+    statusTimer.schedule(statusHandler, 0, 10);
+    battleTimer.schedule(battleHandler, 0, 20);
   }
 }

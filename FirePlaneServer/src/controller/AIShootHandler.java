@@ -17,7 +17,7 @@ public class AIShootHandler extends TimerTask
     while(itPlane.hasNext())
     {
       EnemyPlane buffEnemy = itPlane.next();
-      if(buffEnemy.isValid()){
+      if(buffEnemy.isExist()){
         buffEnemy.shoot();
       }
     }

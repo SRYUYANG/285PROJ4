@@ -25,6 +25,10 @@ public class Player
     Simulator.addPlayer(this);
     Simulator.addPlayerPlane(this.getPlayerPlane());
     ServerSocket.addClient(playerAddr);
+    for (Player p: Simulator.getAllPlayers())
+    {
+      ServerSocket.sendPacket(p.loginString());
+    }
     ServerSocket.sendPacket(this.loginString());
   }
   

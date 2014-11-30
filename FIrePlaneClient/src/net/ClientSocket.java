@@ -13,15 +13,14 @@ import util.AddrWrapper;
 
 public class ClientSocket
 {
-  private int portNum;
   private static DatagramSocket inSocket;
   private static DatagramSocket outSocket;
   private static InetAddress serverIP;
   
-  public ClientSocket() throws SocketException
+  public ClientSocket(Integer inSocketNum) throws SocketException
   {
-    outSocket = new DatagramSocket(8800);
-    inSocket = new DatagramSocket(8930);
+    outSocket = new DatagramSocket();
+    inSocket = new DatagramSocket(inSocketNum);
     
     /*
      * 

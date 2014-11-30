@@ -20,7 +20,7 @@ public class ServerSocket
   public ServerSocket() throws SocketException
   {
     System.out.println("System Start!");
-    outSocket = new DatagramSocket(8900);
+    outSocket = new DatagramSocket();
     clients = new ArrayList<AddrWrapper>();
     inSocket = new DatagramSocket(8910);
   }
@@ -35,6 +35,7 @@ public class ServerSocket
     {
       DatagramPacket outPacket = 
           new DatagramPacket(buffer, buffer.length, client.getIP(), client.getPort());
+      System.out.println(outPacket.getPort());
       //System.out.println(client.getIP().toString() +  (new Integer(client.getPort())).toString());
       try
       {

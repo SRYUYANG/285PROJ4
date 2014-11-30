@@ -45,7 +45,11 @@ public class GamePanel extends JPanel implements KeyListener
     g.drawImage(currentBackGroundBufferedImage, 0, 0, null);
     for (int i = 0; i < Simulator.getAllStuffs().size(); i++)
     {
-      Simulator.getAllStuffs().get(i).paint(g);
+      Stuff buff = Simulator.getAllStuffs().get(i);
+      if (buff.isValid())
+      {
+        Simulator.getAllStuffs().get(i).paint(g);
+      }
     }
   }
   

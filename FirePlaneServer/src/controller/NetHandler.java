@@ -44,7 +44,7 @@ public class NetHandler implements Runnable
       {
         case "00":
           handleLogin(receivedMessage);
-          Signal.setStartSignal(true);
+          Signal.setStartSignal();
           break;
         case "01":
           handleDisconnect(receivedMessage);
@@ -78,6 +78,8 @@ public class NetHandler implements Runnable
               );
       Simulator.addPlayer(player);
     }
+    
+    
   }
   
   public void handleShoot(String message)
@@ -104,6 +106,7 @@ public class NetHandler implements Runnable
       Integer ySpeed = Integer.parseInt(mt.group(7));
       
       Stuff tempStuff = Simulator.getPlayerPlane(userName);
+      System.out.println(userName);
       tempStuff.setSpeed(new Speed(xSpeed, ySpeed));
       
       String sendingPacket = 

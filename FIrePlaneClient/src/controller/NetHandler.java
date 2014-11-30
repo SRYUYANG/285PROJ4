@@ -71,7 +71,21 @@ public class NetHandler implements Runnable
   
   public void handleDestroy(String message)
   {
-    
+    /*
+     * #0@22#1@193#2@
+     */
+    String pattern = "(.*)(#1@)(.*)(#2@)(.*)";
+    Pattern pt = Pattern.compile(pattern);
+    Matcher mt = pt.matcher(message);
+    if (mt.find())
+    {
+      Integer ID = Integer.parseInt(mt.group(3));
+      Stuff buff = Simulator.getStuff(ID);
+      if (buff != null)
+      {
+        buff.destroy();
+      }
+    }
   }
   
   public void handleAddEnemy(String message)
@@ -134,9 +148,13 @@ public class NetHandler implements Runnable
     {
       String userName = mt.group(3);
       Integer userID = Integer.parseInt(mt.group(5));
-      PlayerPlane newPlane = new PlayerPlane(userID, userName);
-      Simulator.addPlayerPlane(newPlane);
-      UserInfo.setUserPlane(newPlane);
+      if (Simulator.getPlayerPlane(userName) == null)
+      {
+        PlayerPlane newPlane = new PlayerPlane(userID, userName);
+        Simulator.addPlayerPlane(newPlane);
+        if (userName.equals(UserInfo.UserName))
+          UserInfo.setUserPlane(newPlane);
+      }
     }
   }
   
@@ -206,8 +224,11 @@ public class NetHandler implements Runnable
       {
         System.out.println("Unrecognized Stuff");
       }
+      else
+      {
       tempStuff.setLocation(new Location(xCord, yCord));
       tempStuff.setSpeed(new Speed(xSpeed, ySpeed));
+      }
     }
   }
   

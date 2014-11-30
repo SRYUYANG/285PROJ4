@@ -155,7 +155,8 @@ public class Simulator
   {
     for (PlayerPlane p: getAllPlayerPlanes())
     {
-      if (p.getPlayer().getUserName() == inUserName )
+      System.out.println(p.getPlayer().getUserName());
+      if (p.getPlayer().getUserName().equals(inUserName) )
       {
         return p;
       }

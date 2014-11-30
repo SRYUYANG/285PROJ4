@@ -23,7 +23,7 @@ public class CollisionHandler extends TimerTask
       while (itEnemy.hasNext())
       {
         EnemyPlane buffEnemy = itEnemy.next();
-        if (buffPlayer.isValid()&& buffEnemy.isValid())
+        if (buffPlayer.isExist()&& buffEnemy.isExist())
         {
         if (Location.isContact(buffPlayer.getLocation(), buffEnemy.getLocation()))
         {

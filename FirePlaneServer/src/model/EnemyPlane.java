@@ -3,6 +3,7 @@ package model;
 import java.util.Random;
 
 import net.ServerSocket;
+import util.Constants;
 import util.Location;
 import util.Speed;
 
@@ -28,12 +29,27 @@ public abstract class EnemyPlane extends Plane
   {
     if (isExist())
     {
-    Random speedGen = new Random();
-    Integer nextXSpeed = speedGen.nextInt(50) - 25;
-    Integer nextYSpeed = speedGen.nextInt(60);
-    this.setSpeed(new Speed(nextXSpeed, nextYSpeed));
-    //super.move();
+    //Random speedGen = new Random();
+    //Integer nextXSpeed = speedGen.nextInt(50) - 25;
+    //Integer nextYSpeed = speedGen.nextInt(60);
+    //this.setSpeed(new Speed(nextXSpeed, nextYSpeed));
+    if (this.getSpeed().getYSpeed() + this.getLocation().getY() > Constants.MAX_HEIGHT)
+      setExist(false);
+    super.move();
     }
+  }
+  
+  synchronized public void getShot(Weapon w)
+  {
+     if (isExist() && w.getStatus())
+     {
+       HP = HP + w.getPower();
+       if (HP <= 0)
+       {
+          setExist(false);
+       }
+          w.setExist(false);
+     }
   }
 
   @Override
