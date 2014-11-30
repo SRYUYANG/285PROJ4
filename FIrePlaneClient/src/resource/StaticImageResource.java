@@ -12,7 +12,7 @@ public class StaticImageResource
 {
   //here we save different images into public static BufferedImage
   final static int myPlaneTypeNum = 2;
-  final static int backGroundTypeNum = 1;
+  final static int backGroundTypeNum = 2;
   final static int enemyPlaneTypeNum = 2;
   final static int bulletTypeNum = 2;
   final static int explosionTypeNum = 16;

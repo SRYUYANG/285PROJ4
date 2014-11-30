@@ -37,7 +37,7 @@ public class GameController
   public static void moveToGamePanel()
   {
     thisGameFrame.remove(thisGameFrame.getCurrentPanel());
-    GamePanel nextJPanel = new GamePanel(StaticImageResource.backgroudImages[0]);
+    GamePanel nextJPanel = new GamePanel(StaticImageResource.backgroudImages[1]);
     thisGameFrame.add(nextJPanel);
     thisGameFrame.revalidate();
     thisGameFrame.addKeyListener(nextJPanel);
