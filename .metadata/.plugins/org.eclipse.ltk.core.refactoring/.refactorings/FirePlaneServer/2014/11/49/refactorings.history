@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Rename type &apos;controller.NetHandler&apos; to &apos;ServerNetHandler&apos;&#x0A;- Original project: &apos;FirePlaneServer&apos;&#x0A;- Original element: &apos;controller.NetHandler&apos;&#x0A;- Renamed element: &apos;controller.ServerNetHandler&apos;&#x0A;- Update references to refactored element&#x0A;- Update textual occurrences in comments and strings" description="Rename type &apos;NetHandler&apos;" flags="589830" id="org.eclipse.jdt.ui.rename.type" input="/src&lt;controller{NetHandler.java[NetHandler" matchStrategy="1" name="ServerNetHandler" qualified="false" references="true" similarDeclarations="false" stamp="1417333085181" textual="false" version="1.0"/>
+</session>

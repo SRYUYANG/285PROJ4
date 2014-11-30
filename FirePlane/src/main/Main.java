@@ -31,11 +31,6 @@ public class Main
 		//here we only place a short initialization functions
 		
 		GameController gc = new GameController();
-		
-		/*
-		for(Stuff s : Stuff.getAllStuffs())
-		{
-		  System.out.println("###");
-		}*/
+
 	}
 }

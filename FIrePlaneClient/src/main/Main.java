@@ -3,7 +3,7 @@ package main;
 import java.net.SocketException;
 import java.util.Timer;
 
-import controller.NetHandler;
+import controller.ClientNetHandler;
 import controller.RepaintHandler;
 import view.GameController;
 import net.ClientSocket;
@@ -27,7 +27,7 @@ public class Main
     //here we only place a short initialization functions
     GameController gc = new GameController();
     
-    NetHandler netHan = new NetHandler(server);
+    ClientNetHandler netHan = new ClientNetHandler(server);
     RepaintHandler repaintHan = new RepaintHandler();
     
     Thread netThread = new Thread(netHan);

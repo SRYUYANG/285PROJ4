@@ -1,5 +1,7 @@
 package model;
 
+import java.net.InetAddress;
+
 import net.ServerSocket;
 import controller.Simulator;
 import util.AddrWrapper;
@@ -15,7 +17,7 @@ public class Player
   //private Integer points = 0;
   private AddrWrapper playerAddr = null;
   
-  public Player(String inUserName, String inAddr, int inPort)
+  public Player(String inUserName, InetAddress inAddr, int inPort)
   {
     userName = inUserName;
     playerAddr = new AddrWrapper(inAddr, inPort);
@@ -45,8 +47,14 @@ public class Player
   
   synchronized public String getUserName()
   {
-    return userName;
+    return this.userName;
   }
+  
+  synchronized public int getID()
+  {
+    return userID;
+  }
+   
   /*
   public void addPoints()
   {

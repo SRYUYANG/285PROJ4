@@ -14,14 +14,14 @@ import util.AddrWrapper;
 public class ClientSocket
 {
   private int portNum;
-  private static DatagramSocket inSocket;
-  private static DatagramSocket outSocket;
+  private static DatagramSocket Socket;
+  //private static DatagramSocket outSocket;
   private static InetAddress serverIP;
   
   public ClientSocket() throws SocketException
   {
-    outSocket = new DatagramSocket(8800);
-    inSocket = new DatagramSocket(8930);
+    Socket = new DatagramSocket();
+    //inSocket = new DatagramSocket();
     
     /*
      * 
@@ -41,14 +41,14 @@ public class ClientSocket
   public static void sendPacket(String inStr)
   {
     //For test usage only
-    System.out.print("CLient Sent:");
-    System.out.println(inStr);
+    //System.out.print("CLient Sent:");
+    //System.out.println(inStr);
     byte[] buffer = inStr.getBytes();
       DatagramPacket outPacket = 
-          new DatagramPacket(buffer, buffer.length, serverIP, 8910);
+          new DatagramPacket(buffer, buffer.length, serverIP, Settings.SERVER_INPORT);
       try
       {
-        outSocket.send(outPacket);
+        Socket.send(outPacket);
       }
       catch( IOException e )
       {
@@ -63,7 +63,7 @@ public class ClientSocket
     try
     {
       System.out.print("Client Received:");
-      inSocket.receive(packet);
+      Socket.receive(packet);
       System.out.println(new String(buffer));
       return new String(buffer);
       //TODO How to handle the received packet

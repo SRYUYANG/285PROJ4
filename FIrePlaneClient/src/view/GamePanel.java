@@ -4,6 +4,7 @@ package view;
 import resource.StaticImageResource;
 import model.*;
 import net.ClientSocket;
+import net.Settings;
 
 import java.awt.Graphics;
 import java.awt.event.KeyEvent;
@@ -32,8 +33,7 @@ public class GamePanel extends JPanel implements KeyListener
     this.addListener();
     UserInfo.UserName = JOptionPane.showInputDialog(this, "Please enter Username");
     
-    String loginPacket = "#0@00#1@" + UserInfo.UserName + "#2@" + "localhost" + "#3@" + 
-    UserInfo.UserPoint.toString() + "#4@";
+    String loginPacket = "#0@00#1@" + UserInfo.UserName + "#2@" + "#3@" + "#4@";
     
     ClientSocket.sendPacket(loginPacket);
   }

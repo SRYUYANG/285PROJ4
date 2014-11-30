@@ -8,18 +8,11 @@ public class AddrWrapper
   private InetAddress ipAddr;
   private int port;
   
-  public AddrWrapper(String inIpStr, int inPort)
+  public AddrWrapper(InetAddress inAddr, int inPort)
   {
-    try
-    {
-      ipAddr = InetAddress.getByName(inIpStr);
-    }
-    catch( UnknownHostException e )
-    {
-      e.printStackTrace();
-    }
+    ipAddr = inAddr;
     
-    port = 8930;
+    port = inPort;
   }
   
   public InetAddress getIP()

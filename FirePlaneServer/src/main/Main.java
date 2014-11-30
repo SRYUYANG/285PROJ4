@@ -40,7 +40,7 @@ public class Main
       e.printStackTrace();
     }
     
-    NetHandler netHandler = new NetHandler(server);
+    ServerNetHandler netHandler = new ServerNetHandler(server);
     Thread netThread = new Thread(netHandler);
     netThread.start();
     

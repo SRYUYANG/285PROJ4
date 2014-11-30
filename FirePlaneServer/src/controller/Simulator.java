@@ -13,7 +13,6 @@ import model.Weapon;
 
 public class Simulator
 {
-  //this is a check
   private static ArrayList<Weapon> allWeapons = new ArrayList<Weapon>();
   private static ArrayList<Plane> allPlanes = new ArrayList<Plane>();
   private static ArrayList<Player> allPlayers = new ArrayList<Player>();
@@ -156,7 +155,7 @@ public class Simulator
   {
     for (PlayerPlane p: getAllPlayerPlanes())
     {
-      if (p.getPlayer().getUserName() == inUserName )
+      if (p.getPlayer().getUserName().equals(inUserName))
       {
         return p;
       }
