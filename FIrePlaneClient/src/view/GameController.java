@@ -1,4 +1,4 @@
-package controller;
+package view;
 
 import java.awt.BorderLayout;
 import java.awt.Color;
@@ -11,12 +11,17 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 
 import resource.StaticImageResource;
-import ui.GameFrame;
-import ui.GamePanel;
+import view.GameFrame;
+import view.GamePanel;
 
 public class GameController
 {
   private static GameFrame thisGameFrame;
+  
+  synchronized public static GameFrame getGameFrame()
+  {
+    return thisGameFrame;
+  }
   
   public GameController()
   {
@@ -38,7 +43,7 @@ public class GameController
     thisGameFrame.addKeyListener(nextJPanel);
     thisGameFrame.setJpanel(nextJPanel);
   }
- 
+  
   
   public static JPanel createInitialPanel()
   {

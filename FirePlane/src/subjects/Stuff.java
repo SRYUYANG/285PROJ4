@@ -29,19 +29,19 @@ public abstract class Stuff
 
   }
   
-  public static ArrayList<Stuff> getAllStuffs()
+  synchronized public static ArrayList<Stuff> getAllStuffs()
   {
     return allStuffs;
   }
   
-  public void move()
+  synchronized public void move()
   {
     getLocation().setX(getLocation().getX() + getSpeed().getXSpeed());
     getLocation().setY(getLocation().getY() + getSpeed().getYSpeed());
   }
 
   
-  public void setLocation(double x, double y)
+  synchronized public void setLocation(double x, double y)
   {
     getLocation().setX(x);
     getLocation().setY(y);
@@ -66,7 +66,7 @@ public abstract class Stuff
   }
   
   
-  public void setSpeed(double speedX, double speedY)
+  synchronized public void setSpeed(double speedX, double speedY)
   {
     speed.setXSpeed(speedX);
     speed.setYSpeed(speedY);
@@ -77,12 +77,12 @@ public abstract class Stuff
 
   public abstract BufferedImage getImage();
   
-  public static void addStuff(Stuff inStuff)
+  synchronized public static void addStuff(Stuff inStuff)
   {
     allStuffs.add(inStuff);
   }
   
-  public static void deleteStuff(Stuff inStuff)
+  synchronized public static void deleteStuff(Stuff inStuff)
   {
     for(int i = 0; i < allStuffs.size(); i++)
     {

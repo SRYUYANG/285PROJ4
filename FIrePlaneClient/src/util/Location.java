@@ -2,9 +2,9 @@ package util;
 
 public class Location
 {
-  private double corX, corY;
+  private Integer corX, corY;
   private final static double TOLERANCE_LIMIT = 5.0;
-  public Location(double inX, double inY)
+  public Location(Integer inX, Integer inY)
   {
     corX = inX;
     corY = inY;
@@ -16,29 +16,29 @@ public class Location
     corY = _loc.getY();
   }
   
-  public double getX()
+  public Integer getX()
   {
     return corX;
   }
   
-  public double getY()
+  public Integer getY()
   {
     return corY;
   }
   
-  public void setX(double inX)
+  public void setX(Integer inX)
   {
     corX = inX;
   }
   
-  public void setY(double inY)
+  public void setY(Integer inY)
   {
     corY = inY;
   }
   
   public static double getDistance(Location loc1, Location loc2)
   {
-    return (loc1.getX() - loc2.getX())*(loc1.getX() - loc2.getX()) - 
+    return (loc1.getX() - loc2.getX())*(loc1.getX() - loc2.getX()) + 
         (loc1.getY() - loc2.getY())*(loc1.getY() - loc2.getY());
   }
   
