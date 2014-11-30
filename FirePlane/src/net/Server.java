@@ -73,7 +73,7 @@ public class Server extends Thread
     {
       case MOVE:
         packet = new Packet99Move(data);
-        System.out.println(((Packet99Move)packet).getUserName());
+        //System.out.println(((Packet99Move)packet).getUserName());
         handleMove((Packet99Move)packet);
         break;
       case INVALID:
@@ -86,6 +86,12 @@ public class Server extends Thread
         = new PlayerPlaneMP(new Location(100.0, 100.0), new Speed(0, 0), 
             ((Packet00Login)packet).getUserName(), address, port);
         this.addConnection(newPlayer, (Packet00Login)packet);
+        if(connectedPlayers.size() == 2)
+        {
+          Packet88GameStartSignal pack = new Packet88GameStartSignal(data);
+          sendDataToAllClients(pack.getData());
+        }
+          
         break;
       case DISCONNECT:
         break;

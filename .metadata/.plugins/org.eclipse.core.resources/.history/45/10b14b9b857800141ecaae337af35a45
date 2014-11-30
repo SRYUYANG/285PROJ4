@@ -1,0 +1,31 @@
+package subjects;
+
+import java.util.Random;
+
+import util.Location;
+import util.Speed;
+
+public abstract class EnemyPlane extends Plane
+{
+  public EnemyPlane(Location _location, Speed _speed)
+  {
+    super(_location);
+    // TODO Auto-generated constructor stub
+  }
+  
+  public abstract void shoot();
+
+  public abstract String getType();
+  
+  @Override
+  synchronized public void move()
+  {
+    Random speedGen = new Random();
+    int nextXSpeed = speedGen.nextInt(50) - 25;
+    int nextYSpeed = speedGen.nextInt(60);
+    super.setSpeed(new Speed((double)nextXSpeed, (double)nextYSpeed));
+    //super.move();
+  }
+
+  
+}

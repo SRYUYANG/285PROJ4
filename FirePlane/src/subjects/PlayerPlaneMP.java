@@ -1,5 +1,6 @@
 package subjects;
 
+import java.awt.Graphics;
 import java.awt.image.BufferedImage;
 import java.net.InetAddress;
 
@@ -43,7 +44,7 @@ public class PlayerPlaneMP extends PlayerPlane
       else
       {
         image = null;
-        Stuff.deleteStuff(this);
+        //Stuff.deleteStuff(this);
       }
     }
   }
@@ -60,4 +61,10 @@ public class PlayerPlaneMP extends PlayerPlane
     setAlive(false);
   }
  
+  @Override
+  public void paint(Graphics g)
+  {
+    // TODO Auto-generated method stub
+    super.paint(g);
+  }
 }

@@ -9,7 +9,6 @@ import util.Speed;
 
 public class PlayerPlane extends Plane
 {
-  private boolean isAlive = true;
   String username;
   private BufferedImage image;
   private int counter = 0;
@@ -30,7 +29,7 @@ public class PlayerPlane extends Plane
   public void paint(Graphics g)
   {
     // TODO Auto-generated method stub
-    super.paint(g);
+    g.drawImage(getImage(), (int)getLocation().getX(), (int)getLocation().getY(), null);
     g.drawString(username, (int)getLocation().getX(), (int)getLocation().getY());
   }
 
@@ -38,12 +37,12 @@ public class PlayerPlane extends Plane
   public BufferedImage getImage()
   {
     // TODO Auto-generated method stub
-    return null;
+    return image;
   }
   
   public Bullet shoot()
   {
-    if(isAlive)
+    if(isAlive())
     {
       BlueSmallBullet bullet = new BlueSmallBullet(this);
       Stuff.addStuff(bullet);
@@ -56,7 +55,7 @@ public class PlayerPlane extends Plane
   
   public void move()
   {
-    if (isAlive)
+    if (isAlive())
     {
       double nextX = getLocation().getX() + getSpeed().getXSpeed();
       double nextY = getLocation().getY() + getSpeed().getYSpeed();
@@ -76,23 +75,13 @@ public class PlayerPlane extends Plane
       else
       {
         image = null;
-        Stuff.deleteStuff(this);
+        //Stuff.deleteStuff(this);
       }
     }
   }
   
   public void explode()
   {
-    isAlive = false;
-  }
-  
-  public boolean isAlive()
-  {
-    return isAlive;
-  }
-  
-  public void setAlive(boolean liveStatus)
-  {
-    this.isAlive = liveStatus;
+    setAlive(false);
   }
 }

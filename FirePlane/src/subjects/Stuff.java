@@ -16,15 +16,18 @@ public abstract class Stuff
 {
   private Location location = new Location(0, 0);
   private Speed speed;
-  private Integer ID;
-  private static Integer nextID = 0;
+  public Integer ID;
+  public static Integer nextID = 0;
 
   private static ArrayList<Stuff> allStuffs = new ArrayList<Stuff>();
+  private static ArrayList<PlayerPlaneMP> allPlayerPlaneMPs = new ArrayList<PlayerPlaneMP>();
+  private static ArrayList<EnemyPlane> allEnemyPlanes = new ArrayList<EnemyPlane>();
+  
   public Stuff(Location _location, Speed _speed)
   {
     this.speed = _speed;
     ID = nextID;
-    ++nextID;   
+      ++nextID;   
     this.location = _location;
 
   }
@@ -32,6 +35,16 @@ public abstract class Stuff
   synchronized public static ArrayList<Stuff> getAllStuffs()
   {
     return allStuffs;
+  }
+  
+  synchronized public static ArrayList<PlayerPlaneMP> getAllPlayers()
+  {
+    return allPlayerPlaneMPs;
+  }
+
+  synchronized public static ArrayList<EnemyPlane> getAllEnemyPlanes()
+  {
+    return allEnemyPlanes;
   }
   
   synchronized public void move()

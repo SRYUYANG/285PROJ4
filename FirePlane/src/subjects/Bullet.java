@@ -1,6 +1,7 @@
 package subjects;
 
 import java.awt.Graphics;
+import java.awt.Rectangle;
 import java.awt.image.BufferedImage;
 
 import util.Location;
@@ -12,6 +13,8 @@ public abstract class Bullet extends Stuff
   public Bullet(Location _loc, Speed _speed)
   {
     super(_loc, _speed);
+    ID = nextID;
+    ++nextID;
   }
   
   
@@ -29,6 +32,11 @@ public abstract class Bullet extends Stuff
     {
       Stuff.deleteStuff(this);
     }
+  }
+  
+  public Rectangle getBounds()
+  {
+    return new Rectangle((int)getLocation().getX(), (int)getLocation().getY(), getImage().getWidth(), getImage().getHeight());
   }
   
   

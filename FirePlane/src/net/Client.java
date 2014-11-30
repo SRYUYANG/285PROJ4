@@ -118,10 +118,12 @@ public class Client extends Thread
         PlayerPlaneMP newPlayer 
         = new PlayerPlaneMP(new Location(100.0, 100.0), new Speed(0, 0),
             ((Packet00Login)packet).getUserName(), address, port);
-        Stuff.getAllStuffs().add(newPlayer);
+        Stuff.getAllPlayers().add(newPlayer);
         break;
       case DISCONNECT:
         break;
+      case GAMESTART:
+        GamePanel.gameActivated = true;
       default:
         break;
     }
@@ -130,7 +132,7 @@ public class Client extends Thread
   private void handleShoot(Packet10Shoot packet)
   {
     // TODO Auto-generated method stub
-    ((PlayerPlaneMP)Stuff.getAllStuffs().
+    ((PlayerPlaneMP)Stuff.getAllPlayers().
         get(getPlayerPlaneIndex(packet.getUserName()))).shoot();
   }
 
@@ -138,9 +140,9 @@ public class Client extends Thread
   {
     // TODO Auto-generated method stub
     int index = 0;
-    for(Stuff s : Stuff.getAllStuffs())
+    for(PlayerPlaneMP s : Stuff.getAllPlayers())
     {
-      if(s instanceof PlayerPlaneMP && ((PlayerPlaneMP) s).getUserName().equals(_username))
+      if( ((PlayerPlaneMP) s).getUserName().equals(_username))
       {
         break;
       }
@@ -151,13 +153,13 @@ public class Client extends Thread
   
   private void movePlayer(String _username, int x, int y, int speedX, int speedY)
   {
-    Stuff.getAllStuffs().get(getPlayerPlaneIndex(_username)).setLocation(x, y);
-    Stuff.getAllStuffs().get(getPlayerPlaneIndex(_username)).setSpeed(speedX, speedY);
+    Stuff.getAllPlayers().get(getPlayerPlaneIndex(_username)).setLocation(x, y);
+    Stuff.getAllPlayers().get(getPlayerPlaneIndex(_username)).setSpeed(speedX, speedY);
   }
   
   private void handleMove(Packet99Move packet)
   {
-    System.out.println(packet.getUserName());
+    //System.out.println(packet.getUserName());
     movePlayer(packet.getUserName(), packet.getX(), packet.getY(), packet.getSpeedX(), packet.getSpeedY());
   }
 

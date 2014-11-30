@@ -22,6 +22,7 @@ import net.Packet99Move;
 import net.Server;
 import net.Settings;
 import resource.StaticImageResource;
+import subjects.EnemyPlane;
 import subjects.PlayerPlane;
 import subjects.PlayerPlaneMP;
 import subjects.Stuff;
@@ -30,11 +31,12 @@ import util.Speed;
 
 public class GamePanel extends JPanel implements KeyListener, Runnable
 { 
-  private static PlayerPlane myPlayer;
+  private static PlayerPlaneMP myPlayer;
   private Speed initialSpeed = new Speed(0.0, 0.0);
   private static Server gameServer;
   private static Client gameClient;
   BufferedImage currentBackGroundBufferedImage;
+  public static boolean  gameActivated = false;
   public GamePanel(BufferedImage bg)
   {
     try
@@ -51,11 +53,11 @@ public class GamePanel extends JPanel implements KeyListener, Runnable
       myPlayer 
       = new PlayerPlaneMP(new Location(100.0, 100.0), new Speed(0, 0),
           JOptionPane.showInputDialog(this, "Please enter"), null, -1);
-      Stuff.getAllStuffs().add(myPlayer);
+      Stuff.getAllPlayers().add(myPlayer);
       Packet00Login loginPacket = new Packet00Login(myPlayer.getUserName());
       if(gameServer != null)
       {
-        gameServer.addConnection((PlayerPlaneMP)myPlayer, loginPacket);
+        gameServer.addConnection(myPlayer, loginPacket);
       }
       loginPacket.writeData(gameClient);
     }
@@ -85,6 +87,18 @@ public class GamePanel extends JPanel implements KeyListener, Runnable
     {
       Stuff.getAllStuffs().get(i).move();;
     }
+    
+    for (int i = 0; i < Stuff.getAllPlayers().size(); i++)
+    {
+      Stuff.getAllPlayers().get(i).move();;
+    }
+    
+    for (int i = 0; i < Stuff.getAllEnemyPlanes().size(); i++)
+    {
+      Stuff.getAllEnemyPlanes().get(i).move();
+    }
+    
+    
     //`System.out.println("##########");
   }
   
@@ -97,10 +111,22 @@ public class GamePanel extends JPanel implements KeyListener, Runnable
     {
       p.paintPlane(g);
     }*/
+    for (int i = 0; i < Stuff.getAllPlayers().size(); i++)
+    {
+      Stuff.getAllPlayers().get(i).paint(g);
+    }
+    //System.out.println(Stuff.getAllPlayers().size());
     for (int i = 0; i < Stuff.getAllStuffs().size(); i++)
     {
       Stuff.getAllStuffs().get(i).paint(g);
     }
+    
+    for (int i = 0; i < Stuff.getAllEnemyPlanes().size(); i++)
+    {
+      Stuff.getAllEnemyPlanes().get(i).paint(g);
+    }
+    
+    
     
   }
   
@@ -153,8 +179,8 @@ public class GamePanel extends JPanel implements KeyListener, Runnable
           (int)myPlayer.getSpeed().getXSpeed(), 
           (int)myPlayer.getSpeed().getYSpeed());
       
-      System.out.println((int)myPlayer.getLocation().getX() 
-          + "," + (int)myPlayer.getLocation().getY());
+      //System.out.println((int)myPlayer.getLocation().getX() 
+          //+ "," + (int)myPlayer.getLocation().getY());
       packet.writeData(gameClient);
     }
   }
@@ -189,6 +215,12 @@ public class GamePanel extends JPanel implements KeyListener, Runnable
       } catch (InterruptedException e) {
         // TODO Auto-generated catch block
         e.printStackTrace();
+      }
+      if(gameActivated)
+      {
+        EnemyPlane e = new EnemyPlane(new Location(0,0));
+        Stuff.getAllEnemyPlanes().add(e);
+        gameActivated = !gameActivated;
       }
     }
   }

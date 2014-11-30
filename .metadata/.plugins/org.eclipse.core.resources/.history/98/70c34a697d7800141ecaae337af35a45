@@ -1,0 +1,64 @@
+package subjects;
+
+import java.awt.Graphics;
+import java.awt.image.BufferedImage;
+
+import util.Location;
+import util.Speed;
+import interfaces.Movable;
+
+public abstract class Plane
+{
+  private boolean isAlive;
+  private Speed speed;
+  private Location location;
+  private BufferedImage image;
+  public Plane(Location loc)
+  {
+    location = loc;
+    speed = new Speed(0, 0);
+    isAlive = true;
+  }
+
+  
+  
+  //this is very important, we have to have a function to paint them
+  
+  public void paint(Graphics g)
+  {
+    // TODO draw the plane
+    g.drawImage(getImage(), (int)getLocation().getX(), (int)getLocation().getY(), null);
+  }
+  
+  synchronized public void move()
+  {
+    getLocation().setX(getLocation().getX() + getSpeed().getXSpeed());
+    getLocation().setY(getLocation().getY() + getSpeed().getYSpeed());
+  }
+
+  
+  synchronized public void setLocation(double x, double y)
+  {
+    getLocation().setX(x);
+    getLocation().setY(y);
+  }
+  
+  
+  public Location getLocation()
+  {
+    return location;
+  }
+  
+  
+  public Speed getSpeed()
+  {
+    return speed;
+  }
+  
+  
+  synchronized public void setSpeed(double speedX, double speedY)
+  {
+    speed.setXSpeed(speedX);
+    speed.setYSpeed(speedY);
+  }
+}

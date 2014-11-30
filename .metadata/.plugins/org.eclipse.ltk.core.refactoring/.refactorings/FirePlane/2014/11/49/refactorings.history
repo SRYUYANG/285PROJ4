@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Copy element &apos;Packet99Move.java&apos; to &apos;FirePlane/src/net&apos;&#x0A;- Original project: &apos;FirePlane&apos;&#x0A;- Destination element: &apos;FirePlane/src/net&apos;&#x0A;- Original element: &apos;net.Packet99Move.java&apos;" description="Copy compilation unit" destination="/src&lt;net" element1="/src&lt;net{Packet99Move.java" files="0" flags="589830" folders="0" id="org.eclipse.jdt.ui.copy" policy="org.eclipse.jdt.ui.copyResources" stamp="1417345586875" units="1" version="1.0"/>
+</session>

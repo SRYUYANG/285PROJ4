@@ -7,14 +7,16 @@ import util.Location;
 import util.Speed;
 import interfaces.Movable;
 
-public abstract class Plane extends Stuff
+public abstract class Plane
 {
-  
+  private Location location = null;
+  private Speed speed;
   private boolean isAlive;
   
   public Plane(Location loc)
   {
-    super(loc, new Speed(0, 0));
+    location = loc;
+    speed = new Speed(0, 0);
     isAlive = true;
   }
 

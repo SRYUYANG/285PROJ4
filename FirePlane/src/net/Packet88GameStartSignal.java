@@ -1,0 +1,38 @@
+package net;
+
+public class Packet88GameStartSignal extends Packet
+{
+  public Packet88GameStartSignal(byte[] data)
+  {
+    super(88);
+    // TODO Auto-generated constructor stub
+  }
+  
+  public Packet88GameStartSignal()
+  {
+    super(88);
+    
+    // TODO Auto-generated constructor stub
+  }
+
+  @Override
+  public void writeData(Client client)
+  {
+    // TODO Auto-generated method stub
+    client.sendData(getData());
+  }
+
+  @Override
+  public void writeData(Server server)
+  {
+    // TODO Auto-generated method stub
+    server.sendDataToAllClients(getData());
+  }
+
+  @Override
+  public byte[] getData()
+  {
+    // TODO Auto-generated method stub
+    return ("88").getBytes();
+  }
+}
