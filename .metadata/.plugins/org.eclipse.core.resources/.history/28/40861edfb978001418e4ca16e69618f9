@@ -55,7 +55,6 @@ public class EnemyPlane extends Plane
     }
     for(Bullet s : Stuff.getAllBullets())
     {
-      System.out.println(Stuff.getAllBullets().size());
       if(getBounds().intersects(s.getBounds()))
       {
         //HP -= s.getPower();

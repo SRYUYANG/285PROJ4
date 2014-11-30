@@ -54,10 +54,10 @@
 <fullyQualifiedTypeName name="subjects.Bullet"/>
 <fullyQualifiedTypeName name="java.util.ArrayList"/>
 <fullyQualifiedTypeName name="subjects.EnemyPlane"/>
-<fullyQualifiedTypeName name="subjects.Stuff"/>
 <fullyQualifiedTypeName name="net.Client"/>
 <fullyQualifiedTypeName name="java.lang.String"/>
 <fullyQualifiedTypeName name="java.lang.Integer"/>
 <fullyQualifiedTypeName name="ui.GameFrame"/>
 <fullyQualifiedTypeName name="statistic.Statistic"/>
+<fullyQualifiedTypeName name="subjects.Stuff"/>
 </qualifiedTypeNameHistroy>

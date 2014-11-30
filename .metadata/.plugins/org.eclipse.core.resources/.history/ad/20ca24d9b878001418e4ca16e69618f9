@@ -187,7 +187,7 @@ public class Server extends Thread
   
   private void handleShoot(Packet10Shoot packet)
   {
-    if(getPlayerPlaneMP(packet.getUserName()) != null && !packet.getUserName().equals(Client.username))
+    if(getPlayerPlaneMP(packet.getUserName()) != null && packet.getUserName()!= Client.username)
     {
       int index = getPlayerMPIndex(packet.getUserName());
       this.connectedPlayers.get(index).shoot();

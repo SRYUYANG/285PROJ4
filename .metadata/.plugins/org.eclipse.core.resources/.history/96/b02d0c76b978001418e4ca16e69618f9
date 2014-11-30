@@ -55,18 +55,16 @@ public class EnemyPlane extends Plane
     }
     for(Bullet s : Stuff.getAllBullets())
     {
-      System.out.println(Stuff.getAllBullets().size());
       if(getBounds().intersects(s.getBounds()))
       {
-        //HP -= s.getPower();
+        HP -= s.getPower();
         Statistic.setScore(Statistic.getScore() + 5);
-        //s.setPower(0);
-        //if(HP == 0)
-        //{
-        
+        s.setPower(0);
+        if(HP == 0)
+        {
           setAlive(false);
           break;
-        //}
+        }
       }
     }
     if(!isAlive())
