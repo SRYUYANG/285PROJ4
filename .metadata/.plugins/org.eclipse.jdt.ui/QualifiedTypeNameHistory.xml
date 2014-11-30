@@ -13,7 +13,6 @@
 <fullyQualifiedTypeName name="javax.xml.crypto.Data"/>
 <fullyQualifiedTypeName name="javax.swing.JOptionPane"/>
 <fullyQualifiedTypeName name="net.Packet00Login"/>
-<fullyQualifiedTypeName name="java.awt.Image"/>
 <fullyQualifiedTypeName name="javax.swing.JFrame"/>
 <fullyQualifiedTypeName name="net.Client"/>
 <fullyQualifiedTypeName name="java.lang.IndexOutOfBoundsException"/>
@@ -27,13 +26,11 @@
 <fullyQualifiedTypeName name="java.nio.ByteOrder"/>
 <fullyQualifiedTypeName name="ui.GameFrame.buttonActionListener"/>
 <fullyQualifiedTypeName name="javax.swing.JButton"/>
-<fullyQualifiedTypeName name="ui.GameFrame"/>
 <fullyQualifiedTypeName name="java.awt.event.ActionListener"/>
 <fullyQualifiedTypeName name="controller.GameController"/>
 <fullyQualifiedTypeName name="javax.swing.JPanel"/>
 <fullyQualifiedTypeName name="java.lang.Runnable"/>
 <fullyQualifiedTypeName name="java.lang.Thread"/>
-<fullyQualifiedTypeName name="java.awt.image.BufferedImage"/>
 <fullyQualifiedTypeName name="javax.imageio.ImageIO"/>
 <fullyQualifiedTypeName name="java.io.FileInputStream"/>
 <fullyQualifiedTypeName name="javax.swing.ImageIcon"/>
@@ -47,17 +44,20 @@
 <fullyQualifiedTypeName name="model.Plane"/>
 <fullyQualifiedTypeName name="controller.Simulator"/>
 <fullyQualifiedTypeName name="model.PlayerPlane"/>
-<fullyQualifiedTypeName name="subjects.Bullet"/>
 <fullyQualifiedTypeName name="util.Speed"/>
 <fullyQualifiedTypeName name="subjects.PlayerPlaneMP"/>
 <fullyQualifiedTypeName name="java.lang.System"/>
 <fullyQualifiedTypeName name="net.Packet88GameStartSignal"/>
 <fullyQualifiedTypeName name="java.util.ArrayList"/>
 <fullyQualifiedTypeName name="java.awt.Rectangle"/>
-<fullyQualifiedTypeName name="ui.GamePanel"/>
-<fullyQualifiedTypeName name="subjects.Stuff"/>
 <fullyQualifiedTypeName name="java.lang.Double"/>
 <fullyQualifiedTypeName name="resource.StaticImageResource"/>
-<fullyQualifiedTypeName name="subjects.EnemyPlane"/>
 <fullyQualifiedTypeName name="util.Location"/>
+<fullyQualifiedTypeName name="ui.GameFrame"/>
+<fullyQualifiedTypeName name="subjects.EnemyPlane"/>
+<fullyQualifiedTypeName name="java.awt.Image"/>
+<fullyQualifiedTypeName name="java.awt.image.BufferedImage"/>
+<fullyQualifiedTypeName name="subjects.Stuff"/>
+<fullyQualifiedTypeName name="subjects.Bullet"/>
+<fullyQualifiedTypeName name="ui.GamePanel"/>
 </qualifiedTypeNameHistroy>

@@ -83,9 +83,9 @@ public class GamePanel extends JPanel implements KeyListener, Runnable
       p.move();;
     }*/
     
-    for (int i = 0; i < Stuff.getAllStuffs().size(); i++)
+    for (int i = 0; i < Stuff.getAllBullets().size(); i++)
     {
-      Stuff.getAllStuffs().get(i).move();;
+      Stuff.getAllBullets().get(i).move();;
     }
     
     for (int i = 0; i < Stuff.getAllPlayers().size(); i++)
@@ -116,15 +116,26 @@ public class GamePanel extends JPanel implements KeyListener, Runnable
       Stuff.getAllPlayers().get(i).paint(g);
     }
     //System.out.println(Stuff.getAllPlayers().size());
-    for (int i = 0; i < Stuff.getAllStuffs().size(); i++)
+    for (int i = 0; i < Stuff.getAllBullets().size(); i++)
     {
-      Stuff.getAllStuffs().get(i).paint(g);
+      Stuff.getAllBullets().get(i).paint(g);
     }
     
-    for (int i = 0; i < Stuff.getAllEnemyPlanes().size(); i++)
+    try
     {
-      Stuff.getAllEnemyPlanes().get(i).paint(g);
+      for (EnemyPlane ep : Stuff.getAllEnemyPlanes())
+      {
+        if(ep != null)
+        {
+          ep.paint(g);
+        }
+      }
     }
+    catch( Exception e )
+    {
+      // TODO: handle exception
+    }
+    
     
     
     
@@ -218,8 +229,12 @@ public class GamePanel extends JPanel implements KeyListener, Runnable
       }
       if(gameActivated)
       {
-        EnemyPlane e = new EnemyPlane(new Location(0,0));
-        Stuff.getAllEnemyPlanes().add(e);
+        for(int i = 0; i < 2; i++)
+        {
+          EnemyPlane e = new EnemyPlane(new Location(i*200,i*25));
+          Stuff.getAllEnemyPlanes().add(e);
+        }
+        
         gameActivated = !gameActivated;
       }
     }

@@ -19,9 +19,10 @@ public abstract class Stuff
   public Integer ID;
   public static Integer nextID = 0;
 
-  private static ArrayList<Stuff> allStuffs = new ArrayList<Stuff>();
+  private static ArrayList<Bullet> allBullets = new ArrayList<Bullet>();
   private static ArrayList<PlayerPlaneMP> allPlayerPlaneMPs = new ArrayList<PlayerPlaneMP>();
   private static ArrayList<EnemyPlane> allEnemyPlanes = new ArrayList<EnemyPlane>();
+  private static ArrayList<Bullet> enemyBullets = new ArrayList<Bullet>();
   
   public Stuff(Location _location, Speed _speed)
   {
@@ -32,9 +33,9 @@ public abstract class Stuff
 
   }
   
-  synchronized public static ArrayList<Stuff> getAllStuffs()
+  synchronized public static ArrayList<Bullet> getAllBullets()
   {
-    return allStuffs;
+    return allBullets;
   }
   
   synchronized public static ArrayList<PlayerPlaneMP> getAllPlayers()
@@ -90,18 +91,30 @@ public abstract class Stuff
 
   public abstract BufferedImage getImage();
   
-  synchronized public static void addStuff(Stuff inStuff)
+  synchronized public static void addBullet(Bullet inStuff)
   {
-    allStuffs.add(inStuff);
+    allBullets.add(inStuff);
   }
   
-  synchronized public static void deleteStuff(Stuff inStuff)
+  synchronized public static void delelteBullet(Bullet inStuff)
   {
-    for(int i = 0; i < allStuffs.size(); i++)
+    for(int i = 0; i < allBullets.size(); i++)
     {
-      if (allStuffs.get(i).equals(inStuff))
+      if (allBullets.get(i).equals(inStuff))
       {
-        allStuffs.remove(i);
+        allBullets.remove(i);
+        break;
+      }
+    }
+  }
+  
+  synchronized public static void deleteEnemyPlane(EnemyPlane enemyPlane)
+  {
+    for(int i = 0; i < allEnemyPlanes.size(); i++)
+    {
+      if (allEnemyPlanes.get(i).equals(enemyPlane))
+      {
+        allEnemyPlanes.remove(i);
         break;
       }
     }

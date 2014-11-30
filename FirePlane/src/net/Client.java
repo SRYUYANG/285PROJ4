@@ -28,7 +28,7 @@ public class Client extends Thread
   private static DatagramSocket clientSocket;
   private ObjectOutputStream outputStream;
   private ObjectInputStream inputStream;
-  private String username;
+  public static String username;
   
   public Client(String ipAddress) throws IOException
   {

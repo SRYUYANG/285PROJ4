@@ -56,10 +56,7 @@ public class PlayerPlaneMP extends PlayerPlane
     return image;
   }
   
-  public void explode()
-  {
-    setAlive(false);
-  }
+  
  
   @Override
   public void paint(Graphics g)

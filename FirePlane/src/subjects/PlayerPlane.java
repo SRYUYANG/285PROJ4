@@ -45,7 +45,7 @@ public class PlayerPlane extends Plane
     if(isAlive())
     {
       BlueSmallBullet bullet = new BlueSmallBullet(this);
-      Stuff.addStuff(bullet);
+      Stuff.addBullet(bullet);
       bullet.move();
       return bullet;
     }

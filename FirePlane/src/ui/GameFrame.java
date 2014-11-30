@@ -15,8 +15,8 @@ import resource.StaticImageResource;
 
 public class GameFrame extends JFrame
 {
-  final private static int WINDOWS_WIDTH = 550;
-  final private static int WINDOWS_HEIGHT = 700;
+  final public static int WINDOWS_WIDTH = 700;
+  final public static int WINDOWS_HEIGHT = 700;
   //private static JButton startButton;
   //private static JButton exitButton;
   private static JPanel currentPanel;

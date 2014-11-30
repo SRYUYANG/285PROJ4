@@ -9,7 +9,7 @@ import util.Speed;
 
 public abstract class Bullet extends Stuff
 {
-
+  private int power = 1;
   public Bullet(Location _loc, Speed _speed)
   {
     super(_loc, _speed);
@@ -30,7 +30,7 @@ public abstract class Bullet extends Stuff
     }
     else
     {
-      Stuff.deleteStuff(this);
+      Stuff.delelteBullet(this);
     }
   }
   
@@ -39,5 +39,16 @@ public abstract class Bullet extends Stuff
     return new Rectangle((int)getLocation().getX(), (int)getLocation().getY(), getImage().getWidth(), getImage().getHeight());
   }
   
+  public void setPower(int _power)
+  {
+    power = _power;
+  }
+
+
+  public int getPower()
+  {
+    // TODO Auto-generated method stub
+    return power;
+  }
   
 }
