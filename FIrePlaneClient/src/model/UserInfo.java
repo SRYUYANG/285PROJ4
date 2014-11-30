@@ -3,7 +3,7 @@ package model;
 public class UserInfo
 {
   public static String UserName = new String();
-  public static Integer UserPoint = 8930;
+  public static Integer UserPoint = 8950;
   public static PlayerPlane UserPlane = null;
   
   public static void setUserName (String inStr){

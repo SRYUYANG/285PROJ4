@@ -11,9 +11,4 @@ public abstract class Weapon extends Stuff
   {
     super(_location, _speed, _ID);
   }
-  
-  public void paint(Graphics g)
-  {
-    
-  }
 }
