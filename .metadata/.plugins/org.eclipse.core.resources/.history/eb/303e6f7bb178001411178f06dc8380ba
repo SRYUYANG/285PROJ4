@@ -1,0 +1,20 @@
+package statistic;
+
+import java.awt.Graphics;
+
+import ui.GameFrame;
+
+public class Statistic
+{
+  private int score;
+  
+  public Statistic()
+  {
+    score = 0;
+  }
+  
+  public void paint(Graphics g)
+  {
+    g.drawString(Integer.toString(score), GameFrame.WINDOWS_HEIGHT-10, GameFrame.WINDOWS_HEIGHT-10);
+  }
+}

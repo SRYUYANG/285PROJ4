@@ -1,0 +1,6 @@
+package statistic;
+
+public class Statistic
+{
+  private int score = 0;
+}

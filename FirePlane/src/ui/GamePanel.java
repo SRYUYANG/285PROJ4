@@ -2,6 +2,7 @@ package ui;
 
 
 import resource.StaticImageResource;
+import statistic.Statistic;
 import subjects.*;
 
 import java.awt.Graphics;
@@ -106,7 +107,9 @@ public class GamePanel extends JPanel implements KeyListener, Runnable
   public void paint(Graphics g)
   {
     super.paint(g);
+    
     g.drawImage(currentBackGroundBufferedImage, 0, 0, null);
+    Statistic.paint(g);
     /*for(PlayerPlane p : players)
     {
       p.paintPlane(g);

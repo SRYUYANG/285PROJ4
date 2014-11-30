@@ -6,6 +6,7 @@ import java.awt.image.BufferedImage;
 import java.util.Random;
 
 import resource.StaticImageResource;
+import statistic.Statistic;
 import ui.GameFrame;
 import util.Location;
 import util.Speed;
@@ -57,6 +58,7 @@ public class EnemyPlane extends Plane
       if(getBounds().intersects(s.getBounds()))
       {
         HP -= s.getPower();
+        Statistic.setScore(Statistic.getScore() + 5);
         s.setPower(0);
         if(HP == 0)
         {
