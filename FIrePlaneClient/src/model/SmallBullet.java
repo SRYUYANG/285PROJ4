@@ -17,6 +17,6 @@ public class SmallBullet extends Weapon
   @Override
   public BufferedImage getImage()
   {
-    return StaticImageResource.bulletImages[2];
+    return StaticImageResource.bulletImages[1];
   }
 }

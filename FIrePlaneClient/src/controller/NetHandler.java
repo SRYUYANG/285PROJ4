@@ -155,6 +155,7 @@ public class NetHandler implements Runnable
       Integer xSpeed = Integer.parseInt(mt.group(11));
       Integer ySpeed = Integer.parseInt(mt.group(13));
       
+      System.out.println(type);
       switch (type)
       {
         case "small":
