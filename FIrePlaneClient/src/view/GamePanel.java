@@ -62,6 +62,10 @@ public class GamePanel extends JPanel implements KeyListener
         Simulator.getAllStuffs().get(i).paint(g);
       }
     }
+    if (!UserInfo.isExist())
+    {
+      g.drawImage(StaticImageResource.gameover, 20, 200, null);
+    }
   }
   
   @Override

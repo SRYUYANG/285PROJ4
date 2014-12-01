@@ -25,6 +25,8 @@ public class StaticImageResource
   public static BufferedImage[] bulletImages = new BufferedImage[bulletTypeNum];
   public static BufferedImage[] explosionImages = new BufferedImage[explosionTypeNum];
   
+  public static BufferedImage gameover;
+  
   public static void initializeImages()
   {
     try
@@ -89,6 +91,21 @@ public class StaticImageResource
       {
         e.printStackTrace();
       }
+    }
+    
+    try
+    {
+      gameover = ImageIO.read(new FileInputStream("imgs/gameover.png"));
+    }
+    catch( FileNotFoundException e )
+    {
+      // TODO Auto-generated catch block
+      e.printStackTrace();
+    }
+    catch( IOException e )
+    {
+      // TODO Auto-generated catch block
+      e.printStackTrace();
     }
   }
 }

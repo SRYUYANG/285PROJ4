@@ -4,6 +4,7 @@ import java.util.Iterator;
 import java.util.TimerTask;
 
 import model.Stuff;
+import model.UserInfo;
 import view.GameController;
 
 public class RepaintHandler extends TimerTask
@@ -18,6 +19,17 @@ public class RepaintHandler extends TimerTask
       Stuff tempStuff = itStuff.next();
       tempStuff.move();
     }
+    
+    if (UserInfo.UserPlane != null)
+    {
+    if (UserInfo.UserPlane.getHP() <= 1)
+    {
+      {
+        UserInfo.setGameover();
+      }
+    }
+    }
+    
     GameController.getGameFrame().repaint();
   }
 
