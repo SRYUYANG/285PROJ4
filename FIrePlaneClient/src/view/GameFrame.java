@@ -31,6 +31,7 @@ public class GameFrame extends JFrame
     //this.addKeyListener(currentGamePanel);
     this.setMinimumSize(new Dimension(WINDOWS_WIDTH, WINDOWS_HEIGHT));
     this.setMaximumSize(new Dimension(WINDOWS_WIDTH, WINDOWS_HEIGHT));
+    this.setSize(new Dimension(WINDOWS_WIDTH, WINDOWS_HEIGHT));
     this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
     this.setVisible(true);
   }

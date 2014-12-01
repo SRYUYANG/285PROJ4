@@ -22,6 +22,7 @@ public abstract class Weapon extends Stuff
         + "#4@" + getLocation().getY() + "#5@" + getSpeed().getXSpeed() + "#6@"
         + getSpeed().getYSpeed() + "#7@";
     ServerSocket.sendPacket(sendingPacket);
+    ServerSocket.sendPacket(sendingPacket);
     status = _status;
   }
   

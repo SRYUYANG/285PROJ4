@@ -1,8 +1,12 @@
 package main;
 
+import java.net.InetAddress;
 import java.net.SocketException;
+import java.net.UnknownHostException;
 import java.util.Timer;
 import java.util.TimerTask;
+
+import javax.swing.JOptionPane;
 
 import util.Signal;
 import controller.*;
@@ -30,6 +34,15 @@ public class Main
   
   public static void main(String[] args)
   {
+    try
+    {
+      JOptionPane.showMessageDialog(null, InetAddress.getLocalHost().getHostAddress());
+    }
+    catch( UnknownHostException e1 )
+    {
+      e1.printStackTrace();
+    }
+    
     ServerSocket server = null;
     try
     {
@@ -49,7 +62,7 @@ public class Main
       
     }
     
-    aiCreationTimer.schedule(aiCreation, 0, 4000);
+    aiCreationTimer.schedule(aiCreation, 0, 5000);
     aiShootTimer.schedule(aiShoot, 0, 500);
     moveTimer.schedule(moveHandler, 0, 20);
     collisionTimer.schedule(collisionHandler, 0, 200);

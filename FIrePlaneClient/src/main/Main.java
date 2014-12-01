@@ -17,23 +17,25 @@ public class Main
   {
     
     System.out.println("Game Start!");
-    Integer buffClientNum = null;
+    String buffServerIP = null;
+    Integer buffClientPort = null;
     //here we only place a short initialization functions
     try
     {
-    buffClientNum = Integer.parseInt(JOptionPane.showInputDialog("Port Num"));
+      buffServerIP = JOptionPane.showInputDialog("Server Address");
+      buffClientPort = Integer.parseInt(JOptionPane.showInputDialog("Port Num"));
     }
     catch (Exception e)
     {
       System.exit(1);
     }
+      
     
-    
-    UserInfo.UserPoint = buffClientNum;
     ClientSocket server = null;
     try
     {
-      server = new ClientSocket(buffClientNum);
+      UserInfo.UserPoint = buffClientPort;
+      server = new ClientSocket(buffServerIP, buffClientPort);
     }
     catch( SocketException e )
     {

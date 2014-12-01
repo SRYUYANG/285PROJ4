@@ -1,5 +1,7 @@
 package model;
 
+import java.net.InetAddress;
+
 public class UserInfo
 {
   public static String UserName = new String();

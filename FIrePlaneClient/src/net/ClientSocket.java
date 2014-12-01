@@ -17,10 +17,10 @@ public class ClientSocket
   private static DatagramSocket outSocket;
   private static InetAddress serverIP;
   
-  public ClientSocket(Integer inSocketNum) throws SocketException
+  public ClientSocket(String inStr, Integer inPort) throws SocketException
   {
     outSocket = new DatagramSocket();
-    inSocket = new DatagramSocket(inSocketNum);
+    inSocket = new DatagramSocket(inPort);
     
     /*
      * 
@@ -29,7 +29,7 @@ public class ClientSocket
      */
     try
     {
-      serverIP = InetAddress.getByName("localhost");
+      serverIP = InetAddress.getByName(inStr);
     }
     catch( UnknownHostException e )
     {

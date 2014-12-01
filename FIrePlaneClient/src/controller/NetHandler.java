@@ -127,7 +127,8 @@ public class NetHandler implements Runnable
       Integer yCord = Integer.parseInt(mt.group(9));
       Integer xSpeed = Integer.parseInt(mt.group(11));
       Integer ySpeed = Integer.parseInt(mt.group(13));
-
+      if (Simulator.getStuff(ID) == null)
+      {
       switch ( type )
       {
         case "small":
@@ -142,6 +143,7 @@ public class NetHandler implements Runnable
           Simulator.addEnemyPlane(new EnemyLargePlane(
               new Location(xCord, yCord), new Speed(xSpeed, ySpeed), ID));
           break;
+      }
       }
     }
   }
@@ -186,6 +188,8 @@ public class NetHandler implements Runnable
       Integer ySpeed = Integer.parseInt(mt.group(13));
 
       System.out.println(type);
+      if(Simulator.getStuff(ID) == null)
+      {
       switch ( type )
       {
         case "small":
@@ -200,6 +204,7 @@ public class NetHandler implements Runnable
        * "large": Simulator.addEnemyPlane( new EnemyLargePlane( new
        * Location(xCord, yCord), new Speed(xSpeed, ySpeed), ID)); break; }
        */
+      }
       }
     }
   }

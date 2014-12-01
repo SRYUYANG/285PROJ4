@@ -37,11 +37,6 @@ public class Player
     return playerPlane;
   }
   
-  public void gameOver()
-  {
-    
-  }
-  
   synchronized public String loginString()
   {
     return "#0@00#1@" + this.userName + "#2@" + this.userID + "#3@";

@@ -10,6 +10,8 @@ import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 import java.awt.image.BufferedImage;
 import java.io.IOException;
+import java.net.InetAddress;
+import java.net.UnknownHostException;
 import java.util.ArrayList;
 
 import javax.swing.JFrame;
@@ -32,8 +34,17 @@ public class GamePanel extends JPanel implements KeyListener
     this.addListener();
     UserInfo.UserName = JOptionPane.showInputDialog(this, "Please enter Username");
     
-    String loginPacket = "#0@00#1@" + UserInfo.UserName + "#2@" + "localhost" + "#3@" + 
-    UserInfo.UserPoint.toString() + "#4@";
+    String loginPacket = null;
+    try
+    {
+      loginPacket = "#0@00#1@" + UserInfo.UserName + "#2@" + InetAddress.getLocalHost().getHostAddress() + "#3@" + 
+      UserInfo.UserPoint
+       + "#4@";
+    }
+    catch( UnknownHostException e )
+    {
+      e.printStackTrace();
+    }
     
     ClientSocket.sendPacket(loginPacket);
   }

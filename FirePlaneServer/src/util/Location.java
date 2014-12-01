@@ -53,7 +53,7 @@ public class Location
     {
       return true;
     }
-    if (checkloc.getY() > Constants.MAX_HEIGHT || checkloc.getY() < -80)
+    if (checkloc.getY() > Constants.MAX_HEIGHT || checkloc.getY() < -800)
     {
       return true;
     }
