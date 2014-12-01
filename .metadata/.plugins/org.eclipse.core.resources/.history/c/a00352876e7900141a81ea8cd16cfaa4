@@ -1,0 +1,9 @@
+package resource;
+
+import java.applet.Applet;
+import java.applet.AudioClip;
+
+public class Sound extends Applet
+{
+  public static Applet shoot = new AudioClip("sound/ship fire");
+}

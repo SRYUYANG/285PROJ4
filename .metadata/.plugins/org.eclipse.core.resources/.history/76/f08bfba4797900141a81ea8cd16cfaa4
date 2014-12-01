@@ -1,0 +1,36 @@
+package resource;
+
+import sun.audio.*;
+
+import java.io.*;
+
+public class Sound{
+  InputStream in = new FileInputStream(new File("sound/shipfire.wav"));
+  
+  public Sound(String filename)
+  {
+    try
+    {
+      shootUrl = new URL(getCodeBase(),filename);
+    }
+    catch( MalformedURLException e1 )
+    {
+      // TODO Auto-generated catch block
+      e1.printStackTrace();
+    }
+    try
+    {
+      shoot = Applet.newAudioClip(shootUrl);
+    }
+    catch( NullPointerException e )
+    {
+      // TODO: handle exception
+    }
+  }
+  
+  public void shootSound()
+  {
+    shoot.play();
+  }
+  
+}

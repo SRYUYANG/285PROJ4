@@ -3,6 +3,7 @@ package main;
 import java.net.SocketException;
 import java.util.Timer;
 
+import javax.swing.JApplet;
 import javax.swing.JOptionPane;
 
 import controller.NetHandler;
@@ -10,12 +11,11 @@ import controller.RepaintHandler;
 import view.GameController;
 import model.UserInfo;
 import net.ClientSocket;
-
+import sun.audio.*;
 public class Main
 {
   public static void main(String[] args)
   {
-    
     System.out.println("Game Start!");
     String buffServerIP = null;
     Integer buffClientPort = null;

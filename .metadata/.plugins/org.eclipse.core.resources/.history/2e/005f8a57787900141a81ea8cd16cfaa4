@@ -1,0 +1,42 @@
+package resource;
+
+import java.applet.Applet;
+import java.applet.AudioClip;
+import java.net.MalformedURLException;
+import java.net.URL;
+
+import javax.swing.JApplet;
+
+public class Sound
+{
+  private AudioClip shoot;
+  private AudioClip gameOver;
+  private static URL shootUrl;
+  
+  public static init(String filename)
+  {
+    try
+    {
+      shootUrl = new URL(Applet.getCodeBase(),filename);
+    }
+    catch( MalformedURLException e1 )
+    {
+      // TODO Auto-generated catch block
+      e1.printStackTrace();
+    }
+    try
+    {
+      shoot = Applet.newAudioClip(shootUrl);
+    }
+    catch( NullPointerException e )
+    {
+      // TODO: handle exception
+    }
+  }
+  
+  public void shootSound()
+  {
+    shoot.play();
+  }
+  
+}

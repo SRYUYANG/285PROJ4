@@ -1,6 +1,7 @@
 package view;
 
 
+import resource.Sound;
 import resource.StaticImageResource;
 import model.*;
 import net.ClientSocket;
@@ -26,8 +27,9 @@ import util.Speed;
 public class GamePanel extends JPanel implements KeyListener
 { 
   private boolean keyActivated = true;
-  
+  private int gameOverActivated = -1;
   BufferedImage currentBackGroundBufferedImage;
+  Sound gameSound = new Sound();
   public GamePanel(BufferedImage bg)
   {
     currentBackGroundBufferedImage = bg;
@@ -64,8 +66,17 @@ public class GamePanel extends JPanel implements KeyListener
     }
     if (!UserInfo.isExist())
     {
-      g.drawImage(StaticImageResource.gameover, 20, 200, null);
+      g.drawImage(StaticImageResource.gameover, 80, 200, null);
+      if(gameOverActivated == -1)
+        gameOverActivated = 1;
     }
+    if(gameOverActivated == 1)
+    {
+      gameSound.gameOverSound();
+      gameOverActivated = 2;
+    }
+      
+
   }
   
   @Override
@@ -108,6 +119,7 @@ public class GamePanel extends JPanel implements KeyListener
     }
     if (keyCode == KeyEvent.VK_SPACE)
     {
+      gameSound.shootSound();
       return "#0@10#1@" + UserInfo.UserName + "#2@";
     }
     

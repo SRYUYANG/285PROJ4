@@ -1,0 +1,32 @@
+package resource;
+
+import java.applet.Applet;
+import java.applet.AudioClip;
+import java.net.URL;
+
+import javax.swing.JApplet;
+
+public class Sound extends Applet
+{
+  private AudioClip shoot;
+  private AudioClip gameOver;
+  
+  public Sound()
+  {
+    URL shootUrl = getClass().getResource("sound/shipfire.wav");
+    try
+    {
+      shoot = Applet.newAudioClip(shootUrl);
+    }
+    catch( NullPointerException e )
+    {
+      // TODO: handle exception
+    }
+  }
+  
+  public void shootSound()
+  {
+    shoot.play();
+  }
+  
+}
