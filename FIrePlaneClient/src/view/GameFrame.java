@@ -17,35 +17,35 @@ public class GameFrame extends JFrame
 {
   final private static int WINDOWS_WIDTH = 550;
   final private static int WINDOWS_HEIGHT = 700;
-  //private static JButton startButton;
-  //private static JButton exitButton;
+  // private static JButton startButton;
+  // private static JButton exitButton;
   private static JPanel currentPanel;
+
   public GameFrame(String title)
   {
     super(title);
     StaticImageResource.initializeImages();
-    //currentGamePanel = new GamePanel(StaticImageResource.backgroudImages[0]);
-    //Thread thread = new Thread(currentGamePanel);
-    //thread.start();
-    //this.add(currentGamePanel);
-    //this.addKeyListener(currentGamePanel);
+    // currentGamePanel = new GamePanel(StaticImageResource.backgroudImages[0]);
+    // Thread thread = new Thread(currentGamePanel);
+    // thread.start();
+    // this.add(currentGamePanel);
+    // this.addKeyListener(currentGamePanel);
     this.setMinimumSize(new Dimension(WINDOWS_WIDTH, WINDOWS_HEIGHT));
     this.setMaximumSize(new Dimension(WINDOWS_WIDTH, WINDOWS_HEIGHT));
     this.setSize(new Dimension(WINDOWS_WIDTH, WINDOWS_HEIGHT));
     this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
     this.setVisible(true);
   }
-  
-  
-  
+
+
   public static JPanel getCurrentPanel()
   {
     return currentPanel;
   }
-  
+
   public void setJpanel(JPanel jp)
   {
     currentPanel = jp;
   }
-  
+
 }

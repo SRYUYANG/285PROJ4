@@ -13,18 +13,15 @@ public class EnemyLargePlane extends EnemyPlane
     HP = 1;
     // TODO Auto-generated constructor stub
   }
-  
+
   synchronized public void shoot()
   {
-    if (isExist())
+    if( isExist() )
     {
-    SmallBullet bullet = new SmallBullet(
-        new Location(this.getLocation()), 
-        new Speed(0, 25), 
-        this,
-        false);
-    
-    Simulator.addWeapon(bullet);
+      SmallBullet bullet = new SmallBullet(new Location(this.getLocation()),
+          new Speed(0, 25), this, false);
+
+      Simulator.addWeapon(bullet);
     }
   }
 

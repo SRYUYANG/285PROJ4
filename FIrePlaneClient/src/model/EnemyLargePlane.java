@@ -21,5 +21,5 @@ public class EnemyLargePlane extends EnemyPlane
   {
     return StaticImageResource.playerPlanes[1];
   }
-  
+
 }

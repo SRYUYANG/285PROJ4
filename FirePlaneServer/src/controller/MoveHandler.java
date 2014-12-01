@@ -11,12 +11,12 @@ public class MoveHandler extends TimerTask
   public void run()
   {
     Iterator<Stuff> itStuff = Simulator.getAllStuffs().iterator();
-    while(itStuff.hasNext())
+    while( itStuff.hasNext() )
     {
       Stuff buff = itStuff.next();
-      if(buff.isValid())
+      if( buff.isValid() )
       {
-      buff.move();
+        buff.move();
       }
     }
   }

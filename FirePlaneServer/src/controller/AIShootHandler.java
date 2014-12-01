@@ -14,10 +14,11 @@ public class AIShootHandler extends TimerTask
   public void run()
   {
     Iterator<EnemyPlane> itPlane = Simulator.getAllEnemyPlanes().iterator();
-    while(itPlane.hasNext())
+    while( itPlane.hasNext() )
     {
       EnemyPlane buffEnemy = itPlane.next();
-      if(buffEnemy.isExist()){
+      if( buffEnemy.isExist() )
+      {
         buffEnemy.shoot();
       }
     }

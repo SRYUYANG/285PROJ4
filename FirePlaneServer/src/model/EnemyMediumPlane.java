@@ -16,14 +16,11 @@ public class EnemyMediumPlane extends EnemyPlane
 
   synchronized public void shoot()
   {
-    if (isExist())
+    if( isExist() )
     {
-    SmallBullet bullet = new SmallBullet(
-        new Location(this.getLocation()), 
-        new Speed(0, 15), 
-        this,
-        false);
-    Simulator.addWeapon(bullet);
+      SmallBullet bullet = new SmallBullet(new Location(this.getLocation()),
+          new Speed(0, 15), this, false);
+      Simulator.addWeapon(bullet);
     }
   }
 

@@ -1,4 +1,5 @@
 package model;
+
 import controller.Simulator;
 import util.Location;
 import util.Speed;

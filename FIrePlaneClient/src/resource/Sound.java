@@ -16,28 +16,30 @@ public class Sound
 {
   File shootAudioFile;
   File gameOverSoundFile;
+
   public Sound()
   {
     shootAudioFile = new File("sound/shipfire.wav");
     gameOverSoundFile = new File("sound/YOU DIE.wav");
-    
+
   }
-  
+
   public void shootSound()
   {
     try
     {
-      AudioInputStream shootAudioInputStream = AudioSystem.getAudioInputStream(shootAudioFile);
-      
+      AudioInputStream shootAudioInputStream = AudioSystem
+          .getAudioInputStream(shootAudioFile);
+
       AudioFormat shootFormat = shootAudioInputStream.getFormat();
-      
+
       DataLine.Info shootInfo = new DataLine.Info(Clip.class, shootFormat);
-      
+
       Clip shootClip = (Clip) AudioSystem.getLine(shootInfo);
       shootClip.open(shootAudioInputStream);
       shootClip.start();
-      //shootClip.close();
-      //shootAudioInputStream.close();
+      // shootClip.close();
+      // shootAudioInputStream.close();
     }
     catch( LineUnavailableException e )
     {
@@ -54,24 +56,25 @@ public class Sound
       // TODO Auto-generated catch block
       e.printStackTrace();
     }
-    
+
   }
-  
+
   public void gameOverSound()
   {
     try
     {
-      AudioInputStream youDieStream = AudioSystem.getAudioInputStream(gameOverSoundFile);
-      
+      AudioInputStream youDieStream = AudioSystem
+          .getAudioInputStream(gameOverSoundFile);
+
       AudioFormat youdieFormat = youDieStream.getFormat();
-      
+
       DataLine.Info youDieInfo = new DataLine.Info(Clip.class, youdieFormat);
-      
+
       Clip youDieClip = (Clip) AudioSystem.getLine(youDieInfo);
       youDieClip.open(youDieStream);
       youDieClip.start();
-      //shootClip.close();
-      //shootAudioInputStream.close();
+      // shootClip.close();
+      // shootAudioInputStream.close();
     }
     catch( LineUnavailableException e )
     {

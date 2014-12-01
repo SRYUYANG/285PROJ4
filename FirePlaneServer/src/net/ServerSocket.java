@@ -15,8 +15,8 @@ public class ServerSocket
   private int portNum;
   private static DatagramSocket inSocket;
   private static DatagramSocket outSocket;
-  private static ArrayList<AddrWrapper> clients; 
-  
+  private static ArrayList<AddrWrapper> clients;
+
   public ServerSocket() throws SocketException
   {
     System.out.println("System Start!");
@@ -24,19 +24,21 @@ public class ServerSocket
     clients = new ArrayList<AddrWrapper>();
     inSocket = new DatagramSocket(8910);
   }
-  
+
   synchronized public static void sendPacket(String inStr)
   {
     System.out.print("Server Sent:");
     System.out.println(inStr);
     byte[] buffer = inStr.getBytes();
-    if (getAllClients() == null) return;
-    for (AddrWrapper client : getAllClients())
+    if( getAllClients() == null )
+      return;
+    for( AddrWrapper client : getAllClients() )
     {
-      DatagramPacket outPacket = 
-          new DatagramPacket(buffer, buffer.length, client.getIP(), client.getPort());
+      DatagramPacket outPacket = new DatagramPacket(buffer, buffer.length,
+          client.getIP(), client.getPort());
       System.out.println(outPacket.getPort());
-      //System.out.println(client.getIP().toString() +  (new Integer(client.getPort())).toString());
+      // System.out.println(client.getIP().toString() + (new
+      // Integer(client.getPort())).toString());
       try
       {
         outSocket.send(outPacket);
@@ -47,11 +49,11 @@ public class ServerSocket
       }
     }
   }
-  
+
   public String receivePakcet()
   {
     System.out.print("Server Received:");
-    
+
     byte[] buffer = new byte[100];
     DatagramPacket packet = new DatagramPacket(buffer, buffer.length);
     try
@@ -59,7 +61,7 @@ public class ServerSocket
       inSocket.receive(packet);
       System.out.println(new String(buffer));
       return new String(buffer);
-      //TODO How to handle the received packet
+      // TODO How to handle the received packet
     }
     catch( IOException e )
     {
@@ -67,12 +69,12 @@ public class ServerSocket
     }
     return null;
   }
-  
+
   synchronized public static ArrayList<AddrWrapper> getAllClients()
   {
     return clients;
   }
-  
+
   synchronized public static void addClient(AddrWrapper inAddr)
   {
     getAllClients().add(inAddr);

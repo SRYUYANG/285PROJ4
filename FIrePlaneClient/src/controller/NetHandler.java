@@ -82,7 +82,7 @@ public class NetHandler implements Runnable
       String userName = mt.group(3);
       Integer HP = Integer.parseInt(mt.group(5));
       PlayerPlane buffPlane = Simulator.getPlayerPlane(userName);
-      if(buffPlane != null)
+      if( buffPlane != null )
       {
         buffPlane.setHP(HP);
       }
@@ -127,23 +127,23 @@ public class NetHandler implements Runnable
       Integer yCord = Integer.parseInt(mt.group(9));
       Integer xSpeed = Integer.parseInt(mt.group(11));
       Integer ySpeed = Integer.parseInt(mt.group(13));
-      if (Simulator.getStuff(ID) == null)
+      if( Simulator.getStuff(ID) == null )
       {
-      switch ( type )
-      {
-        case "small":
-          Simulator.addEnemyPlane(new EnemySmallPlane(
-              new Location(xCord, yCord), new Speed(xSpeed, ySpeed), ID));
-          break;
-        case "medium":
-          Simulator.addEnemyPlane(new EnemyMediumPlane(new Location(xCord,
-              yCord), new Speed(xSpeed, ySpeed), ID));
-          break;
-        case "large":
-          Simulator.addEnemyPlane(new EnemyLargePlane(
-              new Location(xCord, yCord), new Speed(xSpeed, ySpeed), ID));
-          break;
-      }
+        switch ( type )
+        {
+          case "small":
+            Simulator.addEnemyPlane(new EnemySmallPlane(new Location(xCord,
+                yCord), new Speed(xSpeed, ySpeed), ID));
+            break;
+          case "medium":
+            Simulator.addEnemyPlane(new EnemyMediumPlane(new Location(xCord,
+                yCord), new Speed(xSpeed, ySpeed), ID));
+            break;
+          case "large":
+            Simulator.addEnemyPlane(new EnemyLargePlane(new Location(xCord,
+                yCord), new Speed(xSpeed, ySpeed), ID));
+            break;
+        }
       }
     }
   }
@@ -188,23 +188,23 @@ public class NetHandler implements Runnable
       Integer ySpeed = Integer.parseInt(mt.group(13));
 
       System.out.println(type);
-      if(Simulator.getStuff(ID) == null)
+      if( Simulator.getStuff(ID) == null )
       {
-      switch ( type )
-      {
-        case "small":
-          Simulator.addWeapon(new SmallBullet(new Location(xCord, yCord),
-              new Speed(xSpeed, ySpeed), ID));
-          break;
-        default:
-          break;
-      /*
-       * case "medium": Simulator.addEnemyPlane( new EnemyMediumPlane( new
-       * Location(xCord, yCord), new Speed(xSpeed, ySpeed), ID)); break; case
-       * "large": Simulator.addEnemyPlane( new EnemyLargePlane( new
-       * Location(xCord, yCord), new Speed(xSpeed, ySpeed), ID)); break; }
-       */
-      }
+        switch ( type )
+        {
+          case "small":
+            Simulator.addWeapon(new SmallBullet(new Location(xCord, yCord),
+                new Speed(xSpeed, ySpeed), ID));
+            break;
+          default:
+            break;
+        /*
+         * case "medium": Simulator.addEnemyPlane( new EnemyMediumPlane( new
+         * Location(xCord, yCord), new Speed(xSpeed, ySpeed), ID)); break; case
+         * "large": Simulator.addEnemyPlane( new EnemyLargePlane( new
+         * Location(xCord, yCord), new Speed(xSpeed, ySpeed), ID)); break; }
+         */
+        }
       }
     }
   }

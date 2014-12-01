@@ -17,12 +17,12 @@ import view.GamePanel;
 public class GameController
 {
   private static GameFrame thisGameFrame;
-  
+
   synchronized public static GameFrame getGameFrame()
   {
     return thisGameFrame;
   }
-  
+
   public GameController()
   {
     // TODO Auto-generated constructor stub
@@ -31,9 +31,9 @@ public class GameController
     thisGameFrame.add(initialJPanel);
     thisGameFrame.setJpanel(initialJPanel);
     thisGameFrame.revalidate();
-    //this is extremely important!!!!!!!!
+    // this is extremely important!!!!!!!!
   }
-  
+
   public static void moveToGamePanel()
   {
     thisGameFrame.remove(thisGameFrame.getCurrentPanel());
@@ -43,8 +43,8 @@ public class GameController
     thisGameFrame.addKeyListener(nextJPanel);
     thisGameFrame.setJpanel(nextJPanel);
   }
-  
-  
+
+
   public static JPanel createInitialPanel()
   {
     JPanel currentPanel = new JPanel();
@@ -54,10 +54,10 @@ public class GameController
     JButton exitButton = new JButton("I am sure I want to quit...");
     ImageIcon logo = new ImageIcon("imgs/other/LOGO.png");
     JLabel logoContainer = new JLabel(logo);
-    
+
     startButton.addActionListener(new ActionListener()
     {
-      
+
       @Override
       public void actionPerformed(ActionEvent e)
       {
@@ -65,10 +65,10 @@ public class GameController
         moveToGamePanel();
       }
     });
-    
+
     exitButton.addActionListener(new ActionListener()
     {
-      
+
       @Override
       public void actionPerformed(ActionEvent e)
       {
@@ -76,12 +76,12 @@ public class GameController
         thisGameFrame.dispose();
       }
     });
-    
-    
+
+
     currentPanel.add(startButton, BorderLayout.NORTH);
     currentPanel.add(exitButton, BorderLayout.SOUTH);
     currentPanel.add(logoContainer, BorderLayout.WEST);
     return currentPanel;
   }
-  
+
 }

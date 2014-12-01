@@ -15,22 +15,23 @@ public class BattleHandler extends TimerTask
   @Override
   public void run()
   {
-    
-    
+
+
     Iterator<Plane> itPlane = Simulator.getAllPlanes().iterator();
-    while(itPlane.hasNext())
+    while( itPlane.hasNext() )
     {
       Plane buffPlane = itPlane.next();
       Iterator<Weapon> itWeapon = Simulator.getAllWeapons().iterator();
-      while (itWeapon.hasNext())
+      while( itWeapon.hasNext() )
       {
         Weapon buffWeapon = itWeapon.next();
-        if (buffWeapon.isExist() && buffPlane.isExist())
+        if( buffWeapon.isExist() && buffPlane.isExist() )
         {
-        if (Location.isContact(buffPlane.getLocation(), buffWeapon.getLocation()))
-        {
-          buffPlane.getShot(buffWeapon);
-        }
+          if( Location.isContact(buffPlane.getLocation(),
+              buffWeapon.getLocation()) )
+          {
+            buffPlane.getShot(buffWeapon);
+          }
         }
       }
     }

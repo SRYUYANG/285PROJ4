@@ -7,7 +7,7 @@ public class AddrWrapper
 {
   private InetAddress ipAddr;
   private int port;
-  
+
   public AddrWrapper(String inIpStr, int inPort)
   {
     try
@@ -18,15 +18,15 @@ public class AddrWrapper
     {
       e.printStackTrace();
     }
-    
+
     port = inPort;
   }
-  
+
   public InetAddress getIP()
   {
     return ipAddr;
   }
-  
+
   public int getPort()
   {
     return port;

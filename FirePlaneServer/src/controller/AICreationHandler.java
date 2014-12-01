@@ -17,43 +17,32 @@ public class AICreationHandler extends TimerTask
   Random AITypeGen = new Random();
   Random xCordGen = new Random();
   Random yCordGen = new Random();
+
   @Override
   public void run()
   {
-      int num = AINumberGen.nextInt(18); 
-      for (int i = 0; i < num; i++)
-      { 
-        switch (AITypeGen.nextInt(3))
-        {
-          case 0:
-            Simulator.addEnemyPlane(
-                new EnemySmallPlane
-                (
-                    new Location(
-                        xCordGen.nextInt(Constants.MAX_WIDTH), yCordGen.nextInt(700) - 700),
-                    new Speed(0,5)
-                ));
-            break;
-          case 1:
-            Simulator.addEnemyPlane(
-                new EnemyMediumPlane
-                (
-                    new Location(
-                        xCordGen.nextInt(Constants.MAX_WIDTH),yCordGen.nextInt(700) - 700),
-                    new Speed(0,5)
-                ));
-            break;
-          case 2:
-            Simulator.addEnemyPlane(
-                new EnemyLargePlane
-                (
-                    new Location(
-                        xCordGen.nextInt(Constants.MAX_WIDTH),yCordGen.nextInt(700) - 700),
-                    new Speed(0,5)
-                ));
-        }
-      
+    int num = AINumberGen.nextInt(18);
+    for( int i = 0; i < num; i++ )
+    {
+      switch ( AITypeGen.nextInt(3) )
+      {
+        case 0:
+          Simulator.addEnemyPlane(new EnemySmallPlane(new Location(xCordGen
+              .nextInt(Constants.MAX_WIDTH), yCordGen.nextInt(700) - 700),
+              new Speed(0, 5)));
+          break;
+        case 1:
+          Simulator.addEnemyPlane(new EnemyMediumPlane(new Location(xCordGen
+              .nextInt(Constants.MAX_WIDTH), yCordGen.nextInt(700) - 700),
+              new Speed(0, 5)));
+          break;
+        case 2:
+          Simulator.addEnemyPlane(new EnemyLargePlane(new Location(xCordGen
+              .nextInt(Constants.MAX_WIDTH), yCordGen.nextInt(700) - 700),
+              new Speed(0, 5)));
       }
+
+    }
   }
-  
+
 }

@@ -14,22 +14,22 @@ public class RepaintHandler extends TimerTask
   public void run()
   {
     Iterator<Stuff> itStuff = Simulator.getAllStuffs().iterator();
-    while (itStuff.hasNext())
+    while( itStuff.hasNext() )
     {
       Stuff tempStuff = itStuff.next();
       tempStuff.move();
     }
-    
-    if (UserInfo.UserPlane != null)
+
+    if( UserInfo.UserPlane != null )
     {
-    if (UserInfo.UserPlane.getHP() <= 1)
-    {
+      if( UserInfo.UserPlane.getHP() <= 1 )
       {
-        UserInfo.setGameover();
+        {
+          UserInfo.setGameover();
+        }
       }
     }
-    }
-    
+
     GameController.getGameFrame().repaint();
   }
 

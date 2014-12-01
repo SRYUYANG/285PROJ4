@@ -12,6 +12,7 @@ import view.GameController;
 import model.UserInfo;
 import net.ClientSocket;
 import sun.audio.*;
+
 public class Main
 {
   public static void main(String[] args)
@@ -19,18 +20,19 @@ public class Main
     System.out.println("Game Start!");
     String buffServerIP = null;
     Integer buffClientPort = null;
-    //here we only place a short initialization functions
+    // here we only place a short initialization functions
     try
     {
       buffServerIP = JOptionPane.showInputDialog("Server Address");
-      buffClientPort = Integer.parseInt(JOptionPane.showInputDialog("Port Num"));
+      buffClientPort = Integer
+          .parseInt(JOptionPane.showInputDialog("Port Num"));
     }
-    catch (Exception e)
+    catch( Exception e )
     {
       System.exit(1);
     }
-      
-    
+
+
     ClientSocket server = null;
     try
     {
@@ -41,15 +43,15 @@ public class Main
     {
       e.printStackTrace();
     }
-    
+
     GameController gc = new GameController();
-    
+
     NetHandler netHan = new NetHandler(server);
     RepaintHandler repaintHan = new RepaintHandler();
-    
+
     Thread netThread = new Thread(netHan);
     netThread.start();
-    
+
     Timer repaintTimer = new Timer();
     repaintTimer.schedule(repaintHan, 0, 20);
   }

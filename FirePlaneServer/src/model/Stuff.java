@@ -13,7 +13,7 @@ public abstract class Stuff
   private static Integer nextID = 0;
   private boolean isExist = true;
   private boolean isValid = true;
-  
+
   public Stuff(Location _location, Speed _speed)
   {
     this.speed = _speed;
@@ -25,7 +25,7 @@ public abstract class Stuff
 
   synchronized public void move()
   {
-    if (isExist())
+    if( isExist() )
     {
       getLocation().setX(getLocation().getX() + getSpeed().getXSpeed());
       getLocation().setY(getLocation().getY() + getSpeed().getYSpeed());
@@ -36,35 +36,35 @@ public abstract class Stuff
   {
     location = new Location(_loc);
   }
-  
+
   synchronized public Location getLocation()
   {
     return location;
   }
-  
+
   synchronized public Integer getID()
   {
     return ID;
   }
-  
+
   synchronized public Speed getSpeed()
   {
     return speed;
   }
-  
+
   synchronized public void setSpeed(Speed _speed)
   {
     speed = new Speed(_speed);
   }
-  
+
   synchronized public boolean getStatus()
   {
     return isExist();
   }
-  
+
   synchronized public void destroy()
   {
-    if (!isExist())
+    if( !isExist() )
     {
       String sendingPacket = "#0@22#1@" + this.getID() + "#2@";
       ServerSocket.sendPacket(sendingPacket);
@@ -82,16 +82,16 @@ public abstract class Stuff
   {
     this.isExist = _isExist;
   }
-  
+
   synchronized public boolean isValid()
   {
     return isValid;
   }
-  
+
   synchronized public void setInvalid()
   {
     isValid = false;
   }
-  
-  
+
+
 }

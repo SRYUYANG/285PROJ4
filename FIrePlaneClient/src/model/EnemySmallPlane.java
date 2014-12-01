@@ -15,7 +15,7 @@ public class EnemySmallPlane extends EnemyPlane
     super(_location, _speed, _ID);
     // TODO Auto-generated constructor stub
   }
-  
+
   @Override
   public BufferedImage getImage()
   {

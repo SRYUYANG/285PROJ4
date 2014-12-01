@@ -16,16 +16,15 @@ public class ClientSocket
   private static DatagramSocket inSocket;
   private static DatagramSocket outSocket;
   private static InetAddress serverIP;
-  
+
   public ClientSocket(String inStr, Integer inPort) throws SocketException
   {
     outSocket = new DatagramSocket();
     inSocket = new DatagramSocket(inPort);
-    
+
     /*
      * 
      * TODO Change the IP address getting to something that is reliable
-     * 
      */
     try
     {
@@ -36,25 +35,25 @@ public class ClientSocket
       e.printStackTrace();
     }
   }
-  
+
   public static void sendPacket(String inStr)
   {
-    //For test usage only
+    // For test usage only
     System.out.print("CLient Sent:");
     System.out.println(inStr);
     byte[] buffer = inStr.getBytes();
-      DatagramPacket outPacket = 
-          new DatagramPacket(buffer, buffer.length, serverIP, 8910);
-      try
-      {
-        outSocket.send(outPacket);
-      }
-      catch( IOException e )
-      {
-        e.printStackTrace();
-      }
-   }
-  
+    DatagramPacket outPacket = new DatagramPacket(buffer, buffer.length,
+        serverIP, 8910);
+    try
+    {
+      outSocket.send(outPacket);
+    }
+    catch( IOException e )
+    {
+      e.printStackTrace();
+    }
+  }
+
   public String receivePakcet()
   {
     byte[] buffer = new byte[100];
@@ -65,7 +64,7 @@ public class ClientSocket
       inSocket.receive(packet);
       System.out.println(new String(buffer));
       return new String(buffer);
-      //TODO How to handle the received packet
+      // TODO How to handle the received packet
     }
     catch( IOException e )
     {

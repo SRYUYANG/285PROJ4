@@ -12,9 +12,9 @@ public class Player
   private String userName = null;
   private Integer userID = null;
   private static Integer nextID = 0;
-  //private Integer points = 0;
+  // private Integer points = 0;
   private AddrWrapper playerAddr = null;
-  
+
   public Player(String inUserName, String inAddr, int inPort)
   {
     userName = inUserName;
@@ -25,31 +25,30 @@ public class Player
     Simulator.addPlayer(this);
     Simulator.addPlayerPlane(this.getPlayerPlane());
     ServerSocket.addClient(playerAddr);
-    for (Player p: Simulator.getAllPlayers())
+    for( Player p : Simulator.getAllPlayers() )
     {
       ServerSocket.sendPacket(p.loginString());
     }
     ServerSocket.sendPacket(this.loginString());
   }
-  
+
   synchronized public PlayerPlane getPlayerPlane()
   {
     return playerPlane;
   }
-  
+
   synchronized public String loginString()
   {
     return "#0@00#1@" + this.userName + "#2@" + this.userID + "#3@";
   }
-  
+
   synchronized public String getUserName()
   {
     return userName;
   }
   /*
-  public void addPoints()
-  {
-    
-  }
-  */
+   * public void addPoints() {
+   * 
+   * }
+   */
 }

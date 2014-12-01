@@ -13,20 +13,20 @@ public class StatusCheckingHandler extends TimerTask
   public void run()
   {
     Iterator<Stuff> itStuff = Simulator.getAllStuffs().iterator();
-    while (itStuff.hasNext())
+    while( itStuff.hasNext() )
     {
       Stuff buff = itStuff.next();
-      if (buff.isValid())
+      if( buff.isValid() )
       {
         buff.destroy();
       }
     }
-    
+
     Iterator<PlayerPlane> itPlayer = Simulator.getAllPlayerPlanes().iterator();
-    while (itPlayer.hasNext())
+    while( itPlayer.hasNext() )
     {
       PlayerPlane buff = itPlayer.next();
-      if (buff.isValid())
+      if( buff.isValid() )
       {
         buff.sendHP();
       }

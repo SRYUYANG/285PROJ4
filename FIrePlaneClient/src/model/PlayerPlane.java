@@ -16,15 +16,15 @@ public class PlayerPlane extends Plane
 
   public PlayerPlane(Integer _ID, String _name)
   {
-    super(new Location(200, 600), new Speed(0 ,0), _ID);
+    super(new Location(200, 600), new Speed(0, 0), _ID);
     userName = _name;
   }
-  
+
   public void setHP(Integer _HP)
   {
     HP = _HP;
   }
-  
+
   public Integer getHP()
   {
     return HP;
@@ -35,8 +35,10 @@ public class PlayerPlane extends Plane
   {
     super.paint(g);
     g.setColor(Color.RED);
-    g.drawString(userName, (int)getLocation().getX(), (int)getLocation().getY());
-    g.fillRect((int)getLocation().getX(), (int)getLocation().getY() - 30, getHP(), 5);
+    g.drawString(userName, (int) getLocation().getX(), (int) getLocation()
+        .getY());
+    g.fillRect((int) getLocation().getX(), (int) getLocation().getY() - 30,
+        getHP(), 5);
   }
 
   @Override
@@ -44,10 +46,10 @@ public class PlayerPlane extends Plane
   {
     return StaticImageResource.playerPlanes[0];
   }
-  
+
   public String getUserName()
   {
     return userName;
   }
-  
+
 }
